@@ -1,0 +1,14 @@
+/* .modal-ku {
+    width: 750px;
+    margin: auto;
+} */
+
+/* printing style */
+@page {
+    size: A4;
+    margin: 0;
+}
+#print_btn {
+    display: none;
+    visibility: none;
+}
