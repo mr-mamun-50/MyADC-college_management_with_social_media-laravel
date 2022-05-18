@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\NoticeController;
+use App\Http\Controllers\Admin\RoutineXIController;
+use App\Http\Controllers\Admin\RoutineXIIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +44,8 @@ Route::group(['middleware' => 'admin'], function() {
     Route::post('/admin/logout', [AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
 
     Route::resource('/admin/notice', NoticeController::class);
+
+    Route::resource('/admin/routines_xi', RoutineXIController::class);
+    Route::resource('/admin/routines_xii', RoutineXIIController::class);
 
 });

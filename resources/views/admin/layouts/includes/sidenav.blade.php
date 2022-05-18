@@ -51,21 +51,22 @@
                     </a>
                 </li>
 
-                <li class="nav-item @if ($menu == 'table') menu-open @endif">
-                    <a href="#" class="nav-link @if ($menu == 'table') active @endif">
-                        <i class="nav-icon bi bi-calendar2-week"></i>
+                <li class="nav-item @if ($menu == 'Routine') menu-open @endif">
+                    <a href="#" class="nav-link @if ($menu == 'Routine') active @endif">
+                        <i class="nav-icon bi bi-calendar-week"></i>
                         <p> Routines <i class="fas fa-angle-left right"></i> </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/tables/simple.html" class="nav-link">
+                            <a href="{{ route('routines_xi.index') }}"
+                                class="nav-link @if ($submenu == 'Routine_xi') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>XI</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/tables/data.html"
-                                class="nav-link @if ($submenu == 'datatable') active @endif">
+                            <a href="{{ route('routines_xii.index') }}"
+                                class="nav-link @if ($submenu == 'Routine_xii') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>XII</p>
                             </a>
