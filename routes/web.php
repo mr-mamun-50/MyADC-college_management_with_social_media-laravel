@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\RoutineXIController;
 use App\Http\Controllers\Admin\RoutineXIIController;
+use App\Http\Controllers\Admin\Students\AllStudentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +48,7 @@ Route::group(['middleware' => 'admin'], function() {
 
     Route::resource('/admin/routines_xi', RoutineXIController::class);
     Route::resource('/admin/routines_xii', RoutineXIIController::class);
+
+    Route::resource('/admin/all_students', AllStudentsController::class);
 
 });

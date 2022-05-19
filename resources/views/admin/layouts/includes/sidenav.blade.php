@@ -1,8 +1,8 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar elevation-2 sidebar-light-warning">
     <!-- Brand Logo -->
-    <a href="{{ route('admin.dashboard') }}" class="brand-link">
-        <img src="{{ asset('images/logos/logo_white.png') }}" alt="MyADC" class="brand-image">
-        {{-- <span class="brand-text font-weight-light">AdminLTE 3</span> --}}
+    <a href="{{ route('admin.dashboard') }}" class="brand-link navbar-navy">
+        <img src="{{ asset('images/logos/icon.png') }}" alt="MyADC" class="brand-image">
+        <span class="brand-text font-weight-light text-white">MyADC</span>
     </a>
 
     <!-- Sidebar -->
@@ -73,13 +73,57 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item @if ($menu == 'Students') menu-open @endif">
+                    <a href="#" class="nav-link @if ($menu == 'Students') active @endif">
+                        <i class="nav-icon bi bi-people"></i>
+                        <p> Students <i class="fas fa-angle-left right"></i> </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('all_students.index') }}"
+                                class="nav-link @if ($submenu == 'All_students') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All students</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('routines_xi.index') }}"
+                                class="nav-link @if ($submenu == 'Students_xi') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>XI</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('routines_xii.index') }}"
+                                class="nav-link @if ($submenu == 'Students_xii') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>XII</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('routines_xii.index') }}"
+                                class="nav-link @if ($submenu == 'Students_HSC') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>HSC examinee</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('routines_xii.index') }}"
+                                class="nav-link @if ($submenu == 'Students_old') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Old students</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-header">EXAMPLES</li>
                 <li class="nav-item">
                     <a href="pages/calendar.html" class="nav-link">
                         <i class="nav-icon fas fa-calendar-alt"></i>
                         <p>
                             Calendar
-                            <span class="badge badge-info right">2</span>
+                            <span class="badge badge-warning right">2</span>
                         </p>
                     </a>
                 </li>
