@@ -19,7 +19,9 @@ class AllStudentsController extends Controller
      */
     public function index()
     {
-        return view('admin.students.index');
+        $student = DB::table('students')->get();
+
+        return view('admin.students.index', compact('student'));
     }
 
     /**
@@ -77,42 +79,42 @@ class AllStudentsController extends Controller
             'ssc_year' => $request->ssc_year,
         ];
 
-        if($request->file('photo')) {
+        if ($request->file('photo')) {
             $image = $request->file('photo');
-            $input['photo'] = $name_slug.'-'.time().'.'.$image->getClientOriginalExtension();
+            $input['photo'] = $name_slug . '-' . time() . '.' . $image->getClientOriginalExtension();
 
             $destinationPath = public_path('images/students');
             $imgFile = Image::make($image->getRealPath());
-            $imgFile->resize(591, 709)->save($destinationPath.'/'.$input['photo']);
+            $imgFile->resize(591, 709)->save($destinationPath . '/' . $input['photo']);
 
             $data['photo'] = $input['photo'];
         }
 
-        if($request->file('ssc_testimonial')) {
+        if ($request->file('ssc_testimonial')) {
             $image = $request->file('ssc_testimonial');
-            $input['ssc_testimonial'] = $name_slug.'-'.time().'.'.$image->getClientOriginalExtension();
+            $input['ssc_testimonial'] = $name_slug . '-' . time() . '.' . $image->getClientOriginalExtension();
 
             $destinationPath = public_path('images/testimonials/ssc');
             $imgFile = Image::make($image->getRealPath());
-            $imgFile->resize(1650, 1275)->save($destinationPath.'/'.$input['ssc_testimonial']);
+            $imgFile->resize(1650, 1275)->save($destinationPath . '/' . $input['ssc_testimonial']);
 
             $data['ssc_testimonial'] = $input['ssc_testimonial'];
         }
 
-        if($request->file('ssc_marksheet')) {
+        if ($request->file('ssc_marksheet')) {
             $image = $request->file('ssc_marksheet');
-            $input['ssc_marksheet'] = $name_slug.'-'.time().'.'.$image->getClientOriginalExtension();
+            $input['ssc_marksheet'] = $name_slug . '-' . time() . '.' . $image->getClientOriginalExtension();
 
             $destinationPath = public_path('images/marksheets');
             $imgFile = Image::make($image->getRealPath());
-            $imgFile->resize(1275, 1650)->save($destinationPath.'/'.$input['ssc_marksheet']);
+            $imgFile->resize(1275, 1650)->save($destinationPath . '/' . $input['ssc_marksheet']);
 
             $data['ssc_marksheet'] = $input['ssc_marksheet'];
         }
-// dd($data);
+        // dd($data);
         DB::table('students')->insert($data);
 
-        $notify = ['message'=>'New student successfully added!', 'alert-type'=>'success'];
+        $notify = ['message' => 'New student successfully added!', 'alert-type' => 'success'];
         return redirect()->back()->with($notify);
     }
 
@@ -124,7 +126,9 @@ class AllStudentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $student = DB::table('students')->where('id', $id)->first();
+
+        return view('admin.students.profile', compact('student'));
     }
 
     /**

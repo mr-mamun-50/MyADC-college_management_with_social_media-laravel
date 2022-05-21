@@ -22,118 +22,45 @@ $submenu = 'All_students'; ?>
                 <table class="table table-bordered table-striped" id="example1">
                     <thead>
                         <tr>
-                            <th>SL</th>
-                            <th>Subject</th>
-                            <th>student by</th>
-                            <th>Description</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>ID</th>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Group</th>
+                            <th>Parents name</th>
+                            <th>Phone</th>
+                            <th>Session</th>
+                            <th>More</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($student as $item)
+                            <tr>
+                                <td>{{ $item->st_id }}</td>
+                                <td><img class="img-fluid" src="{{ asset('images/students' . '/' . $item->photo) }}"
+                                        alt="Photo" style="width: 80px"></td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->department }}</td>
+                                <td>
+                                    <div class="text-muted text-sm">Father: </div> {{ $item->fathers_name }}
+                                    <div class="text-muted text-sm">Mother: </div> {{ $item->mothers_name }}
+                                </td>
+                                <td>{{ $item->phone }}</td>
+                                <td>{{ $item->session }}</td>
 
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                                <td class="d-flex justify-content-center">
 
-                            <td class="d-flex justify-content-center">
-
-                                <a href="" class="btn btn-info mr-1 px-1 py-0" target="blank"><i
-                                        class="bi bi-printer"></i></a>
-
-                                <button type="button" class="btn btn-primary mr-1 px-1 py-0" data-toggle="modal"
-                                    data-target="{{ '#editstudent' }}">
-                                    <i class="bi bi-pencil-square"></i>
-                                </button>
-
-                                <form action="" method="post">
-                                    @csrf
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <button type="submit" class="btn btn-danger delete px-1 py-0"><i
-                                            class="bi bi-trash"></i></button>
-                                </form>
-                            </td>
-                        </tr>
-
-
-                        <!-- Modal for edit student -->
-                        <div class="modal fade" id="{{ 'editstudent' }}" data-backdrop="static" data-keyboard="false"
-                            tabindex="-1" aria-labelledby="{{ 'editstudent' . 'Label' }}" aria-hidden="true">
-
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header bg-default text-dark rounded">
-                                        <h5 class="modal-title" id="{{ 'editstudent' . 'Label' }}">
-                                            Edit</h5>
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
+                                    <a href="{{ route('all_students.show', $item->id) }}"
+                                        class="btn btn-info mr-1 px-1 py-0"><i class="bi bi-person"></i></a>
 
                                     <form action="" method="post">
                                         @csrf
-                                        <input type="hidden" name="_method" value="put">
-                                        <div class="modal-body">
-
-                                            <div class="form-group">
-                                                <label for="subject">Subject</label>
-                                                <input class="form-control @error('subject') is-invalid @enderror"
-                                                    type="text" name="subject" value="" placeholder="student subject">
-                                                @error('subject')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-
-                                            <b>student by</b> <br>
-                                            <div class="row mt-2">
-                                                <div class="form-group col">
-                                                    <input class="form-control @error('author') is-invalid @enderror"
-                                                        type="text" name="author" value="" placeholder="enter name">
-                                                    @error('author')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group col">
-                                                    <input
-                                                        class="form-control @error('author_designation') is-invalid @enderror"
-                                                        type="text" name="author_designation" value=""
-                                                        placeholder="enter designation">
-                                                    @error('author_designation')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="description">Description</label>
-                                                <textarea class="form-control @error('description') is-invalid @enderror summernote" name="description"
-                                                    rows="10"></textarea>
-                                                @error('description')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn  btn-primary">Update student</button>
-                                        </div>
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-danger delete px-1 py-0"><i
+                                                class="bi bi-trash"></i></button>
                                     </form>
-                                </div>
-                            </div>
-                        </div>
-
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
