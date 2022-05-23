@@ -17,7 +17,7 @@ $submenu = 'All_students'; ?>
                     </button>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body table-responsive">
 
                 <table class="table table-bordered table-striped" id="example1">
                     <thead>
@@ -52,12 +52,12 @@ $submenu = 'All_students'; ?>
                                     <a href="{{ route('all_students.show', $item->id) }}"
                                         class="btn btn-info mr-1 px-1 py-0"><i class="bi bi-person"></i></a>
 
-                                    <form action="" method="post">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="btn btn-danger delete px-1 py-0"><i
-                                                class="bi bi-trash"></i></button>
-                                    </form>
+                                    <a href="tel:{{ $item->phone }}" class="btn btn-success mr-1 px-1 py-0"><i
+                                            class="bi bi-telephone"></i></a>
+
+                                    <a href="mailto:{{ $item->email }}" class="btn btn-danger mr-1 px-1 py-0"
+                                        target="blank"><i class="bi bi-envelope"></i></a>
+
                                 </td>
                             </tr>
                         @endforeach
@@ -206,13 +206,7 @@ $submenu = 'All_students'; ?>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for=" photo">Photo</label>
-                                        <input class="form-control p-1 @error('photo') is-invalid @enderror" type="file"
-                                            name=" photo" value="{{ old(' photo') }}">
-                                        @error('photo')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                        <input class="form-control p-1" type="file" name=" photo">
                                     </div>
                                 </div>
 
@@ -317,23 +311,11 @@ $submenu = 'All_students'; ?>
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" ssc_testimonial">SSC testimonial</label>
-                                        <input class="form-control p-1 @error('ssc_testimonial') is-invalid @enderror"
-                                            type="file" name=" ssc_testimonial" value="{{ old(' ssc_testimonial') }}">
-                                        @error('ssc_testimonial')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                        <input class="form-control p-1" type="file" name=" ssc_testimonial">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for=" ssc_marksheet">SSC marksheet</label>
-                                        <input class="form-control p-1 @error('ssc_marksheet') is-invalid @enderror"
-                                            type="file" name=" ssc_marksheet" value="{{ old(' ssc_marksheet') }}">
-                                        @error('ssc_marksheet')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                        <input class="form-control p-1" type="file" name=" ssc_marksheet">
                                     </div>
                                 </div>
 

@@ -49,7 +49,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         var form = $(this).closest("form");
         event.preventDefault();
         Swal.fire({
-            title: 'Do you want to delete this row?',
+            title: 'Do you want to delete?',
             text: "Once deleted, you will not be able to recover this!",
             icon: 'warning',
             showCancelButton: true,

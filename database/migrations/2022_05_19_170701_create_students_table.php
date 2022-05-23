@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('gender');
             $table->string('phone');
             $table->string('email');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->string('present_address');
             $table->string('permanent_address');
             $table->string('birth_reg_nid');
@@ -35,8 +35,8 @@ return new class extends Migration
             $table->string('ssc_dept');
             $table->string('ssc_school');
             $table->string('ssc_year');
-            $table->string('ssc_testimonial');
-            $table->string('ssc_marksheet');
+            $table->string('ssc_testimonial')->nullable();
+            $table->string('ssc_marksheet')->nullable();
             $table->timestamps();
         });
     }
