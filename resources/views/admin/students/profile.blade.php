@@ -3,7 +3,7 @@
     {{ $student->name }}
 @endsection
 <?php $menu = 'Students';
-$submenu = 'All_students'; ?>
+$submenu = ''; ?>
 
 @section('content')
     <div class="container-fluid">
@@ -130,7 +130,7 @@ $submenu = 'All_students'; ?>
                             <div class="tab-pane" id="edit">
 
                                 <div class="d-flex justify-content-end">
-                                    <form action="{{ route('all_students.destroy', $student->id) }}" method="post">
+                                    <form action="{{ route('students.destroy', $student->id) }}" method="post">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button type="submit" class="btn btn-outline-danger btn-sm py-1 mb-2 delete"><i
@@ -138,7 +138,7 @@ $submenu = 'All_students'; ?>
                                     </form>
                                 </div>
 
-                                <form action="{{ route('all_students.update', $student->id) }}" method="post"
+                                <form action="{{ route('students.update', $student->id) }}" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="_method" value="put">

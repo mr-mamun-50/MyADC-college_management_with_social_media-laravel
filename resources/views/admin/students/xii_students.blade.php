@@ -3,14 +3,14 @@
     Students
 @endsection
 <?php $menu = 'Students';
-$submenu = 'Students'; ?>
+$submenu = 'Students_xii'; ?>
 
 @section('content')
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
-                    <b>students</b>
+                    <b>students XI</b>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn  btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
                         <i class="fas fa-plus"></i> Add student
@@ -156,8 +156,8 @@ $submenu = 'Students'; ?>
                                         <select name="c_class" class="form-control">
                                             <option value="XI">XI</option>
                                             <option value="XII">XII</option>
-                                            <option value="HSC_Examinee">HSC Examinee</option>
-                                            <option value="Old_Student">Old Student</option>
+                                            <option value="HSC Examinee">HSC Examinee</option>
+                                            <option value="Old Student">Old Student</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">

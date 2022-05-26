@@ -7,6 +7,10 @@ use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\RoutineXIController;
 use App\Http\Controllers\Admin\RoutineXIIController;
 use App\Http\Controllers\Admin\Students\AllStudentsController;
+use App\Http\Controllers\Admin\Students\XIStudentsController;
+use App\Http\Controllers\Admin\Students\XIIStudentsController;
+use App\Http\Controllers\Admin\Students\OldStudentsController;
+use App\Http\Controllers\Admin\Students\HscExamineeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +53,10 @@ Route::group(['middleware' => 'admin'], function() {
     Route::resource('/admin/routines_xi', RoutineXIController::class);
     Route::resource('/admin/routines_xii', RoutineXIIController::class);
 
-    Route::resource('/admin/all_students', AllStudentsController::class);
+    Route::resource('/admin/students', AllStudentsController::class);
+    Route::resource('/admin/students_xi', XIStudentsController::class);
+    Route::resource('/admin/students_xii', XIIStudentsController::class);
+    Route::resource('/admin/students_old', OldStudentsController::class);
+    Route::resource('/admin/hsc_examinee', HscExamineeController::class);
 
 });

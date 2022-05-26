@@ -81,35 +81,35 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('all_students.index') }}"
-                                class="nav-link @if ($submenu == 'All_students') active @endif">
+                            <a href="{{ route('students.index') }}"
+                                class="nav-link @if ($submenu == 'Students') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All students</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('routines_xi.index') }}"
+                            <a href="{{ route('students_xi.index') }}"
                                 class="nav-link @if ($submenu == 'Students_xi') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>XI</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('routines_xii.index') }}"
+                            <a href="{{ route('students_xii.index') }}"
                                 class="nav-link @if ($submenu == 'Students_xii') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>XII</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('routines_xii.index') }}"
+                            <a href="{{ route('hsc_examinee.index') }}"
                                 class="nav-link @if ($submenu == 'Students_HSC') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>HSC examinee</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('routines_xii.index') }}"
+                            <a href="{{ route('students_old.index') }}"
                                 class="nav-link @if ($submenu == 'Students_old') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Old students</p>
@@ -117,6 +117,30 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item @if ($menu == 'Admission') menu-open @endif">
+                    <a href="#" class="nav-link @if ($menu == 'Admission') active @endif">
+                        <i class="nav-icon bi bi-person-plus"></i>
+                        <p> Admission <i class="fas fa-angle-left right"></i> </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('students.index') }}"
+                                class="nav-link @if ($submenu == 'Manage_admission') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage admission</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('students_xi.index') }}"
+                                class="nav-link @if ($submenu == 'Security_code') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Security code</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-header">EXAMPLES</li>
                 <li class="nav-item">
                     <a href="pages/calendar.html" class="nav-link">

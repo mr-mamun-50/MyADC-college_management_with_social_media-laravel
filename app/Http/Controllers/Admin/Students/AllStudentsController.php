@@ -273,6 +273,6 @@ class AllStudentsController extends Controller
         DB::table('students')->where('id',$id)->delete();
 
         $notify = ['message'=>'Student successfully removed!', 'alert-type'=>'success'];
-        return redirect()->route('all_students.index')->with($notify);
+        return redirect()->route('students.index')->with($notify);
     }
 }
