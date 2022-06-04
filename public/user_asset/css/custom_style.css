@@ -1,0 +1,155 @@
+:root {
+    /* --gradient: linear-gradient(90deg, #a685e2, #6155a6); */
+    --primary_gradient: linear-gradient(
+        to right,
+        #00c6ff 0%,
+        #0072ff 51%,
+        #00c6ff 100%
+    );
+    --secondary_gradient: linear-gradient(
+        to right,
+        #fe8c00 0%,
+        #f83600 51%,
+        #fe8c00 100%
+    );
+}
+html {
+    font-size: 90% !important;
+}
+.bg-login {
+    width: 100%;
+    height: 100vh;
+    /* background: linear-gradient(
+            to top,
+            rgba(125, 227, 255, 0.9) 0%,
+            rgba(125, 184, 255, 0.9) 51%,
+            rgba(125, 227, 255, 0.9) 100%
+        ),
+        url(../admin/images/olu-famule-Dv2PNbMWtsE-unsplash.jpg); */
+    background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.7) 51%,
+            rgba(0, 0, 0, 0.8) 100%
+        ),
+        url(../../images/asset_img/olu-famule-Dv2PNbMWtsE-unsplash.jpg);
+    /* background: #f0f2f5; */
+    background-size: cover;
+}
+
+.sb-sidenav-menu .sb-nav-link-icon {
+    width: 20px;
+}
+
+html::-webkit-scrollbar {
+    width: 8px;
+}
+html::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+html::-webkit-scrollbar-thumb {
+    background: #a9a9a9;
+    /* background: #e9ecef; */
+    border-radius: 10px;
+}
+
+/* .btn {
+    padding: 7px 20px;
+    color: #fff;
+    background: var(--gradient);
+    border-radius: 5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+.btn::before {
+    content: "";
+    position: absolute;
+    top: -1rem;
+    left: -100%;
+    background: #fff9;
+    height: 150%;
+    width: 20%;
+    transform: rotate(25deg);
+    z-index: -1;
+}
+.btn:hover::before {
+    transition: 0.5s linear;
+    left: 120%;
+    text-decoration: none !important;
+}
+.btn:hover {
+    color: #fff !important;
+} */
+
+.btn-grad-primary {
+    background-image: var(--primary_gradient);
+}
+.btn-grad-primary {
+    margin: 5px 0;
+    padding: 7px 25px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    outline: none;
+}
+.btn-grad-primary:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-grad-secondary {
+    background-image: var(--secondary_gradient);
+}
+.btn-grad-secondary {
+    margin: 5px;
+    padding: 7px 25px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    outline: none;
+}
+.btn-grad-secondary:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+.l-icon .fas {
+    font-size: 40px;
+    padding: 20px 0;
+}
+
+.card {
+    border-radius: 10px;
+}
+.card {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-grad-primary {
+    background: var(--primary_gradient);
+}
+.bg-grad-secondary {
+    background: var(--secondary_gradient);
+}
+
+.p-f {
+    padding: 0.2rem;
+}

@@ -125,14 +125,14 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('students.index') }}"
+                            <a href="{{ route('admission.index') }}"
                                 class="nav-link @if ($submenu == 'Manage_admission') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Manage admission</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('students_xi.index') }}"
+                            <a href="{{ route('security_code.index') }}"
                                 class="nav-link @if ($submenu == 'Security_code') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Security code</p>

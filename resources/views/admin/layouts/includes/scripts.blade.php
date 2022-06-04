@@ -42,7 +42,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- Sweetalert js -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Summernote -->
-<script src="../../plugins/summernote/summernote-bs4.min.js"></script>
+<script src="{{ asset('plugins') }}/summernote/summernote-bs4.min.js"></script>
 
 <script>
     $('.delete').click(function(event) {
