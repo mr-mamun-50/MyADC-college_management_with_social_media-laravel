@@ -10,20 +10,21 @@
 
                             {{-- <div class="text-center mb-3">
                                 <img class="py-2" style="width: 40%;"
-                                    src="{{ asset('images/logos/logo_white.png') }}" alt="MyADC">
+                                    src="{{ asset('public/images/logos/logo_white.png') }}" alt="MyADC">
                             </div> --}}
 
                             <div class="card shadow-lg">
                                 <div class="card-header text-center">
                                     <img class="py-2" style="width: 35%;"
-                                        src="{{ asset('images/logos/logo.png') }}" alt="MyADC">
+                                        src="{{ asset('public/images/logos/logo.png') }}" alt="MyADC">
                                 </div>
                                 <div class="card-body text-center">
                                     <h5 class="text-muted">Welcome to</h5>
                                     <h4>Al-Emdad Degree College</h4>
 
                                     <h5 class="mt-4">Log in as-</h5>
-                                    <a class="btn-grad-primary l-icon mx-1" href=""><i class="fas fa-users d-block"></i>
+                                    <a class="btn-grad-primary l-icon mx-1" href=""><i
+                                            class="fas fa-users d-block"></i>
                                         Student</a>
                                     <a class="btn-grad-primary l-icon mx-1" href=""><i
                                             class="fas fa-chalkboard-teacher d-block"></i> Teacher</a>

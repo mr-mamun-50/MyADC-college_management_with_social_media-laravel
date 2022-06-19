@@ -15,7 +15,7 @@ $submenu = ''; ?>
                     <div class="card-body box-profile">
                         <div class="text-center">
                             <img class="profile-user-img img-fluid img-circle"
-                                src="{{ asset('images/students') . '/' . $student->photo }}" alt="profile picture">
+                                src="{{ asset('public/images/students') . '/' . $student->photo }}" alt="profile picture">
                         </div>
 
                         <h3 class="profile-username text-center">{{ $student->name }}</h3>
@@ -75,8 +75,7 @@ $submenu = ''; ?>
                                         <b>Date of birth</b> <a class="float-right">{{ $student->dob }}</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Present address</b> <a
-                                            class="float-right">{{ $student->present_address }}</a>
+                                        <b>Present address</b> <a class="float-right">{{ $student->present_address }}</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Permanent address</b> <a
@@ -115,9 +114,9 @@ $submenu = ''; ?>
                                                     <td>{{ $student->ssc_year }}</td>
                                                     <td>{{ $student->ssc_school }}</td>
                                                     <td>
-                                                        <a href="{{ asset('images/testimonials/ssc') . '/' . $student->ssc_testimonial }}"
+                                                        <a href="{{ asset('public/images/testimonials/ssc') . '/' . $student->ssc_testimonial }}"
                                                             class="btn btn-sm btn-info" target="blank">Testimonial</a>
-                                                        <a href="{{ asset('images/marksheets') . '/' . $student->ssc_marksheet }}"
+                                                        <a href="{{ asset('public/images/marksheets') . '/' . $student->ssc_marksheet }}"
                                                             class="btn btn-sm btn-info" target="blank">Marksheet</a>
                                                     </td>
                                                 </tr>
@@ -170,8 +169,8 @@ $submenu = ''; ?>
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for=" session">Session</label>
-                                            <input class="form-control @error('session') is-invalid @enderror" type="text"
-                                                name=" session" value="{{ $student->session }}">
+                                            <input class="form-control @error('session') is-invalid @enderror"
+                                                type="text" name=" session" value="{{ $student->session }}">
                                             @error('session')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -196,7 +195,8 @@ $submenu = ''; ?>
                                         <div class="form-group col-md-6">
                                             <label for=" fathers_name">Father's name</label>
                                             <input class="form-control @error('fathers_name') is-invalid @enderror"
-                                                type="text" name=" fathers_name" value="{{ $student->fathers_name }}">
+                                                type="text" name=" fathers_name"
+                                                value="{{ $student->fathers_name }}">
                                             @error('fathers_name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -206,7 +206,8 @@ $submenu = ''; ?>
                                         <div class="form-group col-md-6">
                                             <label for=" mothers_name">Mother's name</label>
                                             <input class="form-control @error('mothers_name') is-invalid @enderror"
-                                                type="text" name=" mothers_name" value="{{ $student->mothers_name }}">
+                                                type="text" name=" mothers_name"
+                                                value="{{ $student->mothers_name }}">
                                             @error('mothers_name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -221,7 +222,8 @@ $submenu = ''; ?>
                                             <select name="c_class" class="form-control">
                                                 <option value="XI" @if ($student->c_class == 'XI') selected @endif>XI
                                                 </option>
-                                                <option value="XII" @if ($student->c_class == 'XII') selected @endif>XII
+                                                <option value="XII" @if ($student->c_class == 'XII') selected @endif>
+                                                    XII
                                                 </option>
                                                 <option value="HSC_Examinee"
                                                     @if ($student->c_class == 'HSC_Examinee') selected @endif>HSC Examinee</option>
@@ -245,7 +247,8 @@ $submenu = ''; ?>
                                         <div class="form-group col-md-6">
                                             <label for=" gender">Gender</label>
                                             <select name="gender" class="form-control">
-                                                <option value="Male" @if ($student->gender == 'Male') selected @endif>Male
+                                                <option value="Male" @if ($student->gender == 'Male') selected @endif>
+                                                    Male
                                                 </option>
                                                 <option value="Female" @if ($student->gender == 'Female') selected @endif>
                                                     Female</option>
@@ -255,8 +258,8 @@ $submenu = ''; ?>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for=" phone">Phone</label>
-                                            <input class="form-control @error('phone') is-invalid @enderror" type="text"
-                                                name=" phone" value="{{ $student->phone }}">
+                                            <input class="form-control @error('phone') is-invalid @enderror"
+                                                type="text" name=" phone" value="{{ $student->phone }}">
                                             @error('phone')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -268,8 +271,8 @@ $submenu = ''; ?>
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for=" email">Email</label>
-                                            <input class="form-control @error('email') is-invalid @enderror" type="email"
-                                                name=" email" value="{{ $student->email }}">
+                                            <input class="form-control @error('email') is-invalid @enderror"
+                                                type="email" name=" email" value="{{ $student->email }}">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -312,7 +315,8 @@ $submenu = ''; ?>
                                         <div class="form-group col-md-6">
                                             <label for=" birth_reg_nid">NID / Birth certificate no.</label>
                                             <input class="form-control @error('birth_reg_nid') is-invalid @enderror"
-                                                type="text" name=" birth_reg_nid" value="{{ $student->birth_reg_nid }}">
+                                                type="text" name=" birth_reg_nid"
+                                                value="{{ $student->birth_reg_nid }}">
                                             @error('birth_reg_nid')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -321,8 +325,8 @@ $submenu = ''; ?>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for=" ssc_res">SSC GPA</label>
-                                            <input class="form-control @error('ssc_res') is-invalid @enderror" type="text"
-                                                name=" ssc_res" value="{{ $student->ssc_res }}">
+                                            <input class="form-control @error('ssc_res') is-invalid @enderror"
+                                                type="text" name=" ssc_res" value="{{ $student->ssc_res }}">
                                             @error('ssc_res')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -343,13 +347,16 @@ $submenu = ''; ?>
                                                     @if ($student->ssc_board == 'Rajshahi') selected @endif>Rajshahi</option>
                                                 <option value="Chittagong"
                                                     @if ($student->ssc_board == 'Chittagong') selected @endif>Chittagong</option>
-                                                <option value="Comilla" @if ($student->ssc_board == 'Comilla') selected @endif>
+                                                <option value="Comilla"
+                                                    @if ($student->ssc_board == 'Comilla') selected @endif>
                                                     Comilla</option>
                                                 <option value="Dinajpur"
                                                     @if ($student->ssc_board == 'Dinajpur') selected @endif>Dinajpur</option>
-                                                <option value="Jessore" @if ($student->ssc_board == 'Jessore') selected @endif>
+                                                <option value="Jessore"
+                                                    @if ($student->ssc_board == 'Jessore') selected @endif>
                                                     Jessore</option>
-                                                <option value="Barisal" @if ($student->ssc_board == 'Barisal') selected @endif>
+                                                <option value="Barisal"
+                                                    @if ($student->ssc_board == 'Barisal') selected @endif>
                                                     Barisal</option>
                                                 <option value="Mymensingh"
                                                     @if ($student->ssc_board == 'Mymensingh') selected @endif>Mymensingh</option>
@@ -362,7 +369,8 @@ $submenu = ''; ?>
                                         <div class="form-group col-md-6">
                                             <label for=" ssc_dept">SSC department</label>
                                             <select name="ssc_dept" class="form-control">
-                                                <option value="Science" @if ($student->ssc_dept == 'Science') selected @endif>
+                                                <option value="Science"
+                                                    @if ($student->ssc_dept == 'Science') selected @endif>
                                                     Science</option>
                                                 <option value="Humanities"
                                                     @if ($student->ssc_dept == 'Humanities') selected @endif>Humanities</option>
@@ -413,7 +421,8 @@ $submenu = ''; ?>
                                     </div>
 
                                     <div class="d-flex justify-content-end mt-2">
-                                        <button type="submit" class="btn  btn-primary"><i class="bi bi-check2-square"></i>
+                                        <button type="submit" class="btn  btn-primary"><i
+                                                class="bi bi-check2-square"></i>
                                             Update info</button>
                                     </div>
                                 </form>

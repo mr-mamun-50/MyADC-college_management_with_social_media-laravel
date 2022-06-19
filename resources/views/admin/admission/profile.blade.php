@@ -15,7 +15,7 @@ $submenu = 'Manage_admission'; ?>
                     <div class="card-body box-profile">
                         <div class="text-center">
                             <img class="profile-user-img img-fluid img-circle"
-                                src="{{ asset('images/students') . '/' . $student->photo }}" alt="profile picture">
+                                src="{{ asset('public/images/students') . '/' . $student->photo }}" alt="profile picture">
                         </div>
 
                         <h3 class="profile-username text-center">{{ $student->name }}</h3>
@@ -32,8 +32,7 @@ $submenu = 'Manage_admission'; ?>
                                     class="float-right">{{ date('d F, Y', strtotime($student->admission_date)) }} </a>
                             </li>
                             <li class="list-group-item">
-                                <b>Payment transaction</b> <a
-                                    class="float-right">{{ $student->payment_transection }}</a>
+                                <b>Payment transaction</b> <a class="float-right">{{ $student->payment_transection }}</a>
                             </li>
                             <li class="list-group-item">
                                 <b>Applied Group</b> <a class="float-right">{{ $student->appl_dept }}</a>
@@ -75,8 +74,7 @@ $submenu = 'Manage_admission'; ?>
                                         <b>Date of birth</b> <a class="float-right">{{ $student->dob }}</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Present address</b> <a
-                                            class="float-right">{{ $student->present_address }}</a>
+                                        <b>Present address</b> <a class="float-right">{{ $student->present_address }}</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Permanent address</b> <a
@@ -115,9 +113,9 @@ $submenu = 'Manage_admission'; ?>
                                                     <td>{{ $student->ssc_year }}</td>
                                                     <td>{{ $student->ssc_school }}</td>
                                                     <td>
-                                                        <a href="{{ asset('images/testimonials/ssc') . '/' . $student->ssc_testimonial }}"
+                                                        <a href="{{ asset('public/images/testimonials/ssc') . '/' . $student->ssc_testimonial }}"
                                                             class="btn btn-sm btn-info" target="blank">Testimonial</a>
-                                                        <a href="{{ asset('images/marksheets') . '/' . $student->ssc_marksheet }}"
+                                                        <a href="{{ asset('public/images/marksheets') . '/' . $student->ssc_marksheet }}"
                                                             class="btn btn-sm btn-info" target="blank">Marksheet</a>
                                                     </td>
                                                 </tr>

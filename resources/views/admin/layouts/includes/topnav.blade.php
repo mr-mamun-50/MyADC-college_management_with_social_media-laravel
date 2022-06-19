@@ -47,7 +47,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="{{ asset('dist') }}/img/user1-128x128.jpg" alt="User Avatar"
+                        <img src="{{ asset('public/dist') }}/img/user1-128x128.jpg" alt="User Avatar"
                             class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
@@ -64,7 +64,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="{{ asset('dist') }}/img/user8-128x128.jpg" alt="User Avatar"
+                        <img src="{{ asset('public/dist') }}/img/user8-128x128.jpg" alt="User Avatar"
                             class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
@@ -119,8 +119,9 @@
             </a>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                    class="fas fa-user fa-fw"></i></a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 

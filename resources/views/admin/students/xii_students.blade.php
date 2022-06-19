@@ -36,8 +36,9 @@ $submenu = 'Students_xii'; ?>
                         @foreach ($student as $item)
                             <tr>
                                 <td>{{ $item->st_id }}</td>
-                                <td><img class="img-fluid" src="{{ asset('images/students' . '/' . $item->photo) }}"
-                                        alt="Photo" style="width: 80px"></td>
+                                <td><img class="img-fluid"
+                                        src="{{ asset('public/images/students' . '/' . $item->photo) }}" alt="Photo"
+                                        style="width: 80px"></td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->department }}</td>
                                 <td>
@@ -130,8 +131,8 @@ $submenu = 'Students_xii'; ?>
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" fathers_name">Father's name</label>
-                                        <input class="form-control @error('fathers_name') is-invalid @enderror" type="text"
-                                            name=" fathers_name" value="{{ old(' fathers_name') }}">
+                                        <input class="form-control @error('fathers_name') is-invalid @enderror"
+                                            type="text" name=" fathers_name" value="{{ old(' fathers_name') }}">
                                         @error('fathers_name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -140,8 +141,8 @@ $submenu = 'Students_xii'; ?>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for=" mothers_name">Mother's name</label>
-                                        <input class="form-control @error('mothers_name') is-invalid @enderror" type="text"
-                                            name=" mothers_name" value="{{ old(' mothers_name') }}">
+                                        <input class="form-control @error('mothers_name') is-invalid @enderror"
+                                            type="text" name=" mothers_name" value="{{ old(' mothers_name') }}">
                                         @error('mothers_name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -214,7 +215,8 @@ $submenu = 'Students_xii'; ?>
                                     <div class="form-group col-md-6">
                                         <label for=" present_address">Present address</label>
                                         <input class="form-control @error('present_address') is-invalid @enderror"
-                                            type="text" name=" present_address" value="{{ old(' present_address') }}">
+                                            type="text" name=" present_address"
+                                            value="{{ old(' present_address') }}">
                                         @error('present_address')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -288,8 +290,8 @@ $submenu = 'Students_xii'; ?>
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" ssc_school">SSC School</label>
-                                        <input class="form-control @error('ssc_school') is-invalid @enderror" type="text"
-                                            name=" ssc_school" value="{{ old(' ssc_school') }}">
+                                        <input class="form-control @error('ssc_school') is-invalid @enderror"
+                                            type="text" name=" ssc_school" value="{{ old(' ssc_school') }}">
                                         @error('ssc_school')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -298,8 +300,8 @@ $submenu = 'Students_xii'; ?>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for=" ssc_year">SSC passing year</label>
-                                        <input class="form-control @error('ssc_year') is-invalid @enderror" type="text"
-                                            name=" ssc_year" value="{{ old(' ssc_year') }}">
+                                        <input class="form-control @error('ssc_year') is-invalid @enderror"
+                                            type="text" name=" ssc_year" value="{{ old(' ssc_year') }}">
                                         @error('ssc_year')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

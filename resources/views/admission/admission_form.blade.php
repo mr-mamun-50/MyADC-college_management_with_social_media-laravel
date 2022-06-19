@@ -7,7 +7,7 @@
 
             <div class="mt-3 bg-grad-primary card-header d-flex justify-content-between p-0">
                 <a class="mt-1 btn text-white" href="{{ url('/') }}"><img class=""
-                        src="{{ asset('images/logos/icon.png') }}" alt="" style="width: 50px;"></a>
+                        src="{{ asset('public/images/logos/icon.png') }}" alt="" style="width: 50px;"></a>
                 <h4 class="mt-2 ml-3 text-white mt-4">Admission form</h4>
                 <a class="mt-1 btn text-white m-3" href=""><i class="fas fa-info-circle fa-lg"></i></a>
             </div>
@@ -56,8 +56,8 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for=" dob">Date of birth</label>
-                                <input class="form-control @error('dob') is-invalid @enderror" type="date" name="dob"
-                                    value="{{ old('dob') }}">
+                                <input class="form-control @error('dob') is-invalid @enderror" type="date"
+                                    name="dob" value="{{ old('dob') }}">
                                 @error('dob')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -100,8 +100,8 @@
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for=" present_address">Present address</label>
-                                <input class="form-control @error('present_address') is-invalid @enderror" type="text"
-                                    name="present_address" value="{{ old('present_address') }}">
+                                <input class="form-control @error('present_address') is-invalid @enderror"
+                                    type="text" name="present_address" value="{{ old('present_address') }}">
                                 @error('present_address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -110,8 +110,8 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for=" permanent_address">Permanent address</label>
-                                <input class="form-control @error('permanent_address') is-invalid @enderror" type="text"
-                                    name=" permanent_address" value="{{ old(' permanent_address') }}">
+                                <input class="form-control @error('permanent_address') is-invalid @enderror"
+                                    type="text" name=" permanent_address" value="{{ old(' permanent_address') }}">
                                 @error('permanent_address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

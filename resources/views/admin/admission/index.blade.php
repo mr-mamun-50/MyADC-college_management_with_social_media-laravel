@@ -36,7 +36,7 @@ $submenu = 'Manage_admission'; ?>
                         @foreach ($student as $item)
                             <tr>
                                 <td>{{ $item->security_code }}</td>
-                                <td><img class="img-fluid" src="{{ asset('images/students' . '/' . $item->photo) }}"
+                                <td><img class="img-fluid" src="{{ asset('public/images/students' . '/' . $item->photo) }}"
                                         alt="Photo" style="width: 80px"></td>
 
                                 <td>{{ $item->name }}</td>
