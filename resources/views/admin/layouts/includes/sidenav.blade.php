@@ -143,6 +143,34 @@
                     </ul>
                 </li>
 
+                <li class="nav-item @if ($menu == 'Download') menu-open @endif">
+                    <a href="#" class="nav-link @if ($menu == 'Download') active @endif">
+                        <i class="nav-icon bi bi-cloud-download"></i>
+                        <p> Download <i class="fas fa-angle-left right"></i> </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.download.idcard') }}"
+                                class="nav-link @if ($submenu == 'ID_Card') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ID Card</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link @if ($submenu == 'Security_code') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Transfer Certificate</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link @if ($submenu == 'Security_code') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Testimonial</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-header">EXAMPLES</li>
                 <li class="nav-item">
                     <a href="pages/calendar.html" class="nav-link">

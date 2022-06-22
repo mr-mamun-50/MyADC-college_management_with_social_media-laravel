@@ -1,4 +1,4 @@
-@include('admin.notices.print_head')
+@include('admin.layouts.includes.print_head')
 
 <body>
 

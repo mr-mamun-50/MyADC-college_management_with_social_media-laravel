@@ -38,8 +38,9 @@ $submenu = ''; ?>
                             </li>
                         </ul>
 
-                        <a href="mailto:{{ $student->email }}" class="btn btn-primary btn-block" target="blank"><i
-                                class="bi bi-envelope"></i> <b>Send Mail</b></a>
+                        <a href="{{ route('admin.students.idcard.download', $student->id) }}"
+                            class="btn btn-primary btn-block" target="blank"><i class="bi bi-person-badge"></i>
+                            Generate ID Card</a>
                     </div>
                     <!-- /.card-body -->
                 </div>

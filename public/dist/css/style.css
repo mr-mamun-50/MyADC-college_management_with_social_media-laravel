@@ -1,14 +1,39 @@
-/* .modal-ku {
-    width: 750px;
-    margin: auto;
-} */
-
-/* printing style */
-@page {
-    size: A4;
-    margin: 0;
+/* id card design started */
+.print_container {
+    min-height: 100vh;
+    background: linear-gradient(
+            to top,
+            rgba(255, 255, 255, 0.9),
+            rgba(255, 255, 255, 0.9)
+        ),
+        url(../../images/asset_img/olu-famule-Dv2PNbMWtsE-unsplash.jpg);
+    background-size: cover;
 }
-#print_btn {
-    display: none;
-    visibility: none;
+.id-shape {
+    height: 4.9632in;
+    width: 3.125in;
+    border-radius: 10px;
+    background: url(../../images/asset_img/adc_id_card-01.png);
+    background-size: cover;
+    background-color: #fff;
+    padding-top: 1.729in;
+}
+.head {
+    height: 25%;
+}
+.photo {
+    /* margin-top: 1.729in; */
+}
+.photo img {
+    height: 1.15in;
+    width: 1.15in;
+    border-radius: 50%;
+}
+.info {
+    margin-top: 25px;
+}
+.info table tr th,
+.info table tr td {
+    font-size: 14px;
+    padding: 1px 5px;
 }

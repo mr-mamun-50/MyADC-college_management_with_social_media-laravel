@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\Students\OldStudentsController;
 use App\Http\Controllers\Admin\Students\HscExamineeController;
 use App\Http\Controllers\Admin\Admission\SecurityCodeController;
 use App\Http\Controllers\Admin\Admission\AdmissionController;
+use App\Http\Controllers\Admin\Download\IDcardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,5 +75,9 @@ Route::group(['middleware' => 'admin'], function() {
 
     // __Admission routes
     Route::resource('/admin/admission/security_code', SecurityCodeController::class);
+
+    // __Download routes
+    Route::get('/admin/download/idcard', [IDcardController::class, 'index'])->name('admin.download.idcard');
+    Route::get('/admin/students/idcard/download/{id}', [IDcardController::class, 'download'])->name('admin.students.idcard.download');
 
 });
