@@ -31,11 +31,12 @@
         </div>
 
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
+        <nav class="mt-2 pb-5">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
-       with font-awesome or any other icon font library -->
+                with font-awesome or any other icon font library -->
+                <li class="nav-header">core</li>
 
                 <li class="nav-item">
                     <a href="{{ route('admin.dashboard') }}"
@@ -120,6 +121,50 @@
                     </ul>
                 </li>
 
+                <li class="nav-item @if ($menu == 'Teachers') menu-open @endif">
+                    <a href="#" class="nav-link @if ($menu == 'Teachers') active @endif">
+                        <i class="nav-icon bi bi-person-workspace"></i>
+                        <p> Teachers <i class="fas fa-angle-left right"></i> </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('teachers.index') }}"
+                                class="nav-link @if ($submenu == 'All_Teachers') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All teachers</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('students_xi.index') }}"
+                                class="nav-link @if ($submenu == 'Students_xi') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Administrators</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('students_xii.index') }}"
+                                class="nav-link @if ($submenu == 'Students_xii') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Science</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('hsc_examinee.index') }}"
+                                class="nav-link @if ($submenu == 'Students_HSC') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Humanities</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('students_old.index') }}"
+                                class="nav-link @if ($submenu == 'Students_old') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Business</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item @if ($menu == 'Admission') menu-open @endif">
                     <a href="#" class="nav-link @if ($menu == 'Admission') active @endif">
                         <i class="nav-icon bi bi-person-plus"></i>
@@ -143,6 +188,8 @@
                     </ul>
                 </li>
 
+                <li class="nav-header">others</li>
+
                 <li class="nav-item @if ($menu == 'Download') menu-open @endif">
                     <a href="#" class="nav-link @if ($menu == 'Download') active @endif">
                         <i class="nav-icon bi bi-cloud-download"></i>
@@ -164,25 +211,6 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-
-                <li class="nav-header">EXAMPLES</li>
-                <li class="nav-item">
-                    <a href="pages/calendar.html" class="nav-link">
-                        <i class="nav-icon fas fa-calendar-alt"></i>
-                        <p>
-                            Calendar
-                            <span class="badge badge-warning right">2</span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/gallery.html" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
-                        <p>
-                            Gallery
-                        </p>
-                    </a>
                 </li>
 
 

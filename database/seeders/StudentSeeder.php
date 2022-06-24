@@ -4,20 +4,17 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Student;
 
-class DatabaseSeeder extends Seeder
+class StudentSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call([
-            AdminSeeder::class,
-            TeacherSeeder::class,
-            StudentSeeder::class
-        ]);
+        Student::factory()->count(10)->create();
     }
 }

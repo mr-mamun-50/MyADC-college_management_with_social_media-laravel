@@ -3,7 +3,7 @@
     {{ $student->name }}
 @endsection
 <?php $menu = 'Students';
-$submenu = ''; ?>
+$submenu = 'Profile'; ?>
 
 @section('content')
     <div class="container-fluid">
@@ -38,7 +38,7 @@ $submenu = ''; ?>
                             </li>
                         </ul>
 
-                        <a href="{{ route('admin.students.idcard.download', $student->id) }}"
+                        <a href="{{ route('admin.students.idcard.generate', $student->id) }}"
                             class="btn btn-primary btn-block" target="blank"><i class="bi bi-person-badge"></i>
                             Generate ID Card</a>
                     </div>
@@ -73,7 +73,8 @@ $submenu = ''; ?>
                                         <b>Gender</b> <a class="float-right">{{ $student->gender }}</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Date of birth</b> <a class="float-right">{{ $student->dob }}</a>
+                                        <b>Date of birth</b> <a
+                                            class="float-right">{{ date('d F, Y', strtotime($student->dob)) }}</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Present address</b> <a class="float-right">{{ $student->present_address }}</a>

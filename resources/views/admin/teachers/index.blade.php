@@ -1,19 +1,19 @@
 @extends('admin.layouts.app')
 @section('title')
-    Students
+    Teachers
 @endsection
-<?php $menu = 'Students';
-$submenu = 'Students'; ?>
+<?php $menu = 'Teachers';
+$submenu = 'All_Teachers'; ?>
 
 @section('content')
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
-                    <b>students</b>
+                    <b>Teachers</b>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn  btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
-                        <i class="fas fa-plus"></i> Add student
+                        <i class="fas fa-plus"></i> Add Teacher
                     </button>
                 </div>
             </div>
@@ -22,35 +22,33 @@ $submenu = 'Students'; ?>
                 <table class="table table-bordered table-striped" id="example1">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Index</th>
                             <th>Photo</th>
-                            <th>Name</th>
-                            <th>Group</th>
-                            <th>Parents name</th>
+                            <th>Name & Position</th>
+                            <th>Department</th>
+                            <th>Subject</th>
                             <th>Phone</th>
-                            <th>Session</th>
                             <th>More</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($student as $item)
+                        @foreach ($teacher as $item)
                             <tr>
-                                <td>{{ $item->st_id }}</td>
+                                <td>{{ $item->index }}</td>
                                 <td><img class="img-fluid"
-                                        src="{{ asset('public/images/students' . '/' . $item->photo) }}" alt="Photo"
+                                        src="{{ asset('public/images/teachers' . '/' . $item->photo) }}" alt="Photo"
                                         style="width: 80px"></td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->department }}</td>
                                 <td>
-                                    <div class="text-muted text-sm">Father: </div> {{ $item->fathers_name }}
-                                    <div class="text-muted text-sm">Mother: </div> {{ $item->mothers_name }}
+                                    {{ $item->name }} <br>
+                                    <small class="text-muted">{{ $item->position }}</small>
                                 </td>
+                                <td>{{ $item->department }}</td>
+                                <td>{{ $item->subject }}</td>
                                 <td>{{ $item->phone }}</td>
-                                <td>{{ $item->session }}</td>
 
                                 <td class="d-flex justify-content-center">
 
-                                    <a href="{{ route('students.show', $item->id) }}"
+                                    <a href="{{ route('teachers.show', $item->id) }}"
                                         class="btn btn-info mr-1 px-1 py-0"><i class="bi bi-person"></i></a>
 
                                     <a href="tel:{{ $item->phone }}" class="btn btn-success mr-1 px-1 py-0"><i
@@ -66,28 +64,39 @@ $submenu = 'Students'; ?>
                 </table>
             </div>
 
-            <!-- Modal for add student -->
+            <!-- Modal for add teacher -->
             <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header bg-default text-dark rounded">
-                            <h5 class="modal-title" id="staticBackdropLabel">Create New student</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">Create New teacher</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
 
-                        <form action="{{ route('students.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('teachers.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="modal-body">
 
+                                <div class="form-group">
+                                    <label for=" name">Name</label>
+                                    <input class="form-control @error('name') is-invalid @enderror" type="text"
+                                        name=" name" value="{{ old(' name') }}">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for=" st_id">Student ID</label>
-                                        <input class="form-control @error('st_id') is-invalid @enderror" type="text"
-                                            name=" st_id" value="{{ old(' st_id') }}">
-                                        @error('st_id')
+                                        <label for=" index">Teacher index</label>
+                                        <input class="form-control @error('index') is-invalid @enderror" type="text"
+                                            name="index" value="{{ old('index') }}">
+                                        @error('index')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -95,10 +104,10 @@ $submenu = 'Students'; ?>
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        <label for=" name">Name</label>
-                                        <input class="form-control @error('name') is-invalid @enderror" type="text"
-                                            name=" name" value="{{ old(' name') }}">
-                                        @error('name')
+                                        <label for="position">Position</label>
+                                        <input class="form-control @error('position') is-invalid @enderror" type="text"
+                                            name="position" value="{{ old('position') }}">
+                                        @error('position')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -108,23 +117,23 @@ $submenu = 'Students'; ?>
 
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for=" session">Session</label>
-                                        <input class="form-control @error('session') is-invalid @enderror" type="text"
-                                            name=" session" value="{{ old(' session') }}">
-                                        @error('session')
+                                        <label for="department">Department</label>
+                                        <select name="department" class="form-control" required>
+                                            <option disabled selected>Choose department</option>
+                                            <option value="Science">Science</option>
+                                            <option value="Humanities">Humanities</option>
+                                            <option value="Business Studies">Business Studies</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="subject">Subject</label>
+                                        <input class="form-control @error('subject') is-invalid @enderror" type="text"
+                                            name="subject" value="{{ old('subject') }}">
+                                        @error('subject')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div>
-
-                                    <div class="form-group col-md-6">
-                                        <label for=" department">Department</label>
-                                        <select name="department" class="form-control">
-                                            <option value="Science">Science</option>
-                                            <option value="Humanities">Humanities</option>
-                                            <option value="Business">Business</option>
-                                        </select>
                                     </div>
                                 </div>
 
@@ -153,12 +162,12 @@ $submenu = 'Students'; ?>
 
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for=" c_class">Current Class</label>
-                                        <select name="c_class" class="form-control">
-                                            <option value="XI">XI</option>
-                                            <option value="XII">XII</option>
-                                            <option value="HSC_Examinee">HSC Examinee</option>
-                                            <option value="Old_Student">Old Student</option>
+                                        <label for=" gender">Gender</label>
+                                        <select name="gender" class="form-control" required>
+                                            <option disabled selected>Choose gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -175,13 +184,23 @@ $submenu = 'Students'; ?>
 
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for=" gender">Gender</label>
-                                        <select name="gender" class="form-control">
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                            <option value="Other">Other</option>
-                                        </select>
+                                        <label for=" photo">Photo <small>(.jpg/.jpeg/.png)</small></label>
+                                        <input class="form-control p-1" type="file" name="photo">
                                     </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="nid">NID</label>
+                                        <input class="form-control @error('nid') is-invalid @enderror" type="text"
+                                            name="nid" value="{{ old('nid') }}">
+                                        @error('nid')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" phone">Phone</label>
                                         <input class="form-control @error('phone') is-invalid @enderror" type="text"
@@ -192,9 +211,7 @@ $submenu = 'Students'; ?>
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
 
-                                <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" email">Email</label>
                                         <input class="form-control @error('email') is-invalid @enderror" type="email"
@@ -204,10 +221,6 @@ $submenu = 'Students'; ?>
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for=" photo">Photo <small>(.jpg/.jpeg/.png)</small></label>
-                                        <input class="form-control p-1" type="file" name=" photo">
                                     </div>
                                 </div>
 
@@ -238,71 +251,21 @@ $submenu = 'Students'; ?>
 
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for=" birth_reg_nid">NID / Birth certificate no.</label>
-                                        <input class="form-control @error('birth_reg_nid') is-invalid @enderror"
-                                            type="text" name=" birth_reg_nid" value="{{ old(' birth_reg_nid') }}">
-                                        @error('birth_reg_nid')
+                                        <label for="edu_qualification">Educational qualification</label>
+                                        <input class="form-control @error('edu_qualification') is-invalid @enderror"
+                                            type="text" name="edu_qualification"
+                                            value="{{ old('edu_qualification') }}">
+                                        @error('edu_qualification')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for=" ssc_res">SSC GPA</label>
-                                        <input class="form-control @error('ssc_res') is-invalid @enderror" type="text"
-                                            name=" ssc_res" value="{{ old(' ssc_res') }}">
-                                        @error('ssc_res')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label for=" ssc_board">SSC board</label>
-                                        <select name="ssc_board" class="form-control">
-                                            <option value="Sylhet">Sylhet</option>
-                                            <option value="Dhaka">Dhaka</option>
-                                            <option value="Rajshahi">Rajshahi</option>
-                                            <option value="Chittagong">Chittagong</option>
-                                            <option value="Comilla">Comilla</option>
-                                            <option value="Dinajpur">Dinajpur</option>
-                                            <option value="Jessore">Jessore</option>
-                                            <option value="Barisal">Barisal</option>
-                                            <option value="Mymensingh">Mymensingh</option>
-                                            <option value="Madrasah">Madrasah</option>
-                                            <option value="Technical">Technical</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for=" ssc_dept">SSC department</label>
-                                        <select name="ssc_dept" class="form-control">
-                                            <option value="Science">Science</option>
-                                            <option value="Humanities">Humanities</option>
-                                            <option value="Business">Business</option>
-                                            <option value="Vocational">Vocational</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label for=" ssc_school">SSC School</label>
-                                        <input class="form-control @error('ssc_school') is-invalid @enderror"
-                                            type="text" name=" ssc_school" value="{{ old(' ssc_school') }}">
-                                        @error('ssc_school')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for=" ssc_year">SSC passing year</label>
-                                        <input class="form-control @error('ssc_year') is-invalid @enderror"
-                                            type="text" name=" ssc_year" value="{{ old(' ssc_year') }}">
-                                        @error('ssc_year')
+                                        <label for="salary">Salary</label>
+                                        <input class="form-control @error('salary') is-invalid @enderror" type="text"
+                                            name="salary" value="{{ old('salary') }}">
+                                        @error('salary')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -312,20 +275,20 @@ $submenu = 'Students'; ?>
 
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for=" ssc_testimonial">SSC testimonial
+                                        <label for="edu_certificate">Highest academic certificate
                                             <small>(.jpg/.jpeg/.png)</small></label>
-                                        <input class="form-control p-1" type="file" name=" ssc_testimonial">
+                                        <input class="form-control p-1" type="file" name="edu_certificate">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for=" ssc_marksheet">SSC marksheet <small>(.jpg/.jpeg/.png)</small></label>
-                                        <input class="form-control p-1" type="file" name=" ssc_marksheet">
+                                        <label for="cv">CV <small>(.pdf)</small></label>
+                                        <input class="form-control p-1" type="file" name="cv">
                                     </div>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
                                 <button type="reset" class="btn">Reset</button>
-                                <button type="submit" class="btn  btn-primary">Add student</button>
+                                <button type="submit" class="btn  btn-primary">Add teacher</button>
                             </div>
                         </form>
                     </div>

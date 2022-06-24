@@ -13,10 +13,14 @@
     height: 4.9632in;
     width: 3.125in;
     border-radius: 10px;
-    background: url(../../images/asset_img/adc_id_card-01.png);
+    background: url(../../images/asset_img/adc_id_card_students-01.png);
     background-size: cover;
     background-color: #fff;
     padding-top: 1.729in;
+}
+.teachers_id_card {
+    background: url(../../images/asset_img/adc_id_card_teachers-01.png);
+    background-size: cover;
 }
 .head {
     height: 25%;

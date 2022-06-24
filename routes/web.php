@@ -3,16 +3,22 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\HomeController;
+
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\RoutineXIController;
 use App\Http\Controllers\Admin\RoutineXIIController;
+
 use App\Http\Controllers\Admin\Students\AllStudentsController;
 use App\Http\Controllers\Admin\Students\XIStudentsController;
 use App\Http\Controllers\Admin\Students\XIIStudentsController;
 use App\Http\Controllers\Admin\Students\OldStudentsController;
 use App\Http\Controllers\Admin\Students\HscExamineeController;
+
+use App\Http\Controllers\Admin\Teachers\TeachersController;
+
 use App\Http\Controllers\Admin\Admission\SecurityCodeController;
 use App\Http\Controllers\Admin\Admission\AdmissionController;
+
 use App\Http\Controllers\Admin\Download\IDcardController;
 use App\Http\Controllers\Admin\Download\TestimonialController;
 use App\Http\Controllers\Admin\Download\TransCertController;
@@ -75,11 +81,15 @@ Route::group(['middleware' => 'admin'], function() {
     Route::resource('/admin/students_old', OldStudentsController::class);
     Route::resource('/admin/hsc_examinee', HscExamineeController::class);
 
+    // __Teacher routes
+    Route::resource('/admin/teachers', TeachersController::class);
+
     // __Admission routes
     Route::resource('/admin/admission/security_code', SecurityCodeController::class);
 
     // __Download routes
-    Route::get('/admin/students/idcard/download/{id}', [IDcardController::class, 'download'])->name('admin.students.idcard.download');
+    Route::get('/admin/students/idcard/generate/{id}', [IDcardController::class, 'generate'])->name('admin.students.idcard.generate');
+    Route::get('/admin/teachers/idcard/generate/{id}', [IDcardController::class, 'teachers_id_generate'])->name('admin.teachers.idcard.generate');
 
     Route::get('/admin/download/testimonial', [TestimonialController::class, 'index'])->name('admin.download.testimonial');
     Route::post('/admin/download/testimonial/generate', [TestimonialController::class, 'generate'])->name('admin.download.testimonial.generate');
