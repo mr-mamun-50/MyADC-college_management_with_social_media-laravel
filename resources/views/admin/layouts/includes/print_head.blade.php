@@ -28,12 +28,17 @@
     <script>
         function shot() {
 
-            domtoimage.toJpeg(document.getElementById('htmlContent'), {
+            domtoimage.toJpeg(document.querySelector('.htmlContent'), {
                     quality: 1.00
                 })
                 .then(function(dataUrl) {
                     var link = document.createElement('a');
-                    link.download = "{{ $data->name . '_SID.jpeg' }}";
+                    link.download = "<?php
+                    if (isset($data)) {
+                        if (isset($data->name)) {
+                            echo $data->name . '_' . $type . '.jpeg';
+                        }
+                    } ?>";
                     link.href = dataUrl;
                     link.click();
                 });

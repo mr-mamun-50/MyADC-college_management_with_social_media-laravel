@@ -22,9 +22,9 @@ class IDcardController extends Controller
         $data = DB::table('students')
                 ->where('id', $id)
                 ->first();
-        // dd($data);
+        $type = 'ID_card';
 
         $notify = ['message' => 'New student successfully added!', 'alert-type' => 'success'];
-        return view('admin.download.id_card', compact('data'))->with($notify);
+        return view('admin.download.id_card', compact('data', 'type'))->with($notify);
     }
 }

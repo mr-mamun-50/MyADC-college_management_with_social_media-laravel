@@ -150,22 +150,17 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('admin.download.idcard') }}"
-                                class="nav-link @if ($submenu == 'ID_Card') active @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>ID Card</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link @if ($submenu == 'Security_code') active @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Transfer Certificate</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link @if ($submenu == 'Security_code') active @endif">
+                            <a href="{{ route('admin.download.testimonial') }}"
+                                class="nav-link @if ($submenu == 'Testimonial') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Testimonial</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.download.tc') }}"
+                                class="nav-link @if ($submenu == 'Transfer_Certificate') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Transfer Certificate</p>
                             </a>
                         </li>
                     </ul>

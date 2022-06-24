@@ -21,9 +21,6 @@
 .head {
     height: 25%;
 }
-.photo {
-    /* margin-top: 1.729in; */
-}
 .photo img {
     height: 1.15in;
     width: 1.15in;
@@ -36,4 +33,34 @@
 .info table tr td {
     font-size: 14px;
     padding: 1px 5px;
+}
+
+/* transcript design started */
+.testimonial {
+    height: 8.27in;
+    width: 11.69in;
+    background: url(../../images/asset_img/adc_transcript-01.png);
+    background-size: cover;
+    background-color: #fff;
+    padding-top: 2.8in;
+    padding-left: 1in;
+    padding-right: 1in;
+}
+.tml_desc {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 20px;
+    text-align: justify;
+    color: navy;
+}
+.tml_bottom {
+    margin-top: 80px;
+}
+.testimonial .title span {
+    background: #f7931e;
+    padding: 8px 30px;
+    border-radius: 50px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 22px;
 }

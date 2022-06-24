@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\Students\HscExamineeController;
 use App\Http\Controllers\Admin\Admission\SecurityCodeController;
 use App\Http\Controllers\Admin\Admission\AdmissionController;
 use App\Http\Controllers\Admin\Download\IDcardController;
+use App\Http\Controllers\Admin\Download\TestimonialController;
+use App\Http\Controllers\Admin\Download\TransCertController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,7 +79,12 @@ Route::group(['middleware' => 'admin'], function() {
     Route::resource('/admin/admission/security_code', SecurityCodeController::class);
 
     // __Download routes
-    Route::get('/admin/download/idcard', [IDcardController::class, 'index'])->name('admin.download.idcard');
     Route::get('/admin/students/idcard/download/{id}', [IDcardController::class, 'download'])->name('admin.students.idcard.download');
+
+    Route::get('/admin/download/testimonial', [TestimonialController::class, 'index'])->name('admin.download.testimonial');
+    Route::post('/admin/download/testimonial/generate', [TestimonialController::class, 'generate'])->name('admin.download.testimonial.generate');
+
+    Route::get('/admin/download/tc', [TransCertController::class, 'index'])->name('admin.download.tc');
+    Route::post('/admin/download/tc/generate', [TransCertController::class, 'generate'])->name('admin.download.tc.generate');
 
 });

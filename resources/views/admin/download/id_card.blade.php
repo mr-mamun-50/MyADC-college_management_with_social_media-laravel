@@ -1,10 +1,8 @@
 @include('admin.layouts.includes.print_head')
 
-{{-- {{ dd($data) }} --}}
-
-<div class="print_container py-5" onload="autoClick()">
+<div class="print_container py-5">
     <div class="d-flex justify-content-center py-4">
-        <div class="id-shape shadow " id="htmlContent">
+        <div class="id-shape shadow htmlContent">
             <div class="photo d-flex justify-content-center">
                 <img src="{{ asset('public/images/students') . '/' . $data->photo }}" alt="">
             </div>
