@@ -36,9 +36,16 @@ $submenu = 'Students_HSC'; ?>
                         @foreach ($student as $item)
                             <tr>
                                 <td>{{ $item->st_id }}</td>
-                                <td><img class="img-fluid"
-                                        src="{{ asset('public/images/students' . '/' . $item->photo) }}" alt="Photo"
-                                        style="width: 80px"></td>
+                                <td>
+                                    @if ($item->photo)
+                                        <img class="img-fluid"
+                                            src="{{ asset('public/images/students' . '/' . $item->photo) }}"
+                                            alt="Photo" style="width: 80px">
+                                    @else
+                                        <img class="img-fluid" src="{{ asset('public/images/asset_img/user-icon.png') }}"
+                                            alt="Photo" style="width: 80px">
+                                    @endif
+                                </td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->department }}</td>
                                 <td>

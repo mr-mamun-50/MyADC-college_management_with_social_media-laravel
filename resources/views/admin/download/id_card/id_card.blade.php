@@ -4,7 +4,11 @@
     <div class="d-flex justify-content-center py-4">
         <div class="id-shape shadow htmlContent">
             <div class="photo d-flex justify-content-center">
-                <img src="{{ asset('public/images/students') . '/' . $data->photo }}" alt="">
+                @if ($data->photo)
+                    <img src="{{ asset('public/images/students') . '/' . $data->photo }}" alt="">
+                @else
+                    <img src="{{ asset('public/images/asset_img/user-icon.png') }}" alt="">
+                @endif
             </div>
 
             <div class="info p-3 d-flex justify-content-center">

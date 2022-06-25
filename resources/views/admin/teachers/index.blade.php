@@ -35,9 +35,16 @@ $submenu = 'All_Teachers'; ?>
                         @foreach ($teacher as $item)
                             <tr>
                                 <td>{{ $item->index }}</td>
-                                <td><img class="img-fluid"
-                                        src="{{ asset('public/images/teachers' . '/' . $item->photo) }}" alt="Photo"
-                                        style="width: 80px"></td>
+                                <td>
+                                    @if ($item->photo != null)
+                                        <img class="img-fluid"
+                                            src="{{ asset('public/images/teachers' . '/' . $item->photo) }}"
+                                            alt="Photo" style="width: 80px">
+                                    @else
+                                        <img class="img-fluid" src="{{ asset('public/images/asset_img/user-icon.png') }}"
+                                            alt="Photo" style="width: 80px">
+                                    @endif
+                                </td>
                                 <td>
                                     {{ $item->name }} <br>
                                     <small class="text-muted">{{ $item->position }}</small>

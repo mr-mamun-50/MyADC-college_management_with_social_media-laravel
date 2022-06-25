@@ -142,22 +142,22 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('students_xii.index') }}"
-                                class="nav-link @if ($submenu == 'Students_xii') active @endif">
+                            <a href="{{ route('admin.teachers-science') }}"
+                                class="nav-link @if ($submenu == 'Science') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Science</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('hsc_examinee.index') }}"
-                                class="nav-link @if ($submenu == 'Students_HSC') active @endif">
+                            <a href="{{ route('admin.teachers-humanities') }}"
+                                class="nav-link @if ($submenu == 'Humanities') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Humanities</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('students_old.index') }}"
-                                class="nav-link @if ($submenu == 'Students_old') active @endif">
+                            <a href="{{ route('admin.teachers-business') }}"
+                                class="nav-link @if ($submenu == 'Business') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Business</p>
                             </a>

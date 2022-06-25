@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\Students\OldStudentsController;
 use App\Http\Controllers\Admin\Students\HscExamineeController;
 
 use App\Http\Controllers\Admin\Teachers\TeachersController;
+use App\Http\Controllers\Admin\Teachers\DeptTeachersController;
 
 use App\Http\Controllers\Admin\Admission\SecurityCodeController;
 use App\Http\Controllers\Admin\Admission\AdmissionController;
@@ -83,6 +84,9 @@ Route::group(['middleware' => 'admin'], function() {
 
     // __Teacher routes
     Route::resource('/admin/teachers', TeachersController::class);
+    Route::get('/admin/teachers-science', [DeptTeachersController::class, 'science'])->name('admin.teachers-science');
+    Route::get('/admin/teachers-humanities', [DeptTeachersController::class, 'humanities'])->name('admin.teachers-humanities');
+    Route::get('/admin/teachers-business', [DeptTeachersController::class, 'business'])->name('admin.teachers-business');
 
     // __Admission routes
     Route::resource('/admin/admission/security_code', SecurityCodeController::class);
