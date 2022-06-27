@@ -6,10 +6,10 @@
         <div class="shadow-lg mb-5">
 
             <div class="mt-3 bg-grad-primary card-header d-flex justify-content-between p-0">
-                <a class="mt-1 btn text-white" href="{{ url('/') }}"><img class=""
+                <a class="mt-1 btn text-white shadow-0" href="{{ url('/') }}"><img class=""
                         src="{{ asset('public/images/logos/icon.png') }}" alt="" style="width: 50px;"></a>
                 <h4 class="mt-2 ml-3 text-white mt-4">Admission Procedure</h4>
-                <a class="mt-1 btn text-white m-3" href=""><i class="fas fa-info-circle fa-lg"></i></a>
+                <a class="mt-1 btn text-white m-3 shadow-0" href=""><i class="fas fa-info-circle fa-lg"></i></a>
             </div>
 
             <div class="card-body px-lg-5 pt-5">
@@ -55,27 +55,26 @@
 
 
                 <div class="text-center">
-                    <a class="btn-grad-secondary" href="" data-toggle="modal" data-target="#secAlert"><i
-                            class="fas fa-user-plus"></i> Admission</a>
+                    <button type="button" class="btn-grad-secondary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"><i class="fas fa-user-plus"></i>
+                        Admission
+                    </button>
                 </div>
 
-
                 <!-- Modal -->
-                <div class="modal fade" id="secAlert" tabindex="-1" aria-labelledby="secAlertLabel"
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content px-3">
+                        <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="secAlertLabel">Varify yourself</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                                <h5 class="modal-title" id="exampleModalLabel">Verify yourself</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <form action="{{ route('admission.verify') }}" method="POST">
                                 @csrf
-
-                                <div class="modal-body text-left">
-                                    <div class="form-group">
+                                <div class="modal-body">
+                                    <div class="mb-3">
                                         <label class="" for="secCode">Admission security code</label>
                                         <input class="form-control @error('security_code') is-invalid @enderror"
                                             name="security_code" type="text">
@@ -85,7 +84,7 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
+                                    <div class="mb-3">
                                         <label class="" for="secCode">Rocket transaction ID</label>
                                         <input class="form-control @error('payment_transection') is-invalid @enderror"
                                             name="payment_transection" type="text">
@@ -97,13 +96,13 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
                                     <button name="v_check" class="btn-grad-primary" type="submit">Submit</button>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>
+
 
                 @include('layouts.includes.scripts')
 

@@ -1,4 +1,35 @@
-<!DOCTYPE html>
+@include('layouts.includes.head')
+
+<body>
+
+    <!-- Navbar-->
+    @include('layouts.includes.navbar')
+
+    <div class="container mt-5">
+        <div class="row">
+
+            <div class="col-lg-3">
+                @yield('left_content')
+            </div>
+
+            <div class="col-lg-6">
+                @yield('center_content')
+            </div>
+
+            <div class="col-lg-3">
+                @yield('right_content')
+            </div>
+
+        </div>
+    </div>
+
+    @include('layouts.includes.scripts')
+</body>
+
+</html>
+
+
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -36,4 +67,4 @@
     </div>
 </body>
 
-</html>
+</html> --}}
