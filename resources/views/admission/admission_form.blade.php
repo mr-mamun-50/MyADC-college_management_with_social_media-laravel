@@ -3,7 +3,7 @@
 <body>
 
     <div class="container">
-        <div class="shadow-lg mb-5">
+        <div class="shadow-lg mb-5 bg-white">
 
             <div class="mt-3 bg-grad-primary card-header d-flex justify-content-between p-0">
                 <a class="mt-1 btn text-white shadow-0" href="{{ url('/') }}"><img class=""
@@ -12,7 +12,7 @@
                 <a class="mt-1 btn text-white m-3 shadow-0" href=""><i class="fas fa-info-circle fa-lg"></i></a>
             </div>
 
-            <div class="card-body">
+            <div class="card-body p-4">
 
 
                 <form action="{{ route('admission.store') }}" method="post" enctype="multipart/form-data">

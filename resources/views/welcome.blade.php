@@ -23,7 +23,7 @@
                                     <h4>Al-Emdad Degree College</h4>
 
                                     <h5 class="mt-4">Log in as-</h5>
-                                    <a class="btn-grad-primary l-icon mx-1" href=""><i
+                                    <a class="btn-grad-primary l-icon mx-1" href="{{ route('login') }}"><i
                                             class="fas fa-users d-block"></i>
                                         Student</a>
                                     <a class="btn-grad-primary l-icon mx-1" href=""><i

@@ -5,18 +5,18 @@
     <!-- Navbar-->
     @include('layouts.includes.navbar')
 
-    <div class="container mt-5">
+    <div class="container mt-5 py-5">
         <div class="row">
 
-            <div class="col-lg-3">
+            <div class="d-none d-lg-block col-lg-3">
                 @yield('left_content')
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-8">
                 @yield('center_content')
             </div>
 
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-4">
                 @yield('right_content')
             </div>
 

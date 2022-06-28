@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light nav-gradient">
+<nav class="navbar navbar-expand-lg fixed-top navbar-light nav-gradient py-0">
 
     <div class="container-fluid justify-content-between row-lg">
         <!-- Left elements -->
@@ -20,31 +20,33 @@
 
         <!-- Center elements -->
         <ul class="navbar-nav flex-row d-flex justify-content-center col-lg-4">
-            <li class="nav-item me-3 active">
-                <a class="nav-link active" href="#">
+
+            <li class="nav-item me-4" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Home">
+                <a class="nav-link  @if ($menu == 'Home') active @endif" href="{{ route('home') }}">
                     <span><i class="fas fa-home fa-lg"></i></span>
                 </a>
             </li>
 
-            <li class="nav-item me-3">
-                <a class="nav-link" href="#">
+            <li class="nav-item me-4" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Notice">
+                <a class="nav-link  @if ($menu == 'Notice') active @endif"
+                    href="{{ route('notice.view') }}">
                     <span><i class="fas fa-flag fa-lg"></i></span>
                 </a>
             </li>
 
-            <li class="nav-item me-3">
+            <li class="nav-item me-4">
                 <a class="nav-link" href="#">
                     <span><i class="fas fa-video fa-lg"></i></span>
                 </a>
             </li>
 
-            <li class="nav-item me-3">
+            <li class="nav-item me-4">
                 <a class="nav-link" href="#">
                     <span><i class="fas fa-shopping-bag fa-lg"></i></span>
                 </a>
             </li>
 
-            <li class="nav-item me-3">
+            <li class="nav-item me-4">
                 <a class="nav-link" href="#">
                     <span><i class="fas fa-users fa-lg"></i></span>
                 </a>
@@ -64,11 +66,12 @@
             id="navbarTogglerDemo02">
 
             <li class="nav-item dropdown me-3">
-                <a class="nav-link d-sm-flex align-items-sm-center shadow rounded dropdown-toggle hidden-arrow"
-                    href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown"
-                    aria-expanded="false">
-                    <img src="{{ asset('public/images/asset_img/user-icon.png') }}" class="rounded-circle"
-                        height="22" alt="Black and White Portrait of a Man" loading="lazy" />
+                <a class="nav-link d-sm-flex align-items-sm-center dropdown-toggle hidden-arrow" href="#"
+                    id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+
+                    <img src="@if (Auth::user()->user_image) {{ asset('public/images/users') . '/' . Auth::user()->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
+                        class="rounded-circle" height="22" alt="User_photo" loading="lazy" />
+
                     <strong class="d-none d-sm-block ms-1"
                         style="width: 100px; white-space:nowrap; overflow: hidden; text-overflow: ellipsis;">{{ Auth::user()->name }}</strong>
                 </a>
@@ -77,7 +80,7 @@
                         <a class="dropdown-item" href="#">Profile</a>
                     </li>
                     <li>
-                        <a class="logout dropdown-item p-0">
+                        <a class="dropdown-item p-0">
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}" name="logoutform">
                                 @csrf

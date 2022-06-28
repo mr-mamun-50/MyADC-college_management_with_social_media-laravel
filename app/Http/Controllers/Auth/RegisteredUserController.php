@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Str;
+use Image;
+use File;
 
 class RegisteredUserController extends Controller
 {
@@ -37,12 +40,22 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'user_image' => ['required'],
         ]);
+        $name_slug = Str::of($request->name)->slug('-');
+
+        $image = $request->file('user_image');
+        $input['user_image'] = time().'-'.$name_slug.'.'.$image->getClientOriginalExtension();
+
+        $destinationPath = public_path('images/users');
+        $imgFile = Image::make($image->getRealPath());
+        $imgFile->resize(300, 300)->save($destinationPath.'/'.$input['user_image']);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'user_image' => $input['user_image'],
         ]);
 
         event(new Registered($user));

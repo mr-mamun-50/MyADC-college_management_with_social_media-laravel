@@ -12,7 +12,7 @@
                 <a class="mt-1 btn text-white m-3 shadow-0" href=""><i class="fas fa-info-circle fa-lg"></i></a>
             </div>
 
-            <div class="card-body px-lg-5 pt-5">
+            <div class="card-body px-3 px-lg-5 py-5">
 
                 <h4>Required documents</h4>
                 <hr>
@@ -64,7 +64,7 @@
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Verify yourself</h5>

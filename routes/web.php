@@ -24,6 +24,8 @@ use App\Http\Controllers\Admin\Download\IDcardController;
 use App\Http\Controllers\Admin\Download\TestimonialController;
 use App\Http\Controllers\Admin\Download\TransCertController;
 
+use App\Http\Controllers\User\NoticeViewController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,7 +43,7 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return view('home');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth'])->name('home');
 
 Route::get('/admission/procedure', function () {
     return view('admission.admission_procedure');
@@ -50,6 +52,11 @@ Route::get('/admission/procedure', function () {
 // __Admission routes
 Route::resource('/admission', AdmissionController::class);
 Route::post('admission/verify', [AdmissionController::class, 'verify'])->name('admission.verify');
+
+//__Notice routes
+Route::get('/notice', [NoticeViewController::class, 'index'])->name('notice.view');
+
+
 
 require __DIR__.'/auth.php';
 
