@@ -48,16 +48,35 @@ $menu = 'Home';
         <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-plus-circle"></i> Create Post</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
-                </div>
+                <form action="" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <!-- Message input -->
+                        <div class="form-outline mb-4">
+                            <textarea class="form-control" id="form4Example3" rows="4"></textarea>
+                            <label class="form-label" for="form4Example3">Whats on your mind,
+                                {{ Auth::user()->name }}?</label>
+                        </div>
+                        <div class="input-group ">
+                            <span class="input-group-text"><i class="bi bi-image text-success"></i></span>
+                            <input type="file" class="form-control" name="image" id="image" />
+                        </div>
+                        <div class="text-center my-2">or,</div>
+                        <div class="input-group ">
+                            <span class="input-group-text"><i class="fas fa-video text-danger"></i></span>
+                            <input type="file" class="form-control" name="video" id="video" />
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary bg-gradient btn-block ">Post</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

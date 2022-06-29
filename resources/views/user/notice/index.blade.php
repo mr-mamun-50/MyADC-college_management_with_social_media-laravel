@@ -75,7 +75,7 @@ $menu = 'Notice';
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger bg-gradient"
+                        <button type="button" class="btn btn-outline-danger bg-gradient btn-sm"
                             data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
