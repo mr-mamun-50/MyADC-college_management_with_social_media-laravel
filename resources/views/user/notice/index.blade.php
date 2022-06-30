@@ -49,7 +49,7 @@ $menu = 'Notice';
         <!-- Modal -->
         <div class="modal fade" id="{{ 'staticBackdrop' . $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="{{ 'staticBackdrop' . $item->id . 'Label' }}" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-info-circle"></i> Notice Details

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-light nav-gradient py-0">
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light py-0">
 
     <div class="container-fluid justify-content-between row-lg">
         <!-- Left elements -->
@@ -13,7 +13,7 @@
             <form class="input-group w-auto my-auto d-none d-sm-flex">
                 <input autocomplete="off" type="search" class="form-control rounded" placeholder="Search"
                     style="min-width: 125px;" />
-                <span class="input-group-text border-0 d-none d-lg-flex"><i class="fas fa-search"></i></span>
+                <span class="input-group-text  d-none d-lg-flex"><i class="fas fa-search "></i></span>
             </form>
         </div>
         <!-- Left elements -->
@@ -73,7 +73,7 @@
                         class="rounded-circle" height="22" alt="User_photo" loading="lazy" />
 
                     <strong class="d-none d-sm-block ms-1"
-                        style="width: 100px; white-space:nowrap; overflow: hidden; text-overflow: ellipsis;">{{ Auth::user()->name }}</strong>
+                        style="width: 100px; white-space:nowrap; overflow: hidden; text-overflow: ellipsis; ">{{ Auth::user()->name }}</strong>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                     <li>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\User\UserController;
 
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\RoutineXIController;
@@ -26,6 +27,9 @@ use App\Http\Controllers\Admin\Download\TransCertController;
 
 use App\Http\Controllers\User\NoticeViewController;
 
+use App\Http\Controllers\User\Posts\PostsController;
+use App\Http\Controllers\User\Posts\LikesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,21 +45,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
-})->middleware(['auth'])->name('home');
+Route::group(['middleware' => 'auth'], function() {
+    //__Home routes
+    Route::get('/home', [UserController::class, 'index'])->name('home');
 
+    //__Notice routes
+    Route::get('/notice', [NoticeViewController::class, 'index'])->name('notice.view');
+
+    //__Post routes
+    Route::resource('/posts', PostsController::class);
+    Route::resource('/posts/like', LikesController::class);
+});
+
+
+// __Admission routes
 Route::get('/admission/procedure', function () {
     return view('admission.admission_procedure');
 })->name('admission.procedure');
 
-// __Admission routes
 Route::resource('/admission', AdmissionController::class);
 Route::post('admission/verify', [AdmissionController::class, 'verify'])->name('admission.verify');
-
-//__Notice routes
-Route::get('/notice', [NoticeViewController::class, 'index'])->name('notice.view');
-
 
 
 require __DIR__.'/auth.php';
