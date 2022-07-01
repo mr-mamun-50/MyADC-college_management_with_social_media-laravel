@@ -6,7 +6,11 @@
     @include('layouts.includes.navbar')
 
     <div class="container mt-5">
-        <div class="row">
+
+
+        @yield('content')
+
+        {{-- <div class="row">
 
             <div class="d-none d-lg-block col-lg-3 py-md-4 scroll">
                 @yield('left_content')
@@ -20,7 +24,7 @@
                 @yield('right_content')
             </div>
 
-        </div>
+        </div> --}}
     </div>
 
     <button class="fixedbutton btn btn-primary btn-rounded square p-0"> <i class="fas fa-comments"></i>

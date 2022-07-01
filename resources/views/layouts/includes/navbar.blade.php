@@ -34,7 +34,7 @@
                 </a>
             </li>
 
-            <li class="nav-item me-4">
+            <li class="nav-item me-4" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Video">
                 <a class="nav-link" href="#">
                     <span><i class="fas fa-video fa-lg"></i></span>
                 </a>
@@ -66,8 +66,9 @@
             id="navbarTogglerDemo02">
 
             <li class="nav-item dropdown me-3">
-                <a class="nav-link d-sm-flex align-items-sm-center dropdown-toggle hidden-arrow" href="#"
-                    id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link d-sm-flex align-items-sm-center dropdown-toggle hidden-arrow   @if ($menu == Auth::user()->id) active @endif"
+                    href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown"
+                    aria-expanded="false">
 
                     <img src="@if (Auth::user()->user_image) {{ asset('public/images/users') . '/' . Auth::user()->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
                         class="rounded-circle" height="22" alt="User_photo" loading="lazy" />
@@ -77,7 +78,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="{{ route('user.profile', Auth::user()->id) }}">Profile</a>
                     </li>
                     <li>
                         <a class="dropdown-item p-0">
@@ -85,8 +86,8 @@
                             <form method="POST" action="{{ route('logout') }}" name="logoutform">
                                 @csrf
 
-                                <button class="logout btn bg-transparent shadow-0 px-3 py-2" type="submit">
-                                    Log out</button>
+                                <button class="logout btn bg-transparent shadow-0 px-3 py-2" type="submit"
+                                    style="font-size: 14px"> Log out</button>
                             </form>
                         </a>
                     </li>

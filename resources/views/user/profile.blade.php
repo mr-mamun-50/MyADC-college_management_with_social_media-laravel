@@ -3,31 +3,53 @@
     Home
 @endsection
 @php
-$menu = 'Home';
+$menu = $user->id;
+
+$likes_cnt = DB::table('post_likes')
+    ->where('user_id', $user->id)
+    ->count();
+$cmnts_cnt = DB::table('post_comments')
+    ->where('user_id', $user->id)
+    ->count();
 @endphp
 
 
 @section('content')
-    <div class="row">
+    <div class="row justify-content-center">
 
-        {{-- Left section started --}}
-        <div class="d-none d-lg-block col-lg-3 py-md-4 scroll">
-            <div class="card text-start">
-                <div class="card-body">
-                    <h4 class="card-title text-center">Admission</h4>
-                    <hr>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, beatae.</p>
+        <div class="py-md-4 pt-4 col-12 col-lg-10">
 
-                    <a href="{{ route('admission.procedure') }}" class="btn btn-primary bg-gradient btn-block">Admission
-                        Procedure</a>
+            <div class="card">
+                <div class="card-body d-flex align-items-center profile_bg text-light">
+                    <div class="image w-25">
+                        <img src="@if ($user->user_image) {{ asset('public/images/users') . '/' . $user->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
+                            alt="" class="rounded-circle w-100">
+                    </div>
+                    <div class="ms-5">
+                        <h1 class="card-title">{{ $user->name }}</h1>
+                        <p>Email: <a href="mailto:{{ $user->email }}" target="blank"
+                                class="text-warning">{{ $user->email }}</a></p>
+                    </div>
                 </div>
             </div>
         </div>
-        {{-- Left section ended --}}
+    </div>
 
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Activities</h5>
+                </div>
+                <div class="card-body">
+                    <p><i class="fas fa-newspaper text-danger me-2"></i> Number of posts: <b>{{ $posts->count() }}</b></p>
+                    <p><i class="fas fa-thumbs-up text-primary me-2"></i> Number of likes: <b>{{ $likes_cnt }}</b></p>
+                    <p><i class="fas fa-comment text-success me-2"></i> Number of comments: <b>{{ $cmnts_cnt }}</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
 
-        {{-- Center section started --}}
-        <div class="col-lg-6 col-md-8 py-md-4 pt-4 scroll">
             {{-- whats on your mind --}}
             <div class="card text-start">
                 <div class="card-body p-3">
@@ -95,6 +117,7 @@ $menu = 'Home';
                     </div>
                 </div>
             </div>
+
 
             {{-- view posts --}}
             @foreach ($posts as $item)
@@ -447,39 +470,5 @@ $menu = 'Home';
                 </div>
             @endforeach
         </div>
-        {{-- Center section ended --}}
-
-
-        {{-- Right section starts --}}
-        <div class="col-lg-3 col-md-4 py-md-4 pt-4 scroll">
-            <div class="card text-start">
-                <div class="card-body">
-                    <h4 class="card-title">Title</h4>
-                    <p class="card-text">Body</p>
-                </div>
-            </div>
-        </div>
-        {{-- Right section ended --}}
-
     </div>
 @endsection
-
-
-
-{{-- <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout> --}}

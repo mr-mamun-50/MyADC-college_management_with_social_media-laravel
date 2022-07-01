@@ -196,3 +196,13 @@ html::-webkit-scrollbar-thumb {
     max-height: 300px;
     object-fit: cover;
 }
+
+.profile_bg {
+    background: url(../../images/asset_img/profile_bg.jpg);
+    background-size: cover;
+    border-radius: 10px;
+}
+
+.profile_bg img {
+    box-shadow: 0 0 20px #fff;
+}
