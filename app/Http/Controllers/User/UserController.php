@@ -17,8 +17,6 @@ class UserController extends Controller
                 ->orderBy('posts.post_date', 'desc')
                 ->get();
 
-        // $likes = DB::table('likes')->get();
-
         return view('home', compact('posts'));
     }
 }

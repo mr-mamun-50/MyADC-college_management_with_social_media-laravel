@@ -161,13 +161,13 @@ html::-webkit-scrollbar-thumb {
 .nav-gradient {
     background: linear-gradient(to right, #0071f3, #73b4ff);
 }
-.active {
+.navbar .nav-item .active {
     /* border-bottom: 0.15rem solid #262626; */
     border-bottom: 0.15rem solid #0071f3;
     /* border-bottom-left-radius: 0.3rem;
     border-bottom-right-radius: 0.3rem; */
 }
-.active span i {
+.navbar .nav-item .active span i {
     color: #0071f3;
 }
 .nav-link {

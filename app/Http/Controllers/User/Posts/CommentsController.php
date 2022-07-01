@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 
-class LikesController extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,13 +37,20 @@ class LikesController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'comment' => 'required'
+        ]);
         $data = [
+            'post_id' => $request->post_id,
             'user_id' => Auth::user()->id,
-            'post_id' => $request->post_id
+            'comment' => $request->comment,
+            'c_date' => now('6.0').date(''),
         ];
 
-        DB::table('post_likes')->insert($data);
-        return redirect(url()->previous().'#post'.$request->post_id);
+        DB::table('post_comments')->insert($data);
+
+        $notify = ['message'=>'Commented', 'alert-type'=>'success'];
+        return redirect(url()->previous().'#post'.$request->post_id)->with($notify);
     }
 
     /**
@@ -88,11 +95,12 @@ class LikesController extends Controller
      */
     public function destroy($id)
     {
-        $like = DB::table('post_likes')->where('id', $id)->first();
-        $post = DB::table('posts')->where('id', $like->post_id)->first();
+        $comment = DB::table('post_comments')->where('id', $id)->first();
+        $post = DB::table('posts')->where('id', $comment->post_id)->first();
 
-        DB::table('post_likes')->where('id', $id)->delete();
+        DB::table('post_comments')->where('id', $id)->delete();
 
-        return redirect(url()->previous().'#post'.$post->id);
+        $notify = ['message'=>'Comment deteted', 'alert-type'=>'success'];
+        return redirect(url()->previous().'#post'.$post->id)->with($notify);
     }
 }

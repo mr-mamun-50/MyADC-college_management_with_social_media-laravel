@@ -90,13 +90,19 @@ $menu = 'Home';
     {{-- view posts --}}
     @foreach ($posts as $item)
         @php
-            $like = DB::table('likes')
+            $like = DB::table('post_likes')
                 ->where('post_id', $item->id)
                 ->get();
-            $user = DB::table('likes')
+            $liker_user = DB::table('post_likes')
                 ->where('post_id', $item->id)
                 ->where('user_id', Auth::user()->id)
                 ->first();
+            $comments = DB::table('post_comments')
+                ->leftjoin('users', 'post_comments.user_id', '=', 'users.id')
+                ->select('post_comments.*', 'users.name', 'users.user_image')
+                ->where('post_id', $item->id)
+                ->orderBy('id', 'desc')
+                ->get();
         @endphp
 
         <div class="card my-4" id="{{ 'post' . $item->id }}">
@@ -118,6 +124,7 @@ $menu = 'Home';
                     <img src="{{ asset('public/images/posts/image') . '/' . $item->image }}" class="post_img"
                         alt="image">
                 </a>
+
                 <!-- Modal for image view -->
                 <div class="modal fade" id="{{ 'postImg' . $item->id }}" tabindex="-1"
                     aria-labelledby="{{ 'postImg' . $item->id . 'Label' }}" aria-hidden="true">
@@ -134,15 +141,19 @@ $menu = 'Home';
                         </div>
                     </div>
                 </div>
+            @elseif ($item->video)
+                <video controls class="img-fluid w-100"
+                    src="{{ asset('public/images/posts/video') . '/' . $item->video }}" alt="video">
+                </video>
             @endif
 
             {{-- like, comment, share section --}}
             <div class="card-footer d-flex justify-content-around p-1">
+                {{-- Like --}}
                 <div class="w-100">
-
-                    @if ($user != null)
-                        @if (Auth::user()->id == $user->user_id)
-                            <form action="{{ route('like.destroy', $user->id) }}" method="post">
+                    @if ($liker_user != null)
+                        @if (Auth::user()->id == $liker_user->user_id)
+                            <form action="{{ route('like.destroy', $liker_user->id) }}" method="post">
                                 @csrf
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-link w-100 text-dark px-0">
@@ -162,9 +173,94 @@ $menu = 'Home';
                     @endif
                 </div>
 
+                {{-- Comment --}}
                 <div class="vr"></div>
-                <a href="" class="btn btn-link w-100 text-dark px-0"><i class="far fa-comment"></i> </a>
+                <a class="btn btn-link w-100 text-dark px-0" data-bs-toggle="modal"
+                    data-bs-target="{{ '#postCmnt' . $item->id }}"><i class="far fa-comment"></i>
+                    {{ '(' . $comments->count() . ')' }}</a>
 
+                <!-- Modal for comment view -->
+                <div class="modal fade" id="{{ 'postCmnt' . $item->id }}" tabindex="-1"
+                    aria-labelledby="{{ 'postCmnt' . $item->id . 'Label' }}" aria-hidden="true"
+                    data-bs-backdrop="static" data-bs-keyboard="false">
+                    <div class="modal-dialog  modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <table class="myDataTable table table- table-sm" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($comments as $cmnt)
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="">
+                                                            <img src="@if ($cmnt->user_image) {{ asset('public/images/users') . '/' . $cmnt->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
+                                                                alt="" class="rounded-circle"
+                                                                style="width: 50px; height:50px">
+                                                        </div>
+                                                        <div class="ms-3">
+                                                            <h6 class="mt-2">{{ $cmnt->name }}</h6>
+                                                            <p>{{ $cmnt->comment }}</p>
+                                                        </div>
+                                                        @if (Auth::user()->id == $cmnt->user_id)
+                                                            <div class="ms-auto">
+                                                                <form action="{{ route('comment.destroy', $cmnt->id) }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    <input type="hidden" name="_method" value="DELETE">
+                                                                    <button type="submit"
+                                                                        class="delete btn btn-link text-danger"><i
+                                                                            class="fas fa-trash-alt"></i></button>
+                                                                </form>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                {{-- post comment form --}}
+                                <div class="card-footer d-flex p-2 pt-3 px-4">
+                                    <img src="@if (Auth::user()->user_image) {{ asset('public/images/users') . '/' . Auth::user()->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
+                                        alt="" class="rounded-circle" style="width: 40px; height: 40px">
+                                    <div class="ms-3 w-100">
+                                        <form action="{{ route('comment.store') }}" method="post">
+                                            @csrf
+                                            <div class="d-flex">
+                                                <input type="hidden" name="post_id" value="{{ $item->id }}">
+
+                                                <input type="text"
+                                                    class="form-control btn-rounded @error('comment') is-invalid @enderror"
+                                                    name="comment" placeholder="Write a comment...">
+                                                @error('comment')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+
+                                                <button type="submit" class="btn btn-link ms- p-2"><i
+                                                        class="fas fa-paper-plane fa-lg"></i></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                {{-- Share --}}
                 <div class="vr"></div>
                 <a href="" class="btn btn-link w-100 text-dark px-0"><i class="fas fa-share-alt"></i> </a>
             </div>
@@ -174,11 +270,19 @@ $menu = 'Home';
                 <img src="@if (Auth::user()->user_image) {{ asset('public/images/users') . '/' . Auth::user()->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
                     alt="" class="rounded-circle" style="width: 40px; height: 40px">
                 <div class="ms-3 w-100">
-                    <form action="" method="post">
+                    <form action="{{ route('comment.store') }}" method="post">
                         @csrf
                         <div class="d-flex">
-                            <input type="text" class="form-control btn-rounded" name="comment"
-                                placeholder="Write a comment...">
+                            <input type="hidden" name="post_id" value="{{ $item->id }}">
+
+                            <input type="text" class="form-control btn-rounded @error('comment') is-invalid @enderror"
+                                name="comment" placeholder="Write a comment...">
+                            @error('comment')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+
                             <button type="submit" class="btn btn-link ms- p-2"><i
                                     class="fas fa-paper-plane fa-lg"></i></button>
                         </div>

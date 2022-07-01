@@ -19,6 +19,28 @@
 <!-- Sweetalert js -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- Datatables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js">
+</script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js">
+</script>
+<script>
+    $(document).ready(function() {
+        $('.myDataTable').DataTable({
+            "ordering": false,
+            "searching": false,
+            "info": false,
+            "oLanguage": {
+                "sEmptyTable": "No comments found"
+            },
+            lengthMenu: [
+                [5, 10, 25, 50],
+                [5, 10, 25, 50],
+            ],
+        });
+    });
+</script>
+
 <script>
     $('.delete').click(function(event) {
         var form = $(this).closest("form");

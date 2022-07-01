@@ -29,6 +29,7 @@ use App\Http\Controllers\User\NoticeViewController;
 
 use App\Http\Controllers\User\Posts\PostsController;
 use App\Http\Controllers\User\Posts\LikesController;
+use App\Http\Controllers\User\Posts\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,7 @@ Route::group(['middleware' => 'auth'], function() {
     //__Post routes
     Route::resource('/posts', PostsController::class);
     Route::resource('/posts/like', LikesController::class);
+    Route::resource('/posts/comment', CommentsController::class);
 });
 
 
