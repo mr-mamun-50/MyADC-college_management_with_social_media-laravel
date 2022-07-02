@@ -450,6 +450,9 @@ $menu = 'Home';
                     </div>
                 </div>
             @endforeach
+
+            {{-- pagination --}}
+            {{ $posts->links('pagination::bootstrap-5') }}
         </div>
         {{-- Center section ended --}}
 

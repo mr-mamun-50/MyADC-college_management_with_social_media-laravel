@@ -17,7 +17,7 @@ class UserController extends Controller
                 ->select('posts.*', 'users.name', 'users.user_image')
                 ->where('visibility', '=', '1')
                 ->orderBy('posts.post_date', 'desc')
-                ->get();
+                ->paginate(5);
 
         return view('home', compact('posts'));
     }
@@ -33,7 +33,7 @@ class UserController extends Controller
                 ->select('posts.*', 'users.name', 'users.user_image', 'users.created_at')
                 ->where('posts.user_id', '=', $id)
                 ->orderBy('posts.post_date', 'desc')
-                ->get();
+                ->paginate(5);
         }
         else {
             $posts = DB::table('posts')
@@ -42,7 +42,7 @@ class UserController extends Controller
                 ->where('posts.user_id', '=', $id)
                 ->where('visibility', '=', '1')
                 ->orderBy('posts.post_date', 'desc')
-                ->get();
+                ->paginate(5);
         }
 
         return view('user.profile', compact('user', 'posts'));

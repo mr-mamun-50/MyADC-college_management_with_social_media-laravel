@@ -94,6 +94,9 @@ $menu = 'Notice';
                     </div>
                 </div>
             @endforeach
+
+            {{-- pagination --}}
+            {{ $notice->links('pagination::bootstrap-5') }}
         </div>
         {{-- Center section ended --}}
 

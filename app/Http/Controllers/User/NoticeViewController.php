@@ -12,7 +12,7 @@ class NoticeViewController extends Controller
     {
         $notice = DB::table('notices')
                 ->orderBy('id', 'DESC')
-                ->get();
+                ->paginate(5);
 
         return view('user.notice.index', compact('notice'));
     }

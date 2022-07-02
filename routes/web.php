@@ -51,7 +51,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/home', [UserController::class, 'index'])->name('home');
 
     //__User profile routes
-    Route::get('user/profile/{id}', [UserController::class, 'profile'])->name('user.profile');
+    Route::get('profile/{id}', [UserController::class, 'profile'])->name('user.profile');
 
     //__Notice routes
     Route::get('/notice', [NoticeViewController::class, 'index'])->name('notice.view');

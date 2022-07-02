@@ -486,6 +486,8 @@ $cmnts_cnt = DB::table('post_comments')
                     </div>
                 </div>
             @endforeach
+
+            {{-- pagination --}}
+            {{ $posts->links('pagination::bootstrap-5') }}
         </div>
-    </div>
-@endsection
+    @endsection
