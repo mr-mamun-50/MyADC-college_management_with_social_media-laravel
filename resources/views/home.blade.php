@@ -115,15 +115,19 @@ $menu = 'Home';
                 @endphp
 
                 <div class="card my-4" id="{{ 'post' . $item->id }}">
-                    <div class="card-header d-flex mt-2">
+                    <div class="card-header d-flex mt-1">
 
                         {{-- heading options --}}
-                        <div class="d-flex">
-                            <img src="@if ($item->user_image) {{ asset('public/images/users') . '/' . $item->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
-                                alt="" class="rounded-circle" style="width: 50px; height:50px">
+                        <div class="d-flex align-items-center">
+                            <a href="{{ route('user.profile', $item->user_id) }}">
+                                <img src="@if ($item->user_image) {{ asset('public/images/users') . '/' . $item->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
+                                    alt="" class="rounded-circle" style="width: 50px; height:50px">
+                            </a>
 
                             <div class="ms-3">
-                                <h5 class="card-title">{{ $item->name }}</h5>
+                                <a href="{{ route('user.profile', $item->user_id) }}">
+                                    <h5 class="card-title text-dark">{{ $item->name }}</h5>
+                                </a>
                                 @if ($item->visibility == 1)
                                     <span class="badge rounded-pill badge-success">&#127758; Public</span>
                                 @else
@@ -328,7 +332,7 @@ $menu = 'Home';
                                                                             <h6 class="">{{ $cmnt->name }}</h6>
                                                                         </a>
                                                                         <small class="text-muted ms-2">
-                                                                            <i>({{ date('d F, y | h:i A', strtotime($item->post_date)) }})</i>
+                                                                            <i>({{ date('d F, y | h:i A', strtotime($cmnt->c_date)) }})</i>
                                                                         </small>
                                                                     </div>
                                                                     <p>{{ $cmnt->comment }}</p>

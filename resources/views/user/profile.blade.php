@@ -28,7 +28,7 @@ $cmnts_cnt = DB::table('post_comments')
                     <div class="ms-5">
                         <h1 class="card-title">{{ $user->name }}</h1>
                         <p>Email: <a href="mailto:{{ $user->email }}" target="blank"
-                                class="text-warning">{{ $user->email }}</a></p>
+                                class="text-info">{{ $user->email }}</a></p>
                     </div>
                 </div>
             </div>
@@ -36,19 +36,36 @@ $cmnts_cnt = DB::table('post_comments')
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-5 col-lg-4 py-4 py-md-0">
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">Activities</h5>
                 </div>
-                <div class="card-body">
-                    <p><i class="fas fa-newspaper text-danger me-2"></i> Number of posts: <b>{{ $posts->count() }}</b></p>
-                    <p><i class="fas fa-thumbs-up text-primary me-2"></i> Number of likes: <b>{{ $likes_cnt }}</b></p>
-                    <p><i class="fas fa-comment text-success me-2"></i> Number of comments: <b>{{ $cmnts_cnt }}</b></p>
+                <div class="card-body px-0 px-4 px-md-0 px-lg-4">
+                    <table class="table">
+                        <tr>
+                            <td><i class="fas fa-newspaper text-danger me-2"></i> Number of posts</td>
+                            <th class="text-end">{{ $posts->count() }}</th>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-thumbs-up text-primary me-2"></i> Number of likes</td>
+                            <th class="text-end">{{ $likes_cnt }}</th>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-comment text-success me-2"></i> Number of comments</td>
+                            <th class="text-end">{{ $cmnts_cnt }}</th>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-clock text-info me-2"></i> Joined</td>
+                            <th class="text-end">{{ date('d F, Y', strtotime($user->created_at)) }}</th>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+
+
+        <div class="col-md-7 col-lg-6">
 
             {{-- whats on your mind --}}
             <div class="card text-start">
@@ -351,7 +368,7 @@ $cmnts_cnt = DB::table('post_comments')
                                                                             <h6 class="">{{ $cmnt->name }}</h6>
                                                                         </a>
                                                                         <small class="text-muted ms-2">
-                                                                            <i>({{ date('d F, y | h:i A', strtotime($item->post_date)) }})</i>
+                                                                            <i>({{ date('d F, y | h:i A', strtotime($cmnt->c_date)) }})</i>
                                                                         </small>
                                                                     </div>
                                                                     <p>{{ $cmnt->comment }}</p>

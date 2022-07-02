@@ -30,7 +30,7 @@ class UserController extends Controller
         if(Auth::user()->id == $user->id) {
             $posts = DB::table('posts')
                 ->leftjoin('users', 'users.id', '=', 'posts.user_id')
-                ->select('posts.*', 'users.name', 'users.user_image')
+                ->select('posts.*', 'users.name', 'users.user_image', 'users.created_at')
                 ->where('posts.user_id', '=', $id)
                 ->orderBy('posts.post_date', 'desc')
                 ->get();
@@ -38,7 +38,7 @@ class UserController extends Controller
         else {
             $posts = DB::table('posts')
                 ->leftjoin('users', 'users.id', '=', 'posts.user_id')
-                ->select('posts.*', 'users.name', 'users.user_image')
+                ->select('posts.*', 'users.name', 'users.user_image', 'users.created_at')
                 ->where('posts.user_id', '=', $id)
                 ->where('visibility', '=', '1')
                 ->orderBy('posts.post_date', 'desc')

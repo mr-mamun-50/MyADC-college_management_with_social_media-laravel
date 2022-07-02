@@ -107,33 +107,41 @@ class PostsController extends Controller
         ];
 
         if($request->file('image')) {
+
             $image_path = public_path('images/posts/image/'.$request->old_image);
             if (File::exists($image_path)) {
                 File::delete($image_path);
             }
+            $video_path = public_path('images/posts/video/'.$request->old_video);
+            if (File::exists($video_path)) {
+                File::delete($video_path);
+            }
+
             $file = $request->file('image');
             $input['image'] = time() .'_post_image.' . $file->getClientOriginalExtension();
             $destinationPath = public_path('images/posts/image');
             $file->move($destinationPath, $input['image']);
             $data['image'] = $input['image'];
-        }
-        else {
-            $data['image'] = $request->old_image;
+            $data['video'] = null;
         }
 
         if($request->file('video')) {
+
             $video_path = public_path('images/posts/video/'.$request->old_video);
             if (File::exists($video_path)) {
                 File::delete($video_path);
             }
+            $image_path = public_path('images/posts/image/'.$request->old_image);
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+
             $file = $request->file('video');
             $input['video'] = time() .'_post_video.' . $file->getClientOriginalExtension();
             $destinationPath = public_path('images/posts/video');
             $file->move($destinationPath, $input['video']);
             $data['video'] = $input['video'];
-        }
-        else {
-            $data['video'] = $request->old_video;
+            $data['image'] = null;
         }
 
         DB::table('posts')->where('id', $id)->update($data);
