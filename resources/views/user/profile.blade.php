@@ -41,7 +41,7 @@ $cmnts_cnt = DB::table('post_comments')
                 <div class="card-header">
                     <h5 class="card-title">Activities</h5>
                 </div>
-                <div class="card-body px-0 px-4 px-md-0 px-lg-4">
+                <div class="card-body px-0 px-0 px-lg-4">
                     <table class="table">
                         <tr>
                             <td><i class="fas fa-newspaper text-danger me-2"></i> Number of posts</td>
