@@ -37,11 +37,10 @@ $submenu = 'All_Teachers'; ?>
                                 <td>{{ $item->index }}</td>
                                 <td>
                                     @if ($item->photo != null)
-                                        <img class="img-fluid"
-                                            src="{{ asset('public/images/teachers' . '/' . $item->photo) }}"
+                                        <img class="img-fluid" src="{{ asset('images/teachers' . '/' . $item->photo) }}"
                                             alt="Photo" style="width: 80px">
                                     @else
-                                        <img class="img-fluid" src="{{ asset('public/images/asset_img/user-icon.png') }}"
+                                        <img class="img-fluid" src="{{ asset('images/asset_img/user-icon.png') }}"
                                             alt="Photo" style="width: 80px">
                                     @endif
                                 </td>

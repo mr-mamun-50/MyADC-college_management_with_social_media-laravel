@@ -6,7 +6,7 @@
     <div class="card-header">
         <div class="justify-content-between d-flex pt-5">
             <div class="text-right" style="width: 150px;">
-                <img class="" src="{{ asset('public/images/logos/college_logo.png') }}" alt="College Logo"
+                <img class="" src="{{ asset('images/logos/college_logo.png') }}" alt="College Logo"
                     style="height: 100px;">
             </div>
 

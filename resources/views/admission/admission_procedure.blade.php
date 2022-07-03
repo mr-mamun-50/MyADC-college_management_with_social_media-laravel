@@ -7,7 +7,7 @@
 
             <div class="mt-3 bg-grad-primary card-header d-flex justify-content-between p-0">
                 <a class="mt-1 btn text-white shadow-0" href="{{ url('/') }}"><img class=""
-                        src="{{ asset('public/images/logos/icon.png') }}" alt="" style="width: 50px;"></a>
+                        src="{{ asset('images/logos/icon.png') }}" alt="" style="width: 50px;"></a>
                 <h4 class="mt-2 ml-3 text-white mt-4">Admission Procedure</h4>
                 <a class="mt-1 btn text-white m-3 shadow-0" href=""><i class="fas fa-info-circle fa-lg"></i></a>
             </div>

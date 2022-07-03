@@ -38,11 +38,10 @@ $submenu = 'Students_old'; ?>
                                 <td>{{ $item->st_id }}</td>
                                 <td>
                                     @if ($item->photo)
-                                        <img class="img-fluid"
-                                            src="{{ asset('public/images/students' . '/' . $item->photo) }}"
+                                        <img class="img-fluid" src="{{ asset('images/students' . '/' . $item->photo) }}"
                                             alt="Photo" style="width: 80px">
                                     @else
-                                        <img class="img-fluid" src="{{ asset('public/images/asset_img/user-icon.png') }}"
+                                        <img class="img-fluid" src="{{ asset('images/asset_img/user-icon.png') }}"
                                             alt="Photo" style="width: 80px">
                                     @endif
                                 </td>

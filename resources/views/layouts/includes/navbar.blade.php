@@ -5,7 +5,7 @@
         <div class="d-flex col-lg-4">
             <!-- Brand -->
             <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="{{ url('/') }}">
-                <img src="{{ asset('public/images/logos/logo.png') }}" height="30" alt="MyADC Logo" loading="lazy"
+                <img src="{{ asset('images/logos/logo.png') }}" height="30" alt="MyADC Logo" loading="lazy"
                     style="margin-top: 2px;" />
             </a>
 
@@ -70,7 +70,7 @@
                     href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown"
                     aria-expanded="false">
 
-                    <img src="@if (Auth::user()->user_image) {{ asset('public/images/users') . '/' . Auth::user()->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
+                    <img src="@if (Auth::user()->user_image) {{ asset('images/users') . '/' . Auth::user()->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
                         class="rounded-circle" height="22" alt="User_photo" loading="lazy" />
 
                     <strong class="d-none d-sm-block ms-1"
@@ -100,7 +100,13 @@
                 </a>
             </li>
 
-            <li class="nav-item dropdown me-3">
+            <li class="nav-item me-3">
+                <a class="nav-link" href="{{ route('messenger') }}">
+                    <span><i class="fas fa-comments fa-lg"></i></span>
+                </a>
+            </li>
+
+            {{-- <li class="nav-item dropdown me-3">
                 <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
                     role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-comments fa-lg"></i>
@@ -118,7 +124,7 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
             <li class="nav-item dropdown me-3">
                 <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"

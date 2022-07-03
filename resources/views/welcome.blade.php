@@ -10,13 +10,13 @@
 
                             {{-- <div class="text-center mb-3">
                                 <img class="py-2" style="width: 40%;"
-                                    src="{{ asset('public/images/logos/logo_white.png') }}" alt="MyADC">
+                                    src="{{ asset('images/logos/logo_white.png') }}" alt="MyADC">
                             </div> --}}
 
                             <div class="card shadow-lg">
                                 <div class="card-header text-center">
-                                    <img class="py-2" style="width: 35%;"
-                                        src="{{ asset('public/images/logos/logo.png') }}" alt="MyADC">
+                                    <img class="py-2" style="width: 35%;" src="{{ asset('images/logos/logo.png') }}"
+                                        alt="MyADC">
                                 </div>
                                 <div class="card-body text-center">
                                     <h5 class="text-muted">Welcome to</h5>

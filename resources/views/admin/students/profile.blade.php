@@ -16,11 +16,10 @@ $submenu = 'Profile'; ?>
                         <div class="text-center">
                             @if ($student->photo)
                                 <img class="profile-user-img img-fluid img-circle"
-                                    src="{{ asset('public/images/students') . '/' . $student->photo }}"
-                                    alt="profile picture">
+                                    src="{{ asset('images/students') . '/' . $student->photo }}" alt="profile picture">
                             @else
                                 <img class="profile-user-img img-fluid img-circle"
-                                    src="{{ asset('public/images/asset_img/user-icon.png') }}" alt="profile picture">
+                                    src="{{ asset('images/asset_img/user-icon.png') }}" alt="profile picture">
                             @endif
                         </div>
 
@@ -122,9 +121,9 @@ $submenu = 'Profile'; ?>
                                                     <td>{{ $student->ssc_year }}</td>
                                                     <td>{{ $student->ssc_school }}</td>
                                                     <td>
-                                                        <a href="{{ asset('public/images/testimonials/ssc') . '/' . $student->ssc_testimonial }}"
+                                                        <a href="{{ asset('images/testimonials/ssc') . '/' . $student->ssc_testimonial }}"
                                                             class="btn btn-sm btn-info" target="blank">Testimonial</a>
-                                                        <a href="{{ asset('public/images/marksheets') . '/' . $student->ssc_marksheet }}"
+                                                        <a href="{{ asset('images/marksheets') . '/' . $student->ssc_marksheet }}"
                                                             class="btn btn-sm btn-info" target="blank">Marksheet</a>
                                                     </td>
                                                 </tr>

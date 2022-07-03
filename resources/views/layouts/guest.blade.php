@@ -8,16 +8,16 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Favicon icon -->
-    <link rel="icon" href="{{ asset('public/images/logos/icon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/logos/icon.png') }}" type="image/x-icon">
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!-- Scripts -->
-    <script src="{{ asset('public/js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body>

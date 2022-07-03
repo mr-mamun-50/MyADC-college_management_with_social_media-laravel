@@ -22,7 +22,7 @@ $cmnts_cnt = DB::table('post_comments')
             <div class="card">
                 <div class="card-body d-flex align-items-center profile_bg text-light">
                     <div class="image w-25">
-                        <img src="@if ($user->user_image) {{ asset('public/images/users') . '/' . $user->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
+                        <img src="@if ($user->user_image) {{ asset('images/users') . '/' . $user->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
                             alt="" class="rounded-circle w-100">
                     </div>
                     <div class="ms-5">
@@ -72,7 +72,7 @@ $cmnts_cnt = DB::table('post_comments')
                 <div class="card-body p-3">
 
                     <div class="d-flex">
-                        <img src="@if (Auth::user()->user_image) {{ asset('public/images/users') . '/' . Auth::user()->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
+                        <img src="@if (Auth::user()->user_image) {{ asset('images/users') . '/' . Auth::user()->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
                             alt="" class="rounded-circle" style="width: 50px">
                         <div class="w-100 ms-2"><a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                                 class="btn btn-light btn-block shadow-0 btn-rounded text-start d-flex align-items-center post_btn">
@@ -159,7 +159,7 @@ $cmnts_cnt = DB::table('post_comments')
 
                         {{-- heading options --}}
                         <div class="d-flex">
-                            <img src="@if ($item->user_image) {{ asset('public/images/users') . '/' . $item->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
+                            <img src="@if ($item->user_image) {{ asset('images/users') . '/' . $item->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
                                 alt="" class="rounded-circle" style="width: 50px; height:50px">
 
                             <div class="ms-3">
@@ -275,7 +275,7 @@ $cmnts_cnt = DB::table('post_comments')
                     </div>
                     @if ($item->image)
                         <a data-bs-toggle="modal" data-bs-target="{{ '#postImg' . $item->id }}">
-                            <img src="{{ asset('public/images/posts/image') . '/' . $item->image }}" class="post_img"
+                            <img src="{{ asset('images/posts/image') . '/' . $item->image }}" class="post_img"
                                 alt="image">
                         </a>
 
@@ -289,7 +289,7 @@ $cmnts_cnt = DB::table('post_comments')
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="text-center">
-                                        <img src="{{ asset('public/images/posts/image') . '/' . $item->image }}"
+                                        <img src="{{ asset('images/posts/image') . '/' . $item->image }}"
                                             class="img-fluid" alt="image">
                                     </div>
                                 </div>
@@ -297,7 +297,7 @@ $cmnts_cnt = DB::table('post_comments')
                         </div>
                     @elseif ($item->video)
                         <video controls class="img-fluid w-100"
-                            src="{{ asset('public/images/posts/video') . '/' . $item->video }}" alt="video">
+                            src="{{ asset('images/posts/video') . '/' . $item->video }}" alt="video">
                         </video>
                     @endif
 
@@ -357,7 +357,7 @@ $cmnts_cnt = DB::table('post_comments')
                                                         <td class="p-0 px-md-3">
                                                             <div class="d-flex align-items-center">
                                                                 <a href="{{ route('user.profile', $cmnt->user_id) }}">
-                                                                    <img src="@if ($cmnt->user_image) {{ asset('public/images/users') . '/' . $cmnt->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
+                                                                    <img src="@if ($cmnt->user_image) {{ asset('images/users') . '/' . $cmnt->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
                                                                         alt="" class="rounded-circle"
                                                                         style="width: 40px; height:40px">
                                                                 </a>
@@ -397,7 +397,7 @@ $cmnts_cnt = DB::table('post_comments')
 
                                         {{-- post comment form --}}
                                         <div class="card-footer d-flex p-2 pt-3 px-4">
-                                            <img src="@if (Auth::user()->user_image) {{ asset('public/images/users') . '/' . Auth::user()->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
+                                            <img src="@if (Auth::user()->user_image) {{ asset('images/users') . '/' . Auth::user()->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
                                                 alt="" class="rounded-circle" style="width: 40px; height: 40px">
                                             <div class="ms-3 w-100">
                                                 <form action="{{ route('comment.store') }}" method="post">
@@ -461,7 +461,7 @@ $cmnts_cnt = DB::table('post_comments')
 
                     {{-- post comment form --}}
                     <div class="card-footer d-flex p-2 px-4">
-                        <img src="@if (Auth::user()->user_image) {{ asset('public/images/users') . '/' . Auth::user()->user_image }} @else {{ asset('public/images/asset_img/user-icon.png') }} @endif"
+                        <img src="@if (Auth::user()->user_image) {{ asset('images/users') . '/' . Auth::user()->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
                             alt="" class="rounded-circle" style="width: 40px; height: 40px">
                         <div class="ms-3 w-100">
                             <form action="{{ route('comment.store') }}" method="post">

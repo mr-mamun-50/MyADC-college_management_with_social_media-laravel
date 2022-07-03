@@ -27,8 +27,9 @@
         </div> --}}
     </div>
 
-    <button class="fixedbutton btn btn-primary btn-rounded square p-0"> <i class="fas fa-comments"></i>
-    </button>
+    <a href="{{ route('messenger') }}" class="fixedbutton btn btn-primary btn-rounded square px-0"><i
+            class="fas fa-comments"></i></a>
+
 
     @include('layouts.includes.scripts')
 </body>
@@ -50,10 +51,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!-- Scripts -->
-    <script src="{{ asset('public/js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body class="font-sans antialiased">

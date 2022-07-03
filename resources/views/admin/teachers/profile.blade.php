@@ -16,11 +16,10 @@ $submenu = 'Profile'; ?>
                         <div class="text-center">
                             @if ($teacher->photo)
                                 <img class="profile-user-img img-fluid img-circle"
-                                    src="{{ asset('public/images/teachers') . '/' . $teacher->photo }}"
-                                    alt="profile picture">
+                                    src="{{ asset('images/teachers') . '/' . $teacher->photo }}" alt="profile picture">
                             @else
                                 <img class="profile-user-img img-fluid img-circle"
-                                    src="{{ asset('public/images/asset_img/user-icon.png') }}" alt="profile picture">
+                                    src="{{ asset('images/asset_img/user-icon.png') }}" alt="profile picture">
                             @endif
                         </div>
 
@@ -117,14 +116,14 @@ $submenu = 'Profile'; ?>
                                                 <tr>
                                                     <td>{{ $teacher->edu_qualification }}</td>
                                                     <td>
-                                                        <a href="{{ asset('public/images/teachers/certificate') . '/' . $teacher->edu_certificate }}"
+                                                        <a href="{{ asset('images/teachers/certificate') . '/' . $teacher->edu_certificate }}"
                                                             class="" target="blank">
                                                             <img class="img-fluid"
-                                                                src="{{ asset('public/images/teachers/certificate' . '/' . $teacher->edu_certificate) }}"
+                                                                src="{{ asset('images/teachers/certificate' . '/' . $teacher->edu_certificate) }}"
                                                                 alt="certificate" style="width: 100px"></a>
                                                     </td>
                                                     <td>
-                                                        <a href="{{ asset('public/images/teachers/cv') . '/' . $teacher->cv }}"
+                                                        <a href="{{ asset('images/teachers/cv') . '/' . $teacher->cv }}"
                                                             class="" target="blank">
                                                             <i class="bi bi-filetype-pdf text-danger"
                                                                 style="font-size: 50px; font-weight:bolder"></i></a>

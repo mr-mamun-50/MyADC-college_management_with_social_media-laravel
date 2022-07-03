@@ -1,7 +1,7 @@
 <aside class="main-sidebar elevation-2 sidebar-light-warning">
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard') }}" class="brand-link navbar-navy">
-        <img src="{{ asset('public/images/logos/icon.png') }}" alt="MyADC" class="brand-image">
+        <img src="{{ asset('images/logos/icon.png') }}" alt="MyADC" class="brand-image">
         <span class="brand-text font-weight-light text-white">MyADC</span>
     </a>
 
@@ -10,7 +10,7 @@
         <!-- Sidebar user panel (optional) -->
         {{-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('public/dist') }}/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="{{ asset('dist') }}/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block">{{ Auth::guard('admin')->user()->name }}</a>

@@ -5,9 +5,9 @@
         <div class="id-shape shadow htmlContent">
             <div class="photo d-flex justify-content-center">
                 @if ($data->photo)
-                    <img src="{{ asset('public/images/students') . '/' . $data->photo }}" alt="">
+                    <img src="{{ asset('images/students') . '/' . $data->photo }}" alt="">
                 @else
-                    <img src="{{ asset('public/images/asset_img/user-icon.png') }}" alt="">
+                    <img src="{{ asset('images/asset_img/user-icon.png') }}" alt="">
                 @endif
             </div>
 

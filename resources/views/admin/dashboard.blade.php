@@ -301,8 +301,7 @@ $submenu = ''; ?>
                                                 pm</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img"
-                                            src="{{ asset('public/dist') }}/img/user1-128x128.jpg"
+                                        <img class="direct-chat-img" src="{{ asset('dist') }}/img/user1-128x128.jpg"
                                             alt="message user image">
                                         <!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
@@ -320,8 +319,7 @@ $submenu = ''; ?>
                                                 pm</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img"
-                                            src="{{ asset('public/dist') }}/img/user3-128x128.jpg"
+                                        <img class="direct-chat-img" src="{{ asset('dist') }}/img/user3-128x128.jpg"
                                             alt="message user image">
                                         <!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
@@ -340,8 +338,7 @@ $submenu = ''; ?>
                                                 pm</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img"
-                                            src="{{ asset('public/dist') }}/img/user1-128x128.jpg"
+                                        <img class="direct-chat-img" src="{{ asset('dist') }}/img/user1-128x128.jpg"
                                             alt="message user image">
                                         <!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
@@ -359,8 +356,7 @@ $submenu = ''; ?>
                                                 pm</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img"
-                                            src="{{ asset('public/dist') }}/img/user3-128x128.jpg"
+                                        <img class="direct-chat-img" src="{{ asset('dist') }}/img/user3-128x128.jpg"
                                             alt="message user image">
                                         <!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
@@ -379,8 +375,7 @@ $submenu = ''; ?>
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="{{ asset('public/dist') }}/img/user1-128x128.jpg"
-                                                    alt="User Avatar">
+                                                    src="{{ asset('dist') }}/img/user1-128x128.jpg" alt="User Avatar">
 
                                                 <div class="contacts-list-info">
                                                     <span class="contacts-list-name">
@@ -397,8 +392,7 @@ $submenu = ''; ?>
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="{{ asset('public/dist') }}/img/user7-128x128.jpg"
-                                                    alt="User Avatar">
+                                                    src="{{ asset('dist') }}/img/user7-128x128.jpg" alt="User Avatar">
 
                                                 <div class="contacts-list-info">
                                                     <span class="contacts-list-name">
@@ -415,8 +409,7 @@ $submenu = ''; ?>
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="{{ asset('public/dist') }}/img/user3-128x128.jpg"
-                                                    alt="User Avatar">
+                                                    src="{{ asset('dist') }}/img/user3-128x128.jpg" alt="User Avatar">
 
                                                 <div class="contacts-list-info">
                                                     <span class="contacts-list-name">
@@ -433,8 +426,7 @@ $submenu = ''; ?>
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="{{ asset('public/dist') }}/img/user5-128x128.jpg"
-                                                    alt="User Avatar">
+                                                    src="{{ asset('dist') }}/img/user5-128x128.jpg" alt="User Avatar">
 
                                                 <div class="contacts-list-info">
                                                     <span class="contacts-list-name">
@@ -451,8 +443,7 @@ $submenu = ''; ?>
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="{{ asset('public/dist') }}/img/user6-128x128.jpg"
-                                                    alt="User Avatar">
+                                                    src="{{ asset('dist') }}/img/user6-128x128.jpg" alt="User Avatar">
 
                                                 <div class="contacts-list-info">
                                                     <span class="contacts-list-name">
@@ -469,8 +460,7 @@ $submenu = ''; ?>
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="{{ asset('public/dist') }}/img/user8-128x128.jpg"
-                                                    alt="User Avatar">
+                                                    src="{{ asset('dist') }}/img/user8-128x128.jpg" alt="User Avatar">
 
                                                 <div class="contacts-list-info">
                                                     <span class="contacts-list-name">
@@ -527,42 +517,42 @@ $submenu = ''; ?>
                             <div class="card-body p-0">
                                 <ul class="users-list clearfix">
                                     <li>
-                                        <img src="{{ asset('public/dist') }}/img/user1-128x128.jpg" alt="User Image">
+                                        <img src="{{ asset('dist') }}/img/user1-128x128.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">Alexander Pierce</a>
                                         <span class="users-list-date">Today</span>
                                     </li>
                                     <li>
-                                        <img src="{{ asset('public/dist') }}/img/user8-128x128.jpg" alt="User Image">
+                                        <img src="{{ asset('dist') }}/img/user8-128x128.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">Norman</a>
                                         <span class="users-list-date">Yesterday</span>
                                     </li>
                                     <li>
-                                        <img src="{{ asset('public/dist') }}/img/user7-128x128.jpg" alt="User Image">
+                                        <img src="{{ asset('dist') }}/img/user7-128x128.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">Jane</a>
                                         <span class="users-list-date">12 Jan</span>
                                     </li>
                                     <li>
-                                        <img src="{{ asset('public/dist') }}/img/user6-128x128.jpg" alt="User Image">
+                                        <img src="{{ asset('dist') }}/img/user6-128x128.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">John</a>
                                         <span class="users-list-date">12 Jan</span>
                                     </li>
                                     <li>
-                                        <img src="{{ asset('public/dist') }}/img/user2-160x160.jpg" alt="User Image">
+                                        <img src="{{ asset('dist') }}/img/user2-160x160.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">Alexander</a>
                                         <span class="users-list-date">13 Jan</span>
                                     </li>
                                     <li>
-                                        <img src="{{ asset('public/dist') }}/img/user5-128x128.jpg" alt="User Image">
+                                        <img src="{{ asset('dist') }}/img/user5-128x128.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">Sarah</a>
                                         <span class="users-list-date">14 Jan</span>
                                     </li>
                                     <li>
-                                        <img src="{{ asset('public/dist') }}/img/user4-128x128.jpg" alt="User Image">
+                                        <img src="{{ asset('dist') }}/img/user4-128x128.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">Nora</a>
                                         <span class="users-list-date">15 Jan</span>
                                     </li>
                                     <li>
-                                        <img src="{{ asset('public/dist') }}/img/user3-128x128.jpg" alt="User Image">
+                                        <img src="{{ asset('dist') }}/img/user3-128x128.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">Nadia</a>
                                         <span class="users-list-date">15 Jan</span>
                                     </li>
@@ -821,7 +811,7 @@ $submenu = ''; ?>
                         <ul class="products-list product-list-in-card pl-2 pr-2">
                             <li class="item">
                                 <div class="product-img">
-                                    <img src="{{ asset('public/dist') }}/img/default-150x150.png" alt="Product Image"
+                                    <img src="{{ asset('dist') }}/img/default-150x150.png" alt="Product Image"
                                         class="img-size-50">
                                 </div>
                                 <div class="product-info">
@@ -835,7 +825,7 @@ $submenu = ''; ?>
                             <!-- /.item -->
                             <li class="item">
                                 <div class="product-img">
-                                    <img src="{{ asset('public/dist') }}/img/default-150x150.png" alt="Product Image"
+                                    <img src="{{ asset('dist') }}/img/default-150x150.png" alt="Product Image"
                                         class="img-size-50">
                                 </div>
                                 <div class="product-info">
@@ -849,7 +839,7 @@ $submenu = ''; ?>
                             <!-- /.item -->
                             <li class="item">
                                 <div class="product-img">
-                                    <img src="{{ asset('public/dist') }}/img/default-150x150.png" alt="Product Image"
+                                    <img src="{{ asset('dist') }}/img/default-150x150.png" alt="Product Image"
                                         class="img-size-50">
                                 </div>
                                 <div class="product-info">
@@ -866,7 +856,7 @@ $submenu = ''; ?>
                             <!-- /.item -->
                             <li class="item">
                                 <div class="product-img">
-                                    <img src="{{ asset('public/dist') }}/img/default-150x150.png" alt="Product Image"
+                                    <img src="{{ asset('dist') }}/img/default-150x150.png" alt="Product Image"
                                         class="img-size-50">
                                 </div>
                                 <div class="product-info">
