@@ -60,6 +60,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('/posts', PostsController::class);
     Route::resource('/posts/like', LikesController::class);
     Route::resource('/posts/comment', CommentsController::class);
+
+    //__Videos route
+    Route::get('/videos', [UserController::class, 'videos'])->name('videos');
+
 });
 
 

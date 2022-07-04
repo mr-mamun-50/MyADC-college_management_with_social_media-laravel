@@ -56,7 +56,7 @@ $cmnts_cnt = DB::table('post_comments')
                             <th class="text-end">{{ $cmnts_cnt }}</th>
                         </tr>
                         <tr>
-                            <td><i class="fas fa-clock text-info me-2"></i> Joined</td>
+                            <td><i class="fas fa-user-clock text-info me-2"></i> Joined</td>
                             <th class="text-end">{{ date('d F, Y', strtotime($user->created_at)) }}</th>
                         </tr>
                     </table>

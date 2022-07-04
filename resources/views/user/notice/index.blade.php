@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Home
+    Notice
 @endsection
 @php
 $menu = 'Notice';
@@ -11,7 +11,6 @@ $menu = 'Notice';
 
         {{-- Left section started --}}
         <div class="d-none d-lg-block col-lg-3 py-md-4 scroll">
-
             <div class="card text-start">
                 <div class="card-body">
                     <h4 class="card-title text-center">Admission</h4>
@@ -22,6 +21,24 @@ $menu = 'Notice';
                         Procedure</a>
                 </div>
             </div>
+
+            {{-- Left side list --}}
+            <div class="list-group list-group-light my-4">
+                <a href="{{ route('notice.view') }}" class="list-group-item list-group-item-action px-3 border-0">
+                    <i class="bi bi-megaphone-fill fa-lg text-primary me-3"></i> Official notices</a>
+
+                <a href="#" class="list-group-item list-group-item-action px-3 border-0">
+                    <i class="fas fa-clock fa-lg text-info me-3"></i> Class routines</a>
+
+                <a href="{{ route('videos') }}" class="list-group-item list-group-item-action px-3 border-0">
+                    <i class="fas fa-video fa-lg text-danger me-3"></i> Videos</a>
+
+                <a href="#" class="list-group-item list-group-item-action px-3 border-0">
+                    <i class="fas fa-chalkboard-teacher fa-lg text-success me-3"></i>Teachers information</a>
+
+                <a href="#" class="list-group-item list-group-item-action px-3 border-0">
+                    <i class="fas fa-user-friends fa-lg text-warning me-3"></i> Student information</a>
+            </div>
         </div>
         {{-- Left section ended --}}
 
@@ -30,7 +47,7 @@ $menu = 'Notice';
         <div class="col-lg-6 col-md-8 py-md-4 pt-4 scroll">
 
             @foreach ($notice as $item)
-                <div class="card mb-4 bordered">
+                <div class="card mb-4 border">
                     <div class="card-header py-3 bg-light">
                         <h5 class="card-title mt-1"><i class="bi bi-app-indicator"></i> {{ $item->subject }}</h5>
                     </div>
