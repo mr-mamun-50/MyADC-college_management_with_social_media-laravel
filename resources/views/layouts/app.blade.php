@@ -27,8 +27,8 @@
         </div> --}}
     </div>
 
-    <a href="{{ route('messenger') }}" class="fixedbutton btn btn-primary btn-rounded square px-0"><i
-            class="fas fa-comments"></i></a>
+    <a href="{{ route('messenger') }}" class="fixedbutton btn btn-primary btn-rounded square px-0"
+        data-mdb-toggle="tooltip" data-mdb-placement="left" title="Messenger"><i class="fas fa-comments"></i></a>
 
 
     @include('layouts.includes.scripts')

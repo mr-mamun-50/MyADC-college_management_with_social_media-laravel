@@ -100,7 +100,7 @@
                 </a>
             </li>
 
-            <li class="nav-item me-3">
+            <li class="nav-item me-3" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Messenger">
                 <a class="nav-link" href="{{ route('messenger') }}">
                     <span><i class="fas fa-comments fa-lg"></i></span>
                 </a>
