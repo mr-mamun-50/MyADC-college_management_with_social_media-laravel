@@ -11,34 +11,8 @@ $menu = 'videos';
 
         {{-- Left section started --}}
         <div class="d-none d-lg-block col-lg-3 py-md-4 scroll">
-            <div class="card text-start">
-                <div class="card-body">
-                    <h4 class="card-title text-center">Admission</h4>
-                    <hr>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, beatae.</p>
 
-                    <a href="{{ route('admission.procedure') }}" class="btn btn-primary bg-gradient btn-block">Admission
-                        Procedure</a>
-                </div>
-            </div>
-
-            {{-- Left side list --}}
-            <div class="list-group list-group-light my-4">
-                <a href="{{ route('notice.view') }}" class="list-group-item list-group-item-action px-3 border-0">
-                    <i class="bi bi-megaphone-fill fa-lg text-primary me-3"></i> Official notices</a>
-
-                <a href="#" class="list-group-item list-group-item-action px-3 border-0">
-                    <i class="fas fa-clock fa-lg text-info me-3"></i> Class routines</a>
-
-                <a href="{{ route('videos') }}" class="list-group-item list-group-item-action px-3 border-0">
-                    <i class="fas fa-video fa-lg text-danger me-3"></i> Videos</a>
-
-                <a href="#" class="list-group-item list-group-item-action px-3 border-0">
-                    <i class="fas fa-chalkboard-teacher fa-lg text-success me-3"></i>Teachers information</a>
-
-                <a href="#" class="list-group-item list-group-item-action px-3 border-0">
-                    <i class="fas fa-user-friends fa-lg text-warning me-3"></i> Student information</a>
-            </div>
+            @include('layouts.includes.leftbar')
         </div>
         {{-- Left section ended --}}
 
@@ -65,7 +39,7 @@ $menu = 'videos';
 
 
 
-                <div class="card mb-4 border">
+                <div class="card mb-4 border" id="{{ 'post' . $item->id }}">
 
 
                     <div class="card-body">
@@ -73,8 +47,7 @@ $menu = 'videos';
 
                         <div class="d-flex">
                             <div class="" style="width: 40%">
-                                <video class="w-100"
-                                    src="{{ asset('images/posts/video' . '/' . $item->video) }}"></video>
+                                <video class="w-100" src="{{ asset('images/posts/video' . '/' . $item->video) }}"></video>
                             </div>
                             <div class="ms-3" style="width: 60%">
 
@@ -115,7 +88,8 @@ $menu = 'videos';
 
                                     {{-- Comment --}}
                                     <a class="btn btn-link text-dark p-1 ms-3" data-bs-toggle="modal"
-                                        data-bs-target="{{ '#postCmnt' . $item->id }}"><i class="far fa-comment"></i>
+                                        data-bs-target="{{ '#postCmnt' . $item->id }}"><i
+                                            class="fa-regular fa-comment"></i>
                                         {{ '(' . $comments->count() . ')' }}</a>
 
                                     {{-- View --}}
@@ -198,8 +172,7 @@ $menu = 'videos';
                                                 <form action="{{ route('comment.store') }}" method="post">
                                                     @csrf
                                                     <div class="d-flex">
-                                                        <input type="hidden" name="post_id"
-                                                            value="{{ $item->id }}">
+                                                        <input type="hidden" name="post_id" value="{{ $item->id }}">
 
                                                         <input type="text"
                                                             class="form-control btn-rounded @error('comment') is-invalid @enderror"
@@ -290,12 +263,8 @@ $menu = 'videos';
         {{-- Right section starts --}}
         <div class="col-lg-3 col-md-4 py-md-4 pt-4 scroll">
 
-            <div class="card text-start">
-                <div class="card-body">
-                    <h4 class="card-title">Title</h4>
-                    <p class="card-text">Body</p>
-                </div>
-            </div>
+            @include('layouts.includes.rightbar')
+
         </div>
         {{-- Right section ended --}}
 

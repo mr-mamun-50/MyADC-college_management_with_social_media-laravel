@@ -64,6 +64,10 @@ Route::group(['middleware' => 'auth'], function() {
     //__Videos route
     Route::get('/videos', [UserController::class, 'videos'])->name('videos');
 
+    //__Routine route
+    Route::get('/routines', [UserController::class, 'routines'])->name('routines');
+    Route::get('/routines/export/{class}/{dept}', [UserController::class, 'export'])->name('routines.export');
+
 });
 
 

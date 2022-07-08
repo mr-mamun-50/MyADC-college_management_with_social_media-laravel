@@ -6,11 +6,15 @@
 $menu = $user->id;
 
 $likes_cnt = DB::table('post_likes')
-    ->where('user_id', $user->id)
+    ->leftjoin('posts', 'post_likes.post_id', '=', 'posts.id')
+    ->where('posts.user_id', $user->id)
     ->count();
+
 $cmnts_cnt = DB::table('post_comments')
-    ->where('user_id', $user->id)
+    ->leftjoin('posts', 'post_comments.post_id', '=', 'posts.id')
+    ->where('posts.user_id', $user->id)
     ->count();
+
 @endphp
 
 
@@ -20,16 +24,22 @@ $cmnts_cnt = DB::table('post_comments')
         <div class="py-md-4 pt-4 col-12 col-lg-10">
 
             <div class="card">
-                <div class="card-body d-flex align-items-center profile_bg text-light">
+                <div class="card-body d-flex align-items-center profile_bg text-light position-relative">
                     <div class="image w-25">
                         <img src="@if ($user->user_image) {{ asset('images/users') . '/' . $user->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
                             alt="" class="rounded-circle w-100">
                     </div>
-                    <div class="ms-5">
-                        <h1 class="card-title">{{ $user->name }}</h1>
+                    <div class="ms-5 w-75">
+                        <h2 class="card-title">{{ $user->name }}</h2>
                         <p>Email: <a href="mailto:{{ $user->email }}" target="blank"
                                 class="text-info">{{ $user->email }}</a></p>
                     </div>
+                    @if ($user->id != Auth::user()->id)
+                        <a href="{{ url('/messenger' . '/' . $user->id) }}"
+                            class="btn btn-light position-absolute bottom-0 end-0 me-2 mb-2"><i
+                                class="bi bi-chat-right-text me-1"></i>
+                            Message</a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -41,7 +51,7 @@ $cmnts_cnt = DB::table('post_comments')
                 <div class="card-header">
                     <h5 class="card-title">Activities</h5>
                 </div>
-                <div class="card-body px-0 px-0 px-lg-4">
+                {{-- <div class="card-body px-0 px-0 px-lg-4">
                     <table class="table">
                         <tr>
                             <td><i class="fas fa-newspaper text-danger me-2"></i> Number of posts</td>
@@ -60,6 +70,27 @@ $cmnts_cnt = DB::table('post_comments')
                             <th class="text-end">{{ date('d F, Y', strtotime($user->created_at)) }}</th>
                         </tr>
                     </table>
+                </div> --}}
+                <div class="card-body">
+                    <ul class="list-group list-group-light">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="fas fa-newspaper fa-lg text-danger me-3"></i> Number of posts</span>
+                            <span class="badge badge-danger rounded-pill">{{ $posts->count() }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="fas fa-thumbs-up fa-lg text-primary me-3"></i> Number of likes earned</span>
+                            <span class="badge badge-primary rounded-pill">{{ $likes_cnt }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="fa-solid fa-comment fa-lg text-success me-3"></i> Number of comments
+                                received</span>
+                            <span class="badge badge-success rounded-pill">{{ $cmnts_cnt }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="fas fa-user-clock fa-lg text-info me-3"></i>Joined</span>
+                            <span class="fw-semibold">{{ date('d F, Y', strtotime($user->created_at)) }}</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -330,7 +361,7 @@ $cmnts_cnt = DB::table('post_comments')
                         {{-- Comment --}}
                         <div class="vr"></div>
                         <a class="btn btn-link w-100 text-dark px-0" data-bs-toggle="modal"
-                            data-bs-target="{{ '#postCmnt' . $item->id }}"><i class="far fa-comment"></i>
+                            data-bs-target="{{ '#postCmnt' . $item->id }}"><i class="fa-regular fa-comment"></i>
                             {{ '(' . $comments->count() . ')' }}</a>
 
                         <!-- Modal for comment view -->

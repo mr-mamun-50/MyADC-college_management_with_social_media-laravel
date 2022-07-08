@@ -40,9 +40,9 @@
                 </a>
             </li>
 
-            <li class="nav-item me-4">
-                <a class="nav-link" href="#">
-                    <span><i class="fas fa-shopping-bag fa-lg"></i></span>
+            <li class="nav-item me-4" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Class routine">
+                <a class="nav-link  @if ($menu == 'Routine') active @endif" href="{{ route('routines') }}">
+                    <span><i class="fas fa-clock fa-lg"></i></span>
                 </a>
             </li>
 
@@ -76,7 +76,7 @@
                     <strong class="d-none d-sm-block ms-1"
                         style="width: 100px; white-space:nowrap; overflow: hidden; text-overflow: ellipsis; ">{{ Auth::user()->name }}</strong>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdownMenuLink">
                     <li>
                         <a class="dropdown-item" href="{{ route('user.profile', Auth::user()->id) }}">Profile</a>
                     </li>
@@ -102,29 +102,10 @@
 
             <li class="nav-item me-3" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Messenger">
                 <a class="nav-link" href="{{ route('messenger') }}">
-                    <span><i class="fas fa-comments fa-lg"></i></span>
+                    <span><i class="bi bi-chat-square-fill fa-lg"></i></span>
                 </a>
             </li>
 
-            {{-- <li class="nav-item dropdown me-3">
-                <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
-                    role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-comments fa-lg"></i>
-
-                    <span class="badge rounded-pill badge-notification bg-danger">6</span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                    <li>
-                        <a class="dropdown-item" href="#">Some news</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">Another news</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
-                </ul>
-            </li> --}}
 
             <li class="nav-item dropdown me-3">
                 <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"

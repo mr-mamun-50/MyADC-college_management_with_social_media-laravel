@@ -40,6 +40,17 @@
         });
     });
 </script>
+<script>
+    $(document).ready(function() {
+        $('.myPeoplesTable').DataTable({
+            "ordering": false,
+            "info": false,
+            "pageLength": 10,
+            "lengthChange": false,
+            "dom": '<"pull-left"f><"pull-right"l>tip'
+        });
+    });
+</script>
 
 <script>
     $('.delete').click(function(event) {

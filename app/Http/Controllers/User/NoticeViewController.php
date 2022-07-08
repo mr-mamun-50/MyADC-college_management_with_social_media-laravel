@@ -14,6 +14,10 @@ class NoticeViewController extends Controller
                 ->orderBy('id', 'DESC')
                 ->paginate(5);
 
-        return view('user.notice.index', compact('notice'));
+        $peoples = DB::table('users')
+                ->inRandomOrder()
+                ->paginate(10);
+
+        return view('user.notice.index', compact('notice', 'peoples'));
     }
 }

@@ -19,7 +19,11 @@ class UserController extends Controller
                 ->orderBy('posts.post_date', 'desc')
                 ->paginate(10);
 
-        return view('home', compact('posts'));
+        $peoples = DB::table('users')
+                ->inRandomOrder()
+                ->paginate(10);
+
+        return view('home', compact('posts', 'peoples'));
     }
 
     //__User profile view
@@ -60,6 +64,32 @@ class UserController extends Controller
                 ->orderBy('posts.post_date', 'desc')
                 ->paginate(10);
 
-        return view('user.videos', compact('videos'));
+        $peoples = DB::table('users')
+                ->inRandomOrder()
+                ->paginate(10);
+
+        return view('user.videos', compact('videos', 'peoples'));
+    }
+
+
+    //__View Routines
+    public function routines() {
+
+        $xi_routine = DB::table('class_routine_xi')->get();
+        $xii_routine = DB::table('class_routine_xii')->get();
+
+        return view('user.routine.routines', compact('xi_routine', 'xii_routine'));
+    }
+    //__Print or download routine
+    public function export($class, $dept)
+    {
+        if($class == 'XI') {
+            $data = DB::table('class_routine_xi')->get();
+        }
+        else {
+            $data = DB::table('class_routine_xii')->get();
+        }
+
+        return view('user.routine.print', compact('data', 'dept', 'class'));
     }
 }
