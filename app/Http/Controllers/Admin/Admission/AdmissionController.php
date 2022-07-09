@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use Auth;
 use Image;
 use File;
+use Mail;
+use App\Mail\AdmissionConfirmMail;
 
 class AdmissionController extends Controller
 {
@@ -131,9 +133,61 @@ class AdmissionController extends Controller
         // dd($data);
         DB::table('new_admitted_students')->insert($data);
 
-        $notify = ['message' => 'Congratulations!!! You are successfully admitted', 'alert-type' => 'success'];
-        return redirect()->url('/')->with($notify);
+        // $notify = ['message' => 'Congratulations!!! You are successfully admitted', 'alert-type' => 'success'];
+        $notify = ['message' => 'Your form successfully submitted, wait for confirmation email', 'alert-type' => 'success'];
+        return redirect()->route('welcome')->with($notify);
     }
+
+
+
+    //__Confirmation
+    public function confirmation($id)
+    {
+        $info = DB::table('new_admitted_students')->where('id', $id)->first();
+        $last_entry = DB::table('students')->where('session', '2022-2023')->orderBy('id', 'desc')->first();
+
+        $roll = substr($last_entry->st_id, -4);
+
+        $data = [
+            'st_id' => sprintf("%d-%04d", date('Y'), ++$roll),
+            'name' => $info->name,
+            'session' => date('Y').'-'.date('Y')+1,
+            'department' => $info->appl_dept,
+            'c_class' => 'XI',
+            'fathers_name' => $info->fathers_name,
+            'mothers_name' => $info->mothers_name,
+            'dob' => $info->dob,
+            'gender' => $info->gender,
+            'phone' => $info->phone,
+            'email' => $info->email,
+            'present_address' => $info->present_address,
+            'permanent_address' => $info->permanent_address,
+            'birth_reg_nid' => $info->birth_reg_nid,
+            'ssc_res' => $info->ssc_res,
+            'ssc_board' => $info->ssc_board,
+            'ssc_dept' => $info->ssc_dept,
+            'ssc_school' => $info->ssc_school,
+            'ssc_year' => $info->ssc_year,
+            'photo' => $info->photo,
+            'ssc_testimonial' => $info->ssc_testimonial,
+            'ssc_marksheet' => $info->ssc_marksheet,
+        ];
+
+        // DB::table('students')->insert($data);
+
+        // DB::table('new_admitted_students')->where('id', $id)->delete();
+        // DB::table('admission_security_code')->where('security_code', $info->security_code)->delete();
+
+        Mail::send('admin.admission.email', $data, function ($message) use ($data) {
+            $message->to($data['email']);
+            $message->subject('Congratulations! Your admission has been confirmed.');
+        });
+
+        $notify = ['message' => 'Admission Confirmed', 'alert-type' => 'success'];
+        return redirect()->route('admission.index')->with($notify);
+    }
+
+
 
     /**
      * Display the specified resource.

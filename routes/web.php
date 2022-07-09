@@ -31,6 +31,8 @@ use App\Http\Controllers\User\Posts\PostsController;
 use App\Http\Controllers\User\Posts\LikesController;
 use App\Http\Controllers\User\Posts\CommentsController;
 
+use App\Mail\AdmissionConfirmMail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,7 +46,7 @@ use App\Http\Controllers\User\Posts\CommentsController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::group(['middleware' => 'auth'], function() {
     //__Home routes
@@ -119,6 +121,7 @@ Route::group(['middleware' => 'admin'], function() {
 
     // __Admission routes
     Route::resource('/admin/admission/security_code', SecurityCodeController::class);
+    Route::get('/admin/admission/confirmation/{id}', [AdmissionController::class, 'confirmation'])->name('admin.admission.confirmation');
 
     // __Download routes
     Route::get('/admin/students/idcard/generate/{id}', [IDcardController::class, 'generate'])->name('admin.students.idcard.generate');
@@ -130,4 +133,8 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/download/tc', [TransCertController::class, 'index'])->name('admin.download.tc');
     Route::post('/admin/download/tc/generate', [TransCertController::class, 'generate'])->name('admin.download.tc.generate');
 
+});
+
+Route::get('/email', function () {
+    return new AdmissionConfirmMail();
 });

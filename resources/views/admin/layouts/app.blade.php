@@ -7,10 +7,10 @@
     <div class="wrapper">
 
         <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
+        {{-- <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__wobble" src="{{ asset('images/logos/icon.png') }}" alt="MyADC" height="70"
                 width="70">
-        </div>
+        </div> --}}
 
         <!-- Navbar -->
         @include('admin.layouts.includes.topnav')

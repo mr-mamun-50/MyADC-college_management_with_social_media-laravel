@@ -1,4 +1,7 @@
 @include('layouts.includes.head')
+@section('title')
+    Admission procedures
+@endsection
 
 <body>
 

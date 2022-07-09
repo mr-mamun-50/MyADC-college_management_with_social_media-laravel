@@ -44,6 +44,7 @@
 <!-- Summernote -->
 <script src="{{ asset('plugins') }}/summernote/summernote-bs4.min.js"></script>
 
+<!-- Sweetalerts -->
 <script>
     $('.delete').click(function(event) {
         var form = $(this).closest("form");
@@ -86,6 +87,30 @@
     });
 </script>
 <script>
+    $('.confirm').click(function(event) {
+        var form = $(this).closest("form");
+        event.preventDefault();
+        var link = $(this).attr("href");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Once done, you can't undo it",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link;
+            }
+        })
+    });
+</script>
+
+<!-- Toastr -->
+<script>
     @if (Session::has('message'))
         var type = "{{ Session::get('alert-type', 'info') }}"
         switch (type) {
@@ -104,6 +129,7 @@
         }
     @endif
 </script>
+
 <!-- Page specific script -->
 <script>
     $(function() {

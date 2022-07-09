@@ -123,6 +123,13 @@ $submenu = 'Manage_admission'; ?>
                                         </table>
                                     </div>
                                 </div>
+
+                                <div class="text-center mt-4">
+                                    <a href="{{ route('admin.admission.confirmation', $student->id) }}"
+                                        class="btn btn-outline-primary btn-block confirm"><i
+                                            class="fas fa-user-plus mr-1"></i>
+                                        Confirm Admission</a>
+                                </div>
                             </div>
                             <!-- /.tab-pane -->
 
