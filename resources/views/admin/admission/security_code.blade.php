@@ -117,7 +117,7 @@ $submenu = 'Security_code'; ?>
                 </table>
             </div>
 
-            <!-- Modal for add student -->
+            <!-- Modal for add sec. code -->
             <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -135,8 +135,8 @@ $submenu = 'Security_code'; ?>
 
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input class="form-control @error('name') is-invalid @enderror" type="text" name="name"
-                                        value="{{ old('name') }}">
+                                    <input class="form-control @error('name') is-invalid @enderror" type="text"
+                                        name="name" value="{{ old('name') }}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -170,8 +170,8 @@ $submenu = 'Security_code'; ?>
 
                                 <div class="form-group">
                                     <label for="security_code">Security code</label>
-                                    <input class="form-control @error('security_code') is-invalid @enderror" type="text"
-                                        name="security_code" value="{{ old('security_code') }}">
+                                    <input class="form-control @error('security_code') is-invalid @enderror"
+                                        type="text" name="security_code" value="{{ old('security_code') }}">
                                     @error('security_code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

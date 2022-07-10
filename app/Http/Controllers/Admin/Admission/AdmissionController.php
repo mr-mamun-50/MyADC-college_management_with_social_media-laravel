@@ -183,7 +183,7 @@ class AdmissionController extends Controller
             $message->subject('Congratulations! Your admission has been confirmed.');
         });
 
-        $notify = ['message' => 'Admission Confirmed', 'alert-type' => 'success'];
+        $notify = ['message' => 'Admission confirmed and confirmation email sent', 'alert-type' => 'success'];
         return redirect()->route('admission.index')->with($notify);
     }
 
