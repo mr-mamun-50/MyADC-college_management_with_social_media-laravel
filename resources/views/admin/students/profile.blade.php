@@ -131,6 +131,15 @@ $submenu = 'Profile'; ?>
                                         </table>
                                     </div>
                                 </div>
+
+                                @if ($student->c_class != 'Old_Student')
+                                    <div class="text-center mt-4">
+                                        <a href="{{ route('students.transfer-class', $student->id) }}"
+                                            class="btn btn-outline-primary btn-block confirm"><i
+                                                class="fas fa-sign-out"></i>
+                                            Transfer to next class</a>
+                                    </div>
+                                @endif
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="edit">

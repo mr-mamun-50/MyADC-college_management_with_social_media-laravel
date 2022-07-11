@@ -18,7 +18,7 @@
             <div class="card-body p-4">
 
 
-                <form action="{{ route('admission.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('student.admission.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
 

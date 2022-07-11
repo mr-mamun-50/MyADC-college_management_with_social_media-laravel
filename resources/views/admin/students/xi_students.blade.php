@@ -54,17 +54,22 @@ $submenu = 'Students_xi'; ?>
                                 <td>{{ $item->phone }}</td>
                                 <td>{{ $item->session }}</td>
 
-                                <td class="d-flex justify-content-center">
+                                <td class="text-center">
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ route('students.show', $item->id) }}"
+                                            class="btn btn-info mr-1 px-1 py-0"><i class="bi bi-person"></i></a>
 
-                                    <a href="{{ route('students.show', $item->id) }}"
-                                        class="btn btn-info mr-1 px-1 py-0"><i class="bi bi-person"></i></a>
+                                        <a href="tel:{{ $item->phone }}" class="btn btn-success mr-1 px-1 py-0"><i
+                                                class="bi bi-telephone"></i></a>
 
-                                    <a href="tel:{{ $item->phone }}" class="btn btn-success mr-1 px-1 py-0"><i
-                                            class="bi bi-telephone"></i></a>
-
-                                    <a href="mailto:{{ $item->email }}" class="btn btn-danger mr-1 px-1 py-0"
-                                        target="blank"><i class="bi bi-envelope"></i></a>
-
+                                        <a href="mailto:{{ $item->email }}" class="btn btn-danger px-1 py-0"
+                                            target="blank"><i class="bi bi-envelope"></i></a>
+                                    </div>
+                                    @if ($item->c_class != 'Old_Student')
+                                        <a href="{{ route('students.transfer-class', $item->id) }}"
+                                            class="confirm btn btn-outline-primary btn-sm mt-2">
+                                            <i class="fas fa-sign-out"></i> Transfer</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

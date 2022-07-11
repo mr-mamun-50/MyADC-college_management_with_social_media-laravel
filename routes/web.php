@@ -31,7 +31,6 @@ use App\Http\Controllers\User\Posts\PostsController;
 use App\Http\Controllers\User\Posts\LikesController;
 use App\Http\Controllers\User\Posts\CommentsController;
 
-use App\Mail\AdmissionConfirmMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,8 +77,8 @@ Route::get('/admission/procedure', function () {
     return view('admission.admission_procedure');
 })->name('admission.procedure');
 
-Route::resource('/admission', AdmissionController::class);
-Route::post('admission/verify', [AdmissionController::class, 'verify'])->name('admission.verify');
+Route::post('/student/admission/store', [AdmissionController::class, 'store'])->name('student.admission.store');
+Route::post('/student/admission/verify', [AdmissionController::class, 'verify'])->name('student.admission.verify');
 
 
 require __DIR__.'/auth.php';
@@ -112,6 +111,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::resource('/admin/students_xii', XIIStudentsController::class);
     Route::resource('/admin/students_old', OldStudentsController::class);
     Route::resource('/admin/hsc_examinee', HscExamineeController::class);
+    Route::get('/admin/students/transfer-class/{id}', [AllStudentsController::class, 'transfer_class'])->name('students.transfer-class');
 
     // __Teacher routes
     Route::resource('/admin/teachers', TeachersController::class);
@@ -120,6 +120,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/teachers-business', [DeptTeachersController::class, 'business'])->name('admin.teachers-business');
 
     // __Admission routes
+    Route::resource('/admin/student/admission', AdmissionController::class);
     Route::resource('/admin/admission/security_code', SecurityCodeController::class);
     Route::get('/admin/admission/confirmation/{id}', [AdmissionController::class, 'confirmation'])->name('admin.admission.confirmation');
 

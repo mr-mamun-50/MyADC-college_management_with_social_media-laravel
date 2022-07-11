@@ -275,4 +275,27 @@ class AllStudentsController extends Controller
         $notify = ['message'=>'Student successfully removed!', 'alert-type'=>'success'];
         return redirect()->route('students.index')->with($notify);
     }
+
+    //__Class transfer
+    public function transfer_class($id)
+    {
+        $student = DB::table('students')->where('id', $id)->first();
+        $notify = ['message'=>'Student successfully transferred!', 'alert-type'=>'success'];
+
+        if($student->c_class == 'XI') {
+            $data['c_class'] = 'XII';
+            DB::table('students')->where('id', $id)->update($data);
+            return redirect()->route('students_xi.index')->with($notify);
+        }
+        else if($student->c_class == 'XII') {
+            $data['c_class'] = 'HSC_Examinee';
+            DB::table('students')->where('id', $id)->update($data);
+            return redirect()->route('students_xii.index')->with($notify);
+        }
+        else if($student->c_class == 'HSC_Examinee') {
+            $data['c_class'] = 'Old_Student';
+            DB::table('students')->where('id', $id)->update($data);
+            return redirect()->route('hsc_examinee.index')->with($notify);
+        }
+    }
 }
