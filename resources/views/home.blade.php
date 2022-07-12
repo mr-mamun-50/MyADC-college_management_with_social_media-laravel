@@ -385,7 +385,7 @@ $menu = 'Home';
                         {{-- Share --}}
                         <div class="vr"></div>
                         <a href="" class="btn btn-link w-100 text-dark px-0" data-bs-toggle="modal"
-                            data-bs-target="{{ '#postLink' . $item->id }}"><i class="fas fa-share-alt"></i> </a>
+                            data-bs-target="{{ '#postLink' . $item->id }}"><i class="far fa-share-square"></i></a>
 
                         <!-- Modal for copy link -->
                         <div class="modal fade" id="{{ 'postLink' . $item->id }}" tabindex="-1"

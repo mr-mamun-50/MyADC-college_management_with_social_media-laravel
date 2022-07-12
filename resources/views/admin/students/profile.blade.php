@@ -135,9 +135,8 @@ $submenu = 'Profile'; ?>
                                 @if ($student->c_class != 'Old_Student')
                                     <div class="text-center mt-4">
                                         <a href="{{ route('students.transfer-class', $student->id) }}"
-                                            class="btn btn-outline-primary btn-block confirm"><i
-                                                class="fas fa-sign-out"></i>
-                                            Transfer to next class</a>
+                                            class="btn btn-outline-primary btn-block confirm">
+                                            Transfer to next class <i class="far fa-arrow-alt-circle-right ml-1"></i></a>
                                     </div>
                                 @endif
                             </div>

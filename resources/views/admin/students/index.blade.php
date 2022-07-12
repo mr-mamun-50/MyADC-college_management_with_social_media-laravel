@@ -68,7 +68,7 @@ $submenu = 'Students'; ?>
                                     @if ($item->c_class != 'Old_Student')
                                         <a href="{{ route('students.transfer-class', $item->id) }}"
                                             class="confirm btn btn-outline-primary btn-sm mt-2">
-                                            <i class="fas fa-sign-out"></i> Transfer</a>
+                                            Transfer <i class="far fa-arrow-alt-circle-right ml-1"></i></a>
                                     @endif
                                 </td>
                             </tr>
