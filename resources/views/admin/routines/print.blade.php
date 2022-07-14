@@ -15,7 +15,7 @@
             <h5 class="my-4">Golapgonj, Sylhet</h5>
         </div>
         <div class="text-right" style="width: 150px;">
-            <button onclick="window.print()" class="btn btn-primary" id="print_btn"><i class="fas fa-print"></i>
+            <button onclick="window.print()" class="btn btn-primary print_btn"><i class="fas fa-print"></i>
                 Print</button>
         </div>
 

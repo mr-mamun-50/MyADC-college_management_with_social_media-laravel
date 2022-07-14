@@ -29,6 +29,7 @@ $submenu = 'Students_xi'; ?>
                             <th>Parents name</th>
                             <th>Phone</th>
                             <th>Session</th>
+                            <th>Exam</th>
                             <th>More</th>
                         </tr>
                     </thead>
@@ -53,6 +54,34 @@ $submenu = 'Students_xi'; ?>
                                 </td>
                                 <td>{{ $item->phone }}</td>
                                 <td>{{ $item->session }}</td>
+
+                                <td class="text-center">
+                                    <span class="badge badge-pill badge-warning">Pending</span> <br>
+
+                                    <button type="button" class="btn btn-outline-primary btn-sm mt-2" data-toggle="modal"
+                                        data-target="#{{ $item->department . $item->id . 'modal' }}">
+                                        <i class="fa fa-plus-circle"></i> Exam
+                                    </button>
+
+                                    @php
+                                        $mt_mark = DB::table('model_test_exam')
+                                            ->where('c_class', 'XI')
+                                            ->where('st_id', $item->id)
+                                            ->first();
+                                        $hy_mark = DB::table('half_yearly_exam')
+                                            ->where('c_class', 'XI')
+                                            ->where('st_id', $item->id)
+                                            ->first();
+                                        $fnl_mark = DB::table('final_exam')
+                                            ->where('c_class', 'XI')
+                                            ->where('st_id', $item->id)
+                                            ->first();
+                                    @endphp
+
+                                    @include('admin.students.exam_modals.science')
+                                    @include('admin.students.exam_modals.humanities')
+                                    @include('admin.students.exam_modals.business')
+                                </td>
 
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">

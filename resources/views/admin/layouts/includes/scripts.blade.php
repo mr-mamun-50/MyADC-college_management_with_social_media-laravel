@@ -2,6 +2,12 @@
 <script src="{{ asset('plugins') }}/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="{{ asset('plugins') }}/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+</script>
 <!-- overlayScrollbars -->
 <script src="{{ asset('plugins') }}/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
@@ -165,4 +171,41 @@
             theme: "monokai"
         });
     })
+</script>
+
+
+<script>
+    $(document).ready(function() {
+
+        $(".tabs").click(function() {
+
+            $(".tabs").removeClass("active");
+            $(".tabs h6").removeClass("font-weight-bold");
+            $(".tabs h6").addClass("text-muted");
+            $(this).children("h6").removeClass("text-muted");
+            $(this).children("h6").addClass("font-weight-bold");
+            $(this).addClass("active");
+
+            current_fs = $(".active");
+
+            next_fs = $(this).attr('id');
+            next_fs = "#" + next_fs + "1";
+
+            $("fieldset").removeClass("show");
+            $(next_fs).addClass("show");
+
+            current_fs.animate({}, {
+                step: function() {
+                    current_fs.css({
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    next_fs.css({
+                        'display': 'block'
+                    });
+                }
+            });
+        });
+
+    });
 </script>

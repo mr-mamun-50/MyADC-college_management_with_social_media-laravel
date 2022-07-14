@@ -15,6 +15,10 @@ use App\Http\Controllers\Admin\Students\XIIStudentsController;
 use App\Http\Controllers\Admin\Students\OldStudentsController;
 use App\Http\Controllers\Admin\Students\HscExamineeController;
 
+use App\Http\Controllers\Admin\Exam\ModelTestController;
+use App\Http\Controllers\Admin\Exam\HalfYearlyController;
+use App\Http\Controllers\Admin\Exam\FinalExamController;
+
 use App\Http\Controllers\Admin\Teachers\TeachersController;
 use App\Http\Controllers\Admin\Teachers\DeptTeachersController;
 
@@ -47,7 +51,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth', 'middleware' => 'verified'], function() {
     //__Home routes
     Route::get('/home', [UserController::class, 'index'])->name('home');
 
@@ -113,6 +117,11 @@ Route::group(['middleware' => 'admin'], function() {
     Route::resource('/admin/hsc_examinee', HscExamineeController::class);
     Route::get('/admin/students/transfer-class/{id}', [AllStudentsController::class, 'transfer_class'])->name('students.transfer-class');
 
+    //__Exam routes
+    Route::post('/admin/students_xi/exam/mt/update/{id}', [ModelTestController::class, 'update_mt_xi'])->name('admin.students_xi.exam.mt.update');
+    Route::post('/admin/students_xi/exam/hy/update/{id}', [HalfYearlyController::class, 'update_hy_xi'])->name('admin.students_xi.exam.hy.update');
+    Route::post('/admin/students_xi/exam/fnl/update/{id}', [FinalExamController::class, 'update_fnl_xi'])->name('admin.students_xi.exam.fnl.update');
+
     // __Teacher routes
     Route::resource('/admin/teachers', TeachersController::class);
     Route::get('/admin/teachers-science', [DeptTeachersController::class, 'science'])->name('admin.teachers-science');
@@ -134,8 +143,4 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/download/tc', [TransCertController::class, 'index'])->name('admin.download.tc');
     Route::post('/admin/download/tc/generate', [TransCertController::class, 'generate'])->name('admin.download.tc.generate');
 
-});
-
-Route::get('/email', function () {
-    return new AdmissionConfirmMail();
 });
