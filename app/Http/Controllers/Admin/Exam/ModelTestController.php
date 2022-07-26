@@ -8,7 +8,7 @@ use DB;
 
 class ModelTestController extends Controller
 {
-    public function update_mt_xi(Request $request, $id) {
+    public function update_mt(Request $request, $c_class, $id) {
 
         $data = [
             'bangla1' => $request->bangla1,
@@ -40,13 +40,13 @@ class ModelTestController extends Controller
             'history2' => $request->history2,
         ];
 
-        $isInfo = DB::table('model_test_exam')->where('c_class', 'XI')->where('st_id', $id)->first();
+        $isInfo = DB::table('model_test_exam')->where('c_class', $c_class)->where('st_id', $id)->first();
 
         if($isInfo != null) {
-            DB::table('model_test_exam')->where('c_class', 'XI')->where('st_id', $id)->update($data);
+            DB::table('model_test_exam')->where('c_class', $c_class)->where('st_id', $id)->update($data);
         }
         else {
-            $data['c_class'] = 'XI';
+            $data['c_class'] = $c_class;
             $data['st_id'] = $id;
             DB::table('model_test_exam')->insert($data);
         }

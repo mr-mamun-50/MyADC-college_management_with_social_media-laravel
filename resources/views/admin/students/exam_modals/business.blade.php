@@ -28,7 +28,9 @@
             <div class="modal-body">
                 <fieldset class="show" id="{{ 'mt_bus' . $item->id . '1' }}">
 
-                    <form action="{{ route('admin.students_xi.exam.mt.update', $item->id) }}" method="POST">
+                    <form
+                        action="{{ route('admin.students.exam.mt.update', ['class' => $item->c_class, 'id' => $item->id]) }}"
+                        method="POST">
                         @csrf
                         <div class="row">
                             <div class="form-group col">
@@ -127,7 +129,9 @@
 
                 <fieldset id="{{ 'hy_bus' . $item->id . '1' }}">
 
-                    <form action="{{ route('admin.students_xi.exam.hy.update', $item->id) }}" method="POST">
+                    <form
+                        action="{{ route('admin.students.exam.hy.update', ['class' => $item->c_class, 'id' => $item->id]) }}"
+                        method="POST">
                         @csrf
                         <div class="row">
                             <div class="form-group col">
@@ -226,7 +230,9 @@
 
                 <fieldset id="{{ 'fnl_bus' . $item->id . '1' }}">
 
-                    <form action="{{ route('admin.students_xi.exam.fnl.update', $item->id) }}" method="POST">
+                    <form
+                        action="{{ route('admin.students.exam.fnl.update', ['class' => $item->c_class, 'id' => $item->id]) }}"
+                        method="POST">
                         @csrf
                         <div class="row">
                             <div class="form-group col">

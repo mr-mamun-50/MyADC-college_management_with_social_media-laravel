@@ -119,3 +119,12 @@ a:hover {
         font-size: 12px;
     }
 }
+
+.nav-item .nav-treeview .active {
+    background: #e5e5e5;
+    color: #007bff;
+}
+
+.examTable th {
+    white-space: nowrap;
+}

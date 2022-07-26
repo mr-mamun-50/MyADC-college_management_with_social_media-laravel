@@ -65,11 +65,11 @@ $submenu = 'Students'; ?>
                                         <a href="mailto:{{ $item->email }}" class="btn btn-danger px-1 py-0"
                                             target="blank"><i class="bi bi-envelope"></i></a>
                                     </div>
-                                    @if ($item->c_class != 'Old_Student')
+                                    {{-- @if ($item->c_class != 'Old_Student')
                                         <a href="{{ route('students.transfer-class', $item->id) }}"
                                             class="confirm btn btn-outline-primary btn-sm mt-2">
                                             Transfer <i class="far fa-arrow-alt-circle-right ml-1"></i></a>
-                                    @endif
+                                    @endif --}}
                                 </td>
                             </tr>
                         @endforeach

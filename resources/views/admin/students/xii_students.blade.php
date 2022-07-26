@@ -55,6 +55,34 @@ $submenu = 'Students_xii'; ?>
                                 <td>{{ $item->session }}</td>
 
                                 <td class="text-center">
+                                    <span class="badge badge-pill badge-warning">Pending</span> <br>
+
+                                    <button type="button" class="btn btn-outline-primary btn-sm mt-2" data-toggle="modal"
+                                        data-target="#{{ $item->department . $item->id . 'modal' }}">
+                                        <i class="fa fa-plus-circle"></i> Exam
+                                    </button>
+
+                                    @php
+                                        $mt_mark = DB::table('model_test_exam')
+                                            ->where('c_class', 'XII')
+                                            ->where('st_id', $item->id)
+                                            ->first();
+                                        $hy_mark = DB::table('half_yearly_exam')
+                                            ->where('c_class', 'XII')
+                                            ->where('st_id', $item->id)
+                                            ->first();
+                                        $fnl_mark = DB::table('final_exam')
+                                            ->where('c_class', 'XII')
+                                            ->where('st_id', $item->id)
+                                            ->first();
+                                    @endphp
+
+                                    @include('admin.students.exam_modals.science')
+                                    @include('admin.students.exam_modals.humanities')
+                                    @include('admin.students.exam_modals.business')
+                                </td>
+
+                                <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('students.show', $item->id) }}"
                                             class="btn btn-info mr-1 px-1 py-0"><i class="bi bi-person"></i></a>

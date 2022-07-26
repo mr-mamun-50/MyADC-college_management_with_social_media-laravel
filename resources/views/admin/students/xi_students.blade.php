@@ -56,7 +56,7 @@ $submenu = 'Students_xi'; ?>
                                 <td>{{ $item->session }}</td>
 
                                 <td class="text-center">
-                                    <span class="badge badge-pill badge-warning">Pending</span> <br>
+                                    <span class="badge badge-pill badge-warning mt-1">Pending</span> <br>
 
                                     <button type="button" class="btn btn-outline-primary btn-sm mt-2" data-toggle="modal"
                                         data-target="#{{ $item->department . $item->id . 'modal' }}">
