@@ -3,7 +3,7 @@
     Old Students
 @endsection
 <?php $menu = 'Students';
-$submenu = 'Students_old'; ?>
+$submenu = 'Old_Student'; ?>
 
 @section('content')
     <div class="container-fluid">

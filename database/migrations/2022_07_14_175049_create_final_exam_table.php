@@ -44,6 +44,8 @@ return new class extends Migration
             $table->string('civics2')->nullable();
             $table->string('history1')->nullable();
             $table->string('history2')->nullable();
+            $table->string('gpa')->nullable();
+            $table->string('grade')->nullable();
             $table->timestamps();
             $table->foreign('st_id')->references('id')->on('students')->onDelete('cascade');
         });

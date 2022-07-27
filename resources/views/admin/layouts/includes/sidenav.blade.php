@@ -83,28 +83,28 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('students_xi.index') }}"
-                                class="nav-link @if ($submenu == 'Students_xi') active @endif">
+                                class="nav-link @if ($submenu == 'XI') active @endif">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>XI</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('students_xii.index') }}"
-                                class="nav-link @if ($submenu == 'Students_xii') active @endif">
+                                class="nav-link @if ($submenu == 'XII') active @endif">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>XII</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('hsc_examinee.index') }}"
-                                class="nav-link @if ($submenu == 'Students_HSC') active @endif">
+                                class="nav-link @if ($submenu == 'HSC_Examinee') active @endif">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>HSC examinee</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('students_old.index') }}"
-                                class="nav-link @if ($submenu == 'Students_old') active @endif">
+                                class="nav-link @if ($submenu == 'Old_Student') active @endif">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>Old students</p>
                             </a>
@@ -125,13 +125,13 @@
                                 <p>All teachers</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ route('students_xi.index') }}"
                                 class="nav-link @if ($submenu == 'Students_xi') active @endif">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>Administrators</p>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a href="{{ route('admin.teachers-science') }}"
                                 class="nav-link @if ($submenu == 'Science') active @endif">

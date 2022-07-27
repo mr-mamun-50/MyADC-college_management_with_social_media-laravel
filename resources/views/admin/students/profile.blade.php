@@ -3,7 +3,7 @@
     {{ $item->name }}
 @endsection
 <?php $menu = 'Students';
-$submenu = 'Profile'; ?>
+$submenu = $item->c_class; ?>
 
 @section('content')
     <div class="container-fluid">
@@ -54,7 +54,7 @@ $submenu = 'Profile'; ?>
             <!-- /.col -->
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header attachment-block p-3">
+                    <div class="card-header attachment-block p-3 d-flex justify-content-between">
                         <ul class="nav nav-pills">
                             <li class="nav-item"><a class="nav-link active" href="#information" data-toggle="tab"><i
                                         class="bi bi-info-square"></i> Details</a></li>
@@ -62,7 +62,16 @@ $submenu = 'Profile'; ?>
                                         class="bi bi-pencil-square"></i> Edit</a>
                             </li>
                         </ul>
+
+                        @if ($item->c_class == 'XI' || $item->c_class == 'XII')
+                            <button type="button" class="btn btn-primary ml-auto" data-toggle="modal"
+                                data-target="#{{ $item->department . $item->id . 'modal' }}">
+                                <i class="fas fa-hourglass-half"></i> Exam
+                            </button>
+                        @endif
+
                     </div><!-- /.card-header -->
+
                     <div class="card-body pt-1">
                         <div class="tab-content">
                             <div class="active tab-pane" id="information">
@@ -106,6 +115,8 @@ $submenu = 'Profile'; ?>
                                             <thead>
                                                 <tr>
                                                     <th>Exam</th>
+                                                    <th>Grade</th>
+                                                    <th>GPA</th>
                                                     <th>Bangla I</th>
                                                     <th>Bangla II</th>
                                                     <th>English I</th>
@@ -145,6 +156,8 @@ $submenu = 'Profile'; ?>
                                                 @if ($xi_marks_mt != null)
                                                     <tr>
                                                         <th>Model test</th>
+                                                        <td class="bg-warning">{{ $xi_marks_mt->grade }}</td>
+                                                        <td class="bg-info">{{ $xi_marks_mt->gpa }}</td>
                                                         <td>{{ $xi_marks_mt->bangla1 }}</td>
                                                         <td>{{ $xi_marks_mt->bangla2 }}</td>
                                                         <td>{{ $xi_marks_mt->english1 }}</td>
@@ -184,6 +197,8 @@ $submenu = 'Profile'; ?>
                                                 @if ($xi_marks_hy != null)
                                                     <tr>
                                                         <th>Half yearly</th>
+                                                        <td class="bg-warning">{{ $xi_marks_hy->grade }}</td>
+                                                        <td class="bg-info">{{ $xi_marks_hy->gpa }}</td>
                                                         <td>{{ $xi_marks_hy->bangla1 }}</td>
                                                         <td>{{ $xi_marks_hy->bangla2 }}</td>
                                                         <td>{{ $xi_marks_hy->english1 }}</td>
@@ -223,6 +238,8 @@ $submenu = 'Profile'; ?>
                                                 @if ($xi_marks_fnl != null)
                                                     <tr>
                                                         <th>Final</th>
+                                                        <td class="bg-warning">{{ $xi_marks_fnl->grade }}</td>
+                                                        <td class="bg-info">{{ $xi_marks_fnl->gpa }}</td>
                                                         <td>{{ $xi_marks_fnl->bangla1 }}</td>
                                                         <td>{{ $xi_marks_fnl->bangla2 }}</td>
                                                         <td>{{ $xi_marks_fnl->english1 }}</td>
@@ -273,6 +290,8 @@ $submenu = 'Profile'; ?>
                                             <thead>
                                                 <tr>
                                                     <th>Exam</th>
+                                                    <th>Grade</th>
+                                                    <th>GPA</th>
                                                     <th>Bangla I</th>
                                                     <th>Bangla II</th>
                                                     <th>English I</th>
@@ -312,6 +331,8 @@ $submenu = 'Profile'; ?>
                                                 @if ($xii_marks_mt != null)
                                                     <tr>
                                                         <th>Model test</th>
+                                                        <td class="bg-warning">{{ $xii_marks_mt->grade }}</td>
+                                                        <td class="bg-info">{{ $xii_marks_mt->gpa }}</td>
                                                         <td>{{ $xii_marks_mt->bangla1 }}</td>
                                                         <td>{{ $xii_marks_mt->bangla2 }}</td>
                                                         <td>{{ $xii_marks_mt->english1 }}</td>
@@ -351,6 +372,8 @@ $submenu = 'Profile'; ?>
                                                 @if ($xii_marks_hy != null)
                                                     <tr>
                                                         <th>Half yearly</th>
+                                                        <td class="bg-warning">{{ $xii_marks_hy->grade }}</td>
+                                                        <td class="bg-info">{{ $xii_marks_hy->gpa }}</td>
                                                         <td>{{ $xii_marks_hy->bangla1 }}</td>
                                                         <td>{{ $xii_marks_hy->bangla2 }}</td>
                                                         <td>{{ $xii_marks_hy->english1 }}</td>
@@ -390,6 +413,8 @@ $submenu = 'Profile'; ?>
                                                 @if ($xii_marks_fnl != null)
                                                     <tr>
                                                         <th>Final</th>
+                                                        <td class="bg-warning">{{ $xii_marks_fnl->grade }}</td>
+                                                        <td class="bg-info">{{ $xii_marks_fnl->gpa }}</td>
                                                         <td>{{ $xii_marks_fnl->bangla1 }}</td>
                                                         <td>{{ $xii_marks_fnl->bangla2 }}</td>
                                                         <td>{{ $xii_marks_fnl->english1 }}</td>
@@ -789,4 +814,25 @@ $submenu = 'Profile'; ?>
         </div>
         <!-- /.row -->
     </div><!-- /.container-fluid -->
+
+
+    @php
+    $mt_mark = DB::table('model_test_exam')
+        ->where('c_class', 'XI')
+        ->where('st_id', $item->id)
+        ->first();
+    $hy_mark = DB::table('half_yearly_exam')
+        ->where('c_class', 'XI')
+        ->where('st_id', $item->id)
+        ->first();
+    $fnl_mark = DB::table('final_exam')
+        ->where('c_class', 'XI')
+        ->where('st_id', $item->id)
+        ->first();
+    @endphp
+
+    @include('admin.students.exam_modals.science')
+    @include('admin.students.exam_modals.humanities')
+    @include('admin.students.exam_modals.business')
+
 @endsection

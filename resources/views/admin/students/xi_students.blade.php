@@ -3,7 +3,7 @@
     Students
 @endsection
 <?php $menu = 'Students';
-$submenu = 'Students_xi'; ?>
+$submenu = 'XI'; ?>
 
 @section('content')
     <div class="container-fluid">
@@ -56,12 +56,6 @@ $submenu = 'Students_xi'; ?>
                                 <td>{{ $item->session }}</td>
 
                                 <td class="text-center">
-                                    <span class="badge badge-pill badge-warning mt-1">Pending</span> <br>
-
-                                    <button type="button" class="btn btn-outline-primary btn-sm mt-2" data-toggle="modal"
-                                        data-target="#{{ $item->department . $item->id . 'modal' }}">
-                                        <i class="fa fa-plus-circle"></i> Exam
-                                    </button>
 
                                     @php
                                         $mt_mark = DB::table('model_test_exam')
@@ -76,7 +70,30 @@ $submenu = 'Students_xi'; ?>
                                             ->where('c_class', 'XI')
                                             ->where('st_id', $item->id)
                                             ->first();
+
+                                        $passStatus = 0;
+                                        if ($mt_mark && $hy_mark && $fnl_mark) {
+                                            if ($mt_mark->gpa >= 1 && $hy_mark->gpa >= 1 && $fnl_mark->gpa >= 1) {
+                                                $passStatus = 'pass';
+                                            }
+                                        } elseif (!$mt_mark || !$hy_mark || !$fnl_mark) {
+                                            $passStatus = 'pending';
+                                        }
                                     @endphp
+
+                                    @if ($passStatus == 'pass')
+                                        <span class="badge badge-pill badge-success mt-1">Passed</span> <br>
+                                    @elseif ($passStatus == 'pending')
+                                        <span class="badge badge-pill badge-warning mt-1">Pending</span> <br>
+                                    @else
+                                        <span class="badge badge-pill badge-danger mt-1">Failed</span> <br>
+                                    @endif
+
+                                    <button type="button" class="btn btn-outline-primary btn-sm mt-2" data-toggle="modal"
+                                        data-target="#{{ $item->department . $item->id . 'modal' }}">
+                                        <i class="fas fa-hourglass-half"></i> Exam
+                                    </button>
+
 
                                     @include('admin.students.exam_modals.science')
                                     @include('admin.students.exam_modals.humanities')

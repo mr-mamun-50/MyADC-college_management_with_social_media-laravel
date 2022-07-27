@@ -3,7 +3,7 @@
     {{ $teacher->name }}
 @endsection
 <?php $menu = 'Teachers';
-$submenu = 'Profile'; ?>
+$submenu = $teacher->department; ?>
 
 @section('content')
     <div class="container-fluid">

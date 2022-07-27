@@ -3,7 +3,7 @@
     HSC Examinee Students
 @endsection
 <?php $menu = 'Students';
-$submenu = 'Students_HSC'; ?>
+$submenu = 'HSC_Examinee'; ?>
 
 @section('content')
     <div class="container-fluid">
