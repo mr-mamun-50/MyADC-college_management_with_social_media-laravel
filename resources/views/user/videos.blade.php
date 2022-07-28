@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Videos
+    Videos |
 @endsection
 @php
 $menu = 'videos';
@@ -126,8 +126,7 @@ $menu = 'videos';
                                                         <tr>
                                                             <td class="p-0 px-md-3">
                                                                 <div class="d-flex align-items-center">
-                                                                    <a
-                                                                        href="{{ route('user.profile', $cmnt->user_id) }}">
+                                                                    <a href="{{ route('user.profile', $cmnt->user_id) }}">
                                                                         <img src="@if ($cmnt->user_image) {{ asset('images/users') . '/' . $cmnt->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
                                                                             alt="" class="rounded-circle"
                                                                             style="width: 40px; height:40px">

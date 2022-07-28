@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Home
+    Home |
 @endsection
 @php
 $menu = 'Home';
@@ -166,8 +166,8 @@ $menu = 'Home';
 
 
                                 <!-- Edit post Modal -->
-                                <div class="modal fade" id="{{ 'EditPostModal' . $item->id }}"
-                                    data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                <div class="modal fade" id="{{ 'EditPostModal' . $item->id }}" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1"
                                     aria-labelledby="{{ 'EditPostModal' . $item->id . 'Label' }}" aria-hidden="true">
 
                                     <div class="modal-dialog  modal-dialog-centered">
@@ -319,8 +319,7 @@ $menu = 'Home';
                                                         <tr>
                                                             <td class="p-0 px-md-3">
                                                                 <div class="d-flex align-items-center">
-                                                                    <a
-                                                                        href="{{ route('user.profile', $cmnt->user_id) }}">
+                                                                    <a href="{{ route('user.profile', $cmnt->user_id) }}">
                                                                         <img src="@if ($cmnt->user_image) {{ asset('images/users') . '/' . $cmnt->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
                                                                             alt="" class="rounded-circle"
                                                                             style="width: 40px; height:40px">

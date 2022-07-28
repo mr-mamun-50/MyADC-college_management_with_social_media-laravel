@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Routine
+    Routine |
 @endsection
 @php
 $menu = 'Routine';

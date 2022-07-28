@@ -818,15 +818,15 @@ $submenu = $item->c_class; ?>
 
     @php
     $mt_mark = DB::table('model_test_exam')
-        ->where('c_class', 'XI')
+        ->where('c_class', $item->c_class)
         ->where('st_id', $item->id)
         ->first();
     $hy_mark = DB::table('half_yearly_exam')
-        ->where('c_class', 'XI')
+        ->where('c_class', $item->c_class)
         ->where('st_id', $item->id)
         ->first();
     $fnl_mark = DB::table('final_exam')
-        ->where('c_class', 'XI')
+        ->where('c_class', $item->c_class)
         ->where('st_id', $item->id)
         ->first();
     @endphp

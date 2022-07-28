@@ -29,6 +29,7 @@ $submenu = 'XII'; ?>
                             <th>Parents name</th>
                             <th>Phone</th>
                             <th>Session</th>
+                            <th>Exam</th>
                             <th>More</th>
                         </tr>
                     </thead>

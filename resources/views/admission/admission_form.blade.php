@@ -1,12 +1,12 @@
 @include('layouts.includes.head')
 @section('title')
-    Admission form
+    Admission form |
 @endsection
 
 <body>
 
     <div class="container">
-        <div class="shadow-lg mb-5 bg-white">
+        <div class="shadow-lg mb-5 bg-white rounded-5">
 
             <div class="mt-3 bg-grad-primary card-header d-flex justify-content-between p-0">
                 <a class="btn text-white shadow-0" href="{{ url('/') }}"><img class=""

@@ -4,9 +4,9 @@
         <!-- Left elements -->
         <div class="d-flex col-lg-4">
             <!-- Brand -->
-            <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="{{ url('/') }}">
-                <img src="{{ asset('images/logos/logo.png') }}" height="30" alt="MyADC Logo" loading="lazy"
-                    style="margin-top: 2px;" />
+            <a class="navbar-brand mx-2 mb-1 d-flex align-items-center shadow-sm rounded-8 p-0"
+                href="{{ url('/') }}">
+                <img class="m-0" src="{{ asset('images/logos/icon.png') }}" height="40" alt="MyADC" />
             </a>
 
             <!-- Search form -->
@@ -28,8 +28,7 @@
             </li>
 
             <li class="nav-item me-4" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Notice">
-                <a class="nav-link  @if ($menu == 'Notice') active @endif"
-                    href="{{ route('notice.view') }}">
+                <a class="nav-link  @if ($menu == 'Notice') active @endif" href="{{ route('notice.view') }}">
                     <span><i class="fas fa-bullhorn fa-lg"></i></span>
                 </a>
             </li>

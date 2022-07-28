@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Home
+    {{ $user->name }} |
 @endsection
 @php
 $menu = $user->id;
@@ -99,72 +99,76 @@ $cmnts_cnt = DB::table('post_comments')
         <div class="col-md-7 col-lg-6">
 
             {{-- whats on your mind --}}
-            <div class="card text-start">
-                <div class="card-body p-3">
+            @if (Auth::user()->id == $user->id)
+                <div class="card text-start mb-4">
+                    <div class="card-body p-3">
 
-                    <div class="d-flex">
-                        <img src="@if (Auth::user()->user_image) {{ asset('images/users') . '/' . Auth::user()->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
-                            alt="" class="rounded-circle" style="width: 50px">
-                        <div class="w-100 ms-2"><a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                class="btn btn-light btn-block shadow-0 btn-rounded text-start d-flex align-items-center post_btn">
-                                Whats on your mind, {{ Auth::user()->name }}?</a></div>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-around">
-                        <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                            class="btn btn-link text-dark w-50 shadow-0 py-1"><i class="fas fa-image text-success"></i>
-                            Photo</a>
-                        <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                            class="btn btn-link text-dark w-50 shadow-0 py-1"><i class="fas fa-video text-danger"></i>
-                            Video</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Create post Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog  modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-plus-circle"></i> Create Post
-                            </h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="d-flex">
+                            <img src="@if (Auth::user()->user_image) {{ asset('images/users') . '/' . Auth::user()->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
+                                alt="" class="rounded-circle" style="width: 50px">
+                            <div class="w-100 ms-2"><a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                    class="btn btn-light btn-block shadow-0 btn-rounded text-start d-flex align-items-center post_btn">
+                                    Whats on your mind, {{ Auth::user()->name }}?</a></div>
                         </div>
-                        <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-
-                            <div class="modal-body">
-                                <!-- Message input -->
-                                <div class="form-outline mb-4">
-                                    <textarea class="form-control" id="form4Example3" rows="4" name="post_text"></textarea>
-                                    <label class="form-label" for="form4Example3">Whats on your mind,
-                                        {{ Auth::user()->name }}?</label>
-                                </div>
-                                <div class="input-group ">
-                                    <span class="input-group-text"><i class="bi bi-image text-success"></i></span>
-                                    <input type="file" class="form-control" name="image" id="image" />
-                                </div>
-                                <div class="text-center my-2">or,</div>
-                                <div class="input-group ">
-                                    <span class="input-group-text"><i class="fas fa-video text-danger"></i></span>
-                                    <input type="file" class="form-control" name="video" id="video" />
-                                </div>
-
-                                <select class="form-select form-select-sm mt-3 w-25" name="visibility">
-                                    <option value="1">&#127758; Public</option>
-                                    <option value="0">&#128274; Only me</option>
-                                </select>
-                            </div>
-
-                            <div class="modal-footer">
-                                <!-- Submit button -->
-                                <button type="submit" class="btn btn-primary bg-gradient btn-block ">Post</button>
-                            </div>
-                        </form>
+                        <hr>
+                        <div class="d-flex justify-content-around">
+                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                class="btn btn-link text-dark w-50 shadow-0 py-1"><i class="fas fa-image text-success"></i>
+                                Photo</a>
+                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                class="btn btn-link text-dark w-50 shadow-0 py-1"><i class="fas fa-video text-danger"></i>
+                                Video</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <!-- Create post Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-plus-circle"></i> Create
+                                    Post
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="modal-body">
+                                    <!-- Message input -->
+                                    <div class="form-outline mb-4">
+                                        <textarea class="form-control" id="form4Example3" rows="4" name="post_text"></textarea>
+                                        <label class="form-label" for="form4Example3">Whats on your mind,
+                                            {{ Auth::user()->name }}?</label>
+                                    </div>
+                                    <div class="input-group ">
+                                        <span class="input-group-text"><i class="bi bi-image text-success"></i></span>
+                                        <input type="file" class="form-control" name="image" id="image" />
+                                    </div>
+                                    <div class="text-center my-2">or,</div>
+                                    <div class="input-group ">
+                                        <span class="input-group-text"><i class="fas fa-video text-danger"></i></span>
+                                        <input type="file" class="form-control" name="video" id="video" />
+                                    </div>
+
+                                    <select class="form-select form-select-sm mt-3 w-25" name="visibility">
+                                        <option value="1">&#127758; Public</option>
+                                        <option value="0">&#128274; Only me</option>
+                                    </select>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-primary bg-gradient btn-block ">Post</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @endif
 
 
             {{-- view posts --}}
@@ -185,7 +189,7 @@ $cmnts_cnt = DB::table('post_comments')
                         ->get();
                 @endphp
 
-                <div class="card my-4" id="{{ 'post' . $item->id }}">
+                <div class="card mb-4" id="{{ 'post' . $item->id }}">
                     <div class="card-header d-flex mt-2">
 
                         {{-- heading options --}}

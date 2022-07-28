@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>@yield('title') | MyADC</title>
+    <title>@yield('title') MyADC</title>
 
     <!-- Favicon icon -->
     <link rel="icon" href="{{ asset('images/logos/icon.png') }}" type="image/x-icon">

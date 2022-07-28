@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Notice
+    Notice |
 @endsection
 @php
 $menu = 'Notice';
