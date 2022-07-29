@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
+use Auth;
 
 class NewPasswordController extends Controller
 {
@@ -61,5 +62,27 @@ class NewPasswordController extends Controller
                     ? redirect()->route('login')->with('status', __($status))
                     : back()->withInput($request->only('email'))
                             ->withErrors(['email' => __($status)]);
+    }
+
+    // Change password
+    public function password_update(Request $request) {
+        $request->validate([
+            'current_password'=>'required',
+            'password'=>'required|min:8|max:13|string|confirmed',
+            'password_confirmation'=>'required',
+        ]);
+
+        if(Hash::check($request->current_password, Auth::user()->password)){
+
+            Auth::user()->password = Hash::make($request->password);
+            Auth::user()->save();
+
+            Auth::logout();
+
+            $notify = ['message'=>'Password changed successfully !', 'alert-type'=>'success'];
+            return redirect()->route('welcome')->with($notify);
+        }else {
+            return redirect()->back()->with('Error', 'Current password not matched !');
+        }
     }
 }

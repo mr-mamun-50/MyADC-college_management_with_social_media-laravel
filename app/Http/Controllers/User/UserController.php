@@ -14,7 +14,8 @@ class UserController extends Controller
     {
         $posts = DB::table('posts')
                 ->leftjoin('users', 'users.id', '=', 'posts.user_id')
-                ->select('posts.*', 'users.name', 'users.user_image')
+                ->leftjoin('students', 'users.email', 'students.email')
+                ->select('posts.*', 'users.name', 'users.user_image', 'students.department')
                 ->where('visibility', '=', '1')
                 ->orderBy('posts.post_date', 'desc')
                 ->paginate(10);
@@ -29,7 +30,7 @@ class UserController extends Controller
     //__User profile view
     public function profile($id)
     {
-        $user = DB::table('users')->where('id', '=', $id)->first();
+        $user = DB::table('users')->leftjoin('students', 'users.email', 'students.email')->select('users.*', 'students.department')->where('users.id', '=', $id)->first();
 
         if(Auth::user()->id == $user->id) {
             $posts = DB::table('posts')
@@ -49,7 +50,19 @@ class UserController extends Controller
                 ->paginate(10);
         }
 
-        return view('user.profile', compact('user', 'posts'));
+        $xi_marks_mt = $xi_marks_hy = $xi_marks_fnl = $xii_marks_mt = $xii_marks_hy = $xii_marks_fnl = 0;
+
+        if(Auth::user()->id == $user->id) {
+            $xi_marks_mt = DB::table('model_test_exam')->leftjoin('students', 'model_test_exam.st_id', 'students.id')->select('model_test_exam.*', 'students.email')->where('students.email', $user->email)->where('model_test_exam.c_class', 'XI')->first();
+            $xi_marks_hy = DB::table('half_yearly_exam')->leftjoin('students', 'half_yearly_exam.st_id', 'students.id')->select('half_yearly_exam.*', 'students.email')->where('students.email', $user->email)->where('half_yearly_exam.c_class', 'XI')->first();
+            $xi_marks_fnl = DB::table('final_exam')->leftjoin('students', 'final_exam.st_id', 'students.id')->select('final_exam.*', 'students.email')->where('students.email', $user->email)->where('final_exam.c_class', 'XI')->first();
+
+            $xii_marks_mt = DB::table('model_test_exam')->leftjoin('students', 'model_test_exam.st_id', 'students.id')->select('model_test_exam.*', 'students.email')->where('students.email', $user->email)->where('model_test_exam.c_class', 'XII')->first();
+            $xii_marks_hy = DB::table('half_yearly_exam')->leftjoin('students', 'half_yearly_exam.st_id', 'students.id')->select('half_yearly_exam.*', 'students.email')->where('students.email', $user->email)->where('half_yearly_exam.c_class', 'XII')->first();
+            $xii_marks_fnl = DB::table('final_exam')->leftjoin('students', 'final_exam.st_id', 'students.id')->select('final_exam.*', 'students.email')->where('students.email', $user->email)->where('final_exam.c_class', 'XII')->first();
+        }
+
+        return view('user.profile', compact('user', 'posts', 'xi_marks_mt', 'xi_marks_hy', 'xi_marks_fnl', 'xii_marks_mt', 'xii_marks_hy', 'xii_marks_fnl'));
     }
 
 
@@ -58,7 +71,8 @@ class UserController extends Controller
     {
         $videos = DB::table('posts')
                 ->leftjoin('users', 'users.id', '=', 'posts.user_id')
-                ->select('posts.*', 'users.name', 'users.user_image')
+                ->leftjoin('students', 'users.email', 'students.email')
+                ->select('posts.*', 'users.name', 'users.user_image', 'students.department')
                 ->where('video', '!=', 'NULL')
                 ->where('visibility', '=', '1')
                 ->orderBy('posts.post_date', 'desc')
@@ -91,5 +105,14 @@ class UserController extends Controller
         }
 
         return view('user.routine.print', compact('data', 'dept', 'class'));
+    }
+
+    //__Teacher and student info
+    public function teacher_student_view()
+    {
+        $teacher = DB::table('teachers')->get();
+        $student = DB::table('students')->get();
+
+        return view('user.teacher_student_info.index', compact('teacher', 'student'));
     }
 }

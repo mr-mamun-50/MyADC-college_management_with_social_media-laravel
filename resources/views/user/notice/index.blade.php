@@ -4,6 +4,7 @@
 @endsection
 @php
 $menu = 'Notice';
+$rightbarImage = 'notice.png';
 @endphp
 
 @section('content')

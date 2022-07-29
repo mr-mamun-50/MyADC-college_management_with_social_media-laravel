@@ -51,10 +51,12 @@
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 
-                <a class="dropdown-item" href="#"><i class="bi bi-person"></i>
+                <a class="dropdown-item" href="#"><i class="bi bi-person mr-1"></i>
                     {{ Auth::guard('admin')->user()->name }}</a>
 
-                <a class="dropdown-item" href="#"><i class="bi bi-key"></i> Change password</a>
+                <a class="dropdown-item" href="{{ route('admin.password.change') }}"><i class="bi bi-key mr-1"></i>
+                    Change password</a>
+
                 <div class="dropdown-divider"></div>
 
                 <!-- Authentication -->
@@ -62,7 +64,7 @@
                     @csrf
 
                     <button class="logout btn bg-transparent px-3 py-0" type="submit"><i
-                            class="bi bi-box-arrow-right"></i>
+                            class="bi bi-box-arrow-right mr-1"></i>
                         Logout</button>
                 </form>
             </div>

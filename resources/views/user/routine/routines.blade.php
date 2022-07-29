@@ -34,7 +34,7 @@ $menu = 'Routine';
 
 
         {{-- Center section started --}}
-        <div class="col-lg-9 col-md-9 py-md-4 scroll justify-content-center d-flex">
+        <div class="col-lg-9 col-md-9 py-md-4 scroll justify-content-md-center d-md-flex">
             <div class="col-lg-11">
 
                 <div class="tab-content" id="nav-tabContent">

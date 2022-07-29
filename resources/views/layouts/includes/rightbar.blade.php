@@ -1,3 +1,7 @@
+<div class="mb-4">
+    <img class="img-fluid" src="{{ asset('images/asset_img/' . $rightbarImage) }}" alt="">
+</div>
+
 <div class="card">
     <div class="card-header fw-bold">
         People You May Know

@@ -57,22 +57,35 @@
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
 
-                                <div class="mb-3">
+                                <div class="mb-4">
                                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                    <input type="email" class="form-control py-2" id="email" name="email"
-                                        aria-describedby="emailHelp" required>
+                                    <input type="email" class="form-control py-2 @error('email') is-invalid @enderror"
+                                        id="email" name="email" aria-describedby="emailHelp">
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
-                                <div class="mb-3">
+
+                                <div class="mb-4">
                                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                                    <input type="password" class="form-control py-2" id="password" name="password"
-                                        required>
+                                    <input type="password"
+                                        class="form-control py-2  @error('password') is-invalid @enderror"
+                                        id="password" name="password">
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
-                                <div class="mb-3 form-check">
+
+                                <div class="mb-4 form-check">
                                     <input type="checkbox" class="form-check-input" id="remember_me" name="remember">
                                     <label class="form-check-label" for="exampleCheck1">Remember me</label>
                                 </div>
 
-                                <div class="d-flex justify-content-between mt-5">
+                                <div class="d-flex justify-content-between pt-3">
 
                                     <button type="button" class="btn btn-link px-0 forgetPassBtn"
                                         onclick="location.href='{{ route('password.request') }}'" @auth disabled
@@ -96,11 +109,11 @@
     <footer class="py-3 mt-5">
         <div class="container">
             <div class="d-flex justify-content-center">
-                <img src="{{ asset('images/logos/college_logo.png') }}" alt="" style="height: 45px">
-                <img class="ms-3" src="{{ asset('images/logos/BD_govt.png') }}" alt="" style="height: 45px">
-                <img class="ms-3" src="{{ asset('images/logos/sheb_logo.png') }}" alt=""
+                <img src="{{ asset('images/logos/BD_govt.png') }}" alt="" style="height: 45px">
+                <img class="ms-4" src="{{ asset('images/logos/a2i-logo.png') }}" alt="" style="height: 45px">
+                <img class="ms-4" src="{{ asset('images/logos/sheb_logo.png') }}" alt=""
                     style="height: 45px">
-                <img class="ms-3" src="{{ asset('images/logos/UNICEF_login_icon.svg') }}" alt=""
+                <img class="ms-4" src="{{ asset('images/logos/UNICEF_login_icon.svg') }}" alt=""
                     style="height: 45px">
             </div>
             <div class="d-md-flex justify-content-center small mt-3">

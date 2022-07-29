@@ -4,12 +4,12 @@
 @endsection
 @php
 $menu = 'Home';
+$rightbarImage = 'study_chat.png';
 @endphp
 
 
 @section('content')
     <div class="row">
-
         {{-- Left section started --}}
         <div class="d-none d-lg-block col-lg-3 py-md-4 scroll">
             @include('layouts.includes.leftbar')
@@ -120,7 +120,10 @@ $menu = 'Home';
 
                                 <div class="ms-3">
                                     <a href="{{ route('user.profile', $item->user_id) }}">
-                                        <h5 class="card-title text-dark">{{ $item->name }}</h5>
+                                        <h5 class="card-title text-dark">{{ $item->name }} @if ($item->department)
+                                                <i class="fas fa-check-circle fa-xs text-primary"></i>
+                                            @endif
+                                        </h5>
                                     </a>
                                     @if ($item->visibility == 1)
                                         <span class="badge rounded-pill badge-success">&#127758; Public</span>

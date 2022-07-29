@@ -24,6 +24,22 @@
 </script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js">
 </script>
+<script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.bootstrap5.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js">
+</script>
+<script type="text/javascript" charset="utf8"
+    src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js">
+</script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js">
+</script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js">
+</script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js">
+</script>
 <script>
     $(document).ready(function() {
         $('.myDataTable').DataTable({
@@ -51,6 +67,29 @@
         });
     });
 </script>
+<script>
+    $(document).ready(function() {
+        var table = $('#tcr_info_table').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'colvis']
+        });
+
+        table.buttons().container()
+            .appendTo('#tcr_info_table_wrapper .col-md-6:eq(0)');
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var table = $('#st_info_table').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'colvis']
+        });
+
+        table.buttons().container()
+            .appendTo('#st_info_table_wrapper .col-md-6:eq(0)');
+    });
+</script>
+<script type="text/javascript" charset="utf8" src="{{ asset('user_asset/js/buttons.bootstrap4.min.js') }}"></script>
 
 <script>
     $('.delete').click(function(event) {

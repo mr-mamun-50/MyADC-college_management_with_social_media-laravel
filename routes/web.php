@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Auth\NewPasswordController;
 
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\RoutineXIController;
@@ -53,6 +54,9 @@ Route::group(['middleware' => 'auth', 'middleware' => 'verified'], function() {
     //__Home routes
     Route::get('/home', [UserController::class, 'index'])->name('home');
 
+    //__Change password
+    Route::post('/user_password/update', [NewPasswordController::class, 'password_update'])->name('user_password.update');
+
     //__User profile routes
     Route::get('profile/{id}', [UserController::class, 'profile'])->name('user.profile');
 
@@ -70,6 +74,9 @@ Route::group(['middleware' => 'auth', 'middleware' => 'verified'], function() {
     //__Routine route
     Route::get('/routines', [UserController::class, 'routines'])->name('routines');
     Route::get('/routines/export/{class}/{dept}', [UserController::class, 'export'])->name('routines.export');
+
+    //__Teachers and students info route
+    Route::get('/teacher_student_info', [UserController::class, 'teacher_student_view'])->name('teacher_student_info');
 
 });
 
@@ -99,6 +106,9 @@ Route::group(['middleware' => 'admin'], function() {
 
     Route::get('/admin', [HomeController::class, 'index'])->name('admin.dashboard');
     Route::post('/admin/logout', [AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
+
+    Route::get('/admin/password/change', [HomeController::class, 'password_change'])->name('admin.password.change');
+    Route::post('/admin/password/update', [HomeController::class, 'password_update'])->name('admin.password.update');
 
     // __Notice routes
     Route::resource('/admin/notice', NoticeController::class);

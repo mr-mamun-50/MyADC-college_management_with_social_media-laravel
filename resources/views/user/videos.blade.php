@@ -4,11 +4,11 @@
 @endsection
 @php
 $menu = 'videos';
+$rightbarImage = 'st_stressed.png';
 @endphp
 
 @section('content')
     <div class="row">
-
         {{-- Left section started --}}
         <div class="d-none d-lg-block col-lg-3 py-md-4 scroll">
 
@@ -18,7 +18,7 @@ $menu = 'videos';
 
 
         {{-- Center section started --}}
-        <div class="col-lg-6 col-md-8 py-md-4 pt-4 scroll justify-content-center d-flex">
+        <div class="col-lg-6 col-md-8 pt-4 py-md-4 scroll justify-content-center d-flex">
             <div class="col-lg-11">
 
                 @foreach ($videos as $item)
@@ -215,7 +215,10 @@ $menu = 'videos';
 
                                                 <div class="ms-3">
                                                     <a href="{{ route('user.profile', $item->user_id) }}">
-                                                        <h5 class="card-title text-dark">{{ $item->name }}</h5>
+                                                        <h5 class="card-title text-dark">{{ $item->name }} @if ($item->department)
+                                                                <i class="fas fa-check-circle fa-xs text-primary"></i>
+                                                            @endif
+                                                        </h5>
                                                     </a>
                                                     @if ($item->visibility == 1)
                                                         <span class="badge rounded-pill badge-success">&#127758;

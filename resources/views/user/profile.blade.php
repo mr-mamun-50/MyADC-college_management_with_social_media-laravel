@@ -20,7 +20,6 @@ $cmnts_cnt = DB::table('post_comments')
 
 @section('content')
     <div class="row justify-content-center">
-
         <div class="py-md-4 pt-4 col-12 col-lg-10">
 
             <div class="card">
@@ -30,7 +29,10 @@ $cmnts_cnt = DB::table('post_comments')
                             alt="" class="rounded-circle w-100">
                     </div>
                     <div class="ms-5 w-75">
-                        <h2 class="card-title">{{ $user->name }}</h2>
+                        <h2 class="card-title">{{ $user->name }} @if ($user->department)
+                                <i class="fas fa-check-circle fa-2xs text-primary"></i>
+                            @endif
+                        </h2>
                         <p>Email: <a href="mailto:{{ $user->email }}" target="blank"
                                 class="text-info">{{ $user->email }}</a></p>
                     </div>
@@ -93,6 +95,390 @@ $cmnts_cnt = DB::table('post_comments')
                     </ul>
                 </div>
             </div>
+
+            @if (Auth::user()->id == $user->id)
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5>Exam Results</h5>
+                    </div>
+                    <div class="card-body">
+                        <img class="img-fluid mb-3" src="{{ asset('images/asset_img/graduation_success.png') }}"
+                            alt="">
+
+                        <button class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#examModal"><i
+                                class="fas fa-hourglass-half"></i> View My Exam
+                            Results</button>
+                    </div>
+                </div>
+
+                <!-- Result Modal -->
+                <div class="modal fade" id="examModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Academic Record</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="card mb-4">
+                                    <div class="card-header attachment-block px-3 py-2 bg-dark text-white">
+                                        <b>Exam Result: class-XI</b>
+                                    </div>
+                                    <div class="card-body table-responsive p-0">
+                                        <table class="table table-bordered table-striped examTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Exam</th>
+                                                    <th>Grade</th>
+                                                    <th>GPA</th>
+                                                    <th>Bangla I</th>
+                                                    <th>Bangla II</th>
+                                                    <th>English I</th>
+                                                    <th>English II</th>
+                                                    <th>ICT</th>
+                                                    @if ($user->department == 'Science')
+                                                        <th>Physics I</th>
+                                                        <th>Physics II</th>
+                                                        <th>Chemistry I</th>
+                                                        <th>Chemistry II</th>
+                                                        <th>Biology I</th>
+                                                        <th>Biology II</th>
+                                                        <th>H. Math I</th>
+                                                        <th>H. Math II</th>
+                                                    @elseif ($user->department == 'Humanities')
+                                                        <th>Logic I</th>
+                                                        <th>Logic II</th>
+                                                        <th>Civics I</th>
+                                                        <th>Civics II</th>
+                                                        <th>History I</th>
+                                                        <th>History II</th>
+                                                        <th>Economics I</th>
+                                                        <th>Economics II</th>
+                                                    @else
+                                                        <th>Accounting I</th>
+                                                        <th>Accounting II</th>
+                                                        <th>Management I</th>
+                                                        <th>Management II</th>
+                                                        <th>Finance I</th>
+                                                        <th>Finance II</th>
+                                                        <th>Economics I</th>
+                                                        <th>Economics II</th>
+                                                    @endif
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if ($xi_marks_mt != null)
+                                                    <tr>
+                                                        <th>Model test</th>
+                                                        <td class="bg-warning">{{ $xi_marks_mt->grade }}</td>
+                                                        <td class="bg-info">{{ $xi_marks_mt->gpa }}</td>
+                                                        <td>{{ $xi_marks_mt->bangla1 }}</td>
+                                                        <td>{{ $xi_marks_mt->bangla2 }}</td>
+                                                        <td>{{ $xi_marks_mt->english1 }}</td>
+                                                        <td>{{ $xi_marks_mt->english2 }}</td>
+                                                        <td>{{ $xi_marks_mt->ict }}</td>
+                                                        @if ($user->department == 'Science')
+                                                            <td>{{ $xi_marks_mt->physics1 }}</td>
+                                                            <td>{{ $xi_marks_mt->physics2 }}</td>
+                                                            <td>{{ $xi_marks_mt->chemistry1 }}</td>
+                                                            <td>{{ $xi_marks_mt->chemistry2 }}</td>
+                                                            <td>{{ $xi_marks_mt->biology1 }}</td>
+                                                            <td>{{ $xi_marks_mt->biology2 }}</td>
+                                                            <td>{{ $xi_marks_mt->h_math1 }}</td>
+                                                            <td>{{ $xi_marks_mt->h_math2 }}</td>
+                                                        @elseif ($user->department == 'Humanities')
+                                                            <td>{{ $xi_marks_mt->logic1 }}</td>
+                                                            <td>{{ $xi_marks_mt->logic2 }}</td>
+                                                            <td>{{ $xi_marks_mt->civics1 }}</td>
+                                                            <td>{{ $xi_marks_mt->civics2 }}</td>
+                                                            <td>{{ $xi_marks_mt->history1 }}</td>
+                                                            <td>{{ $xi_marks_mt->history2 }}</td>
+                                                            <td>{{ $xi_marks_mt->economics1 }}</td>
+                                                            <td>{{ $xi_marks_mt->economics2 }}</td>
+                                                        @else
+                                                            <td>{{ $xi_marks_mt->accounting1 }}</td>
+                                                            <td>{{ $xi_marks_mt->accounting2 }}</td>
+                                                            <td>{{ $xi_marks_mt->management1 }}</td>
+                                                            <td>{{ $xi_marks_mt->management2 }}</td>
+                                                            <td>{{ $xi_marks_mt->fbi1 }}</td>
+                                                            <td>{{ $xi_marks_mt->fbi2 }}</td>
+                                                            <td>{{ $xi_marks_mt->economics1 }}</td>
+                                                            <td>{{ $xi_marks_mt->economics2 }}</td>
+                                                        @endif
+                                                    </tr>
+                                                @endif
+
+                                                @if ($xi_marks_hy != null)
+                                                    <tr>
+                                                        <th>Half yearly</th>
+                                                        <td class="bg-warning">{{ $xi_marks_hy->grade }}</td>
+                                                        <td class="bg-info">{{ $xi_marks_hy->gpa }}</td>
+                                                        <td>{{ $xi_marks_hy->bangla1 }}</td>
+                                                        <td>{{ $xi_marks_hy->bangla2 }}</td>
+                                                        <td>{{ $xi_marks_hy->english1 }}</td>
+                                                        <td>{{ $xi_marks_hy->english2 }}</td>
+                                                        <td>{{ $xi_marks_hy->ict }}</td>
+                                                        @if ($user->department == 'Science')
+                                                            <td>{{ $xi_marks_hy->physics1 }}</td>
+                                                            <td>{{ $xi_marks_hy->physics2 }}</td>
+                                                            <td>{{ $xi_marks_hy->chemistry1 }}</td>
+                                                            <td>{{ $xi_marks_hy->chemistry2 }}</td>
+                                                            <td>{{ $xi_marks_hy->biology1 }}</td>
+                                                            <td>{{ $xi_marks_hy->biology2 }}</td>
+                                                            <td>{{ $xi_marks_hy->h_math1 }}</td>
+                                                            <td>{{ $xi_marks_hy->h_math2 }}</td>
+                                                        @elseif ($user->department == 'Humanities')
+                                                            <td>{{ $xi_marks_hy->logic1 }}</td>
+                                                            <td>{{ $xi_marks_hy->logic2 }}</td>
+                                                            <td>{{ $xi_marks_hy->civics1 }}</td>
+                                                            <td>{{ $xi_marks_hy->civics2 }}</td>
+                                                            <td>{{ $xi_marks_hy->history1 }}</td>
+                                                            <td>{{ $xi_marks_hy->history2 }}</td>
+                                                            <td>{{ $xi_marks_hy->economics1 }}</td>
+                                                            <td>{{ $xi_marks_hy->economics2 }}</td>
+                                                        @else
+                                                            <td>{{ $xi_marks_hy->accounting1 }}</td>
+                                                            <td>{{ $xi_marks_hy->accounting2 }}</td>
+                                                            <td>{{ $xi_marks_hy->management1 }}</td>
+                                                            <td>{{ $xi_marks_hy->management2 }}</td>
+                                                            <td>{{ $xi_marks_hy->fbi1 }}</td>
+                                                            <td>{{ $xi_marks_hy->fbi2 }}</td>
+                                                            <td>{{ $xi_marks_hy->economics1 }}</td>
+                                                            <td>{{ $xi_marks_hy->economics2 }}</td>
+                                                        @endif
+                                                    </tr>
+                                                @endif
+
+                                                @if ($xi_marks_fnl != null)
+                                                    <tr>
+                                                        <th>Final</th>
+                                                        <td class="bg-warning">{{ $xi_marks_fnl->grade }}</td>
+                                                        <td class="bg-info">{{ $xi_marks_fnl->gpa }}</td>
+                                                        <td>{{ $xi_marks_fnl->bangla1 }}</td>
+                                                        <td>{{ $xi_marks_fnl->bangla2 }}</td>
+                                                        <td>{{ $xi_marks_fnl->english1 }}</td>
+                                                        <td>{{ $xi_marks_fnl->english2 }}</td>
+                                                        <td>{{ $xi_marks_fnl->ict }}</td>
+                                                        @if ($user->department == 'Science')
+                                                            <td>{{ $xi_marks_fnl->physics1 }}</td>
+                                                            <td>{{ $xi_marks_fnl->physics2 }}</td>
+                                                            <td>{{ $xi_marks_fnl->chemistry1 }}</td>
+                                                            <td>{{ $xi_marks_fnl->chemistry2 }}</td>
+                                                            <td>{{ $xi_marks_fnl->biology1 }}</td>
+                                                            <td>{{ $xi_marks_fnl->biology2 }}</td>
+                                                            <td>{{ $xi_marks_fnl->h_math1 }}</td>
+                                                            <td>{{ $xi_marks_fnl->h_math2 }}</td>
+                                                        @elseif ($user->department == 'Humanities')
+                                                            <td>{{ $xi_marks_fnl->logic1 }}</td>
+                                                            <td>{{ $xi_marks_fnl->logic2 }}</td>
+                                                            <td>{{ $xi_marks_fnl->civics1 }}</td>
+                                                            <td>{{ $xi_marks_fnl->civics2 }}</td>
+                                                            <td>{{ $xi_marks_fnl->history1 }}</td>
+                                                            <td>{{ $xi_marks_fnl->history2 }}</td>
+                                                            <td>{{ $xi_marks_fnl->economics1 }}</td>
+                                                            <td>{{ $xi_marks_fnl->economics2 }}</td>
+                                                        @else
+                                                            <td>{{ $xi_marks_fnl->accounting1 }}</td>
+                                                            <td>{{ $xi_marks_fnl->accounting2 }}</td>
+                                                            <td>{{ $xi_marks_fnl->management1 }}</td>
+                                                            <td>{{ $xi_marks_fnl->management2 }}</td>
+                                                            <td>{{ $xi_marks_fnl->fbi1 }}</td>
+                                                            <td>{{ $xi_marks_fnl->fbi2 }}</td>
+                                                            <td>{{ $xi_marks_fnl->economics1 }}</td>
+                                                            <td>{{ $xi_marks_fnl->economics2 }}</td>
+                                                        @endif
+                                                    </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header attachment-block px-3 py-2  bg-dark text-white">
+                                        <b>Exam records: class-XII</b>
+                                    </div>
+                                    <div class="card-body table-responsive p-0">
+                                        <table class="table table-bordered table-striped examTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Exam</th>
+                                                    <th>Grade</th>
+                                                    <th>GPA</th>
+                                                    <th>Bangla I</th>
+                                                    <th>Bangla II</th>
+                                                    <th>English I</th>
+                                                    <th>English II</th>
+                                                    <th>ICT</th>
+                                                    @if ($user->department == 'Science')
+                                                        <th>Physics I</th>
+                                                        <th>Physics II</th>
+                                                        <th>Chemistry I</th>
+                                                        <th>Chemistry II</th>
+                                                        <th>Biology I</th>
+                                                        <th>Biology II</th>
+                                                        <th>H. Math I</th>
+                                                        <th>H. Math II</th>
+                                                    @elseif ($user->department == 'Humanities')
+                                                        <th>Logic I</th>
+                                                        <th>Logic II</th>
+                                                        <th>Civics I</th>
+                                                        <th>Civics II</th>
+                                                        <th>History I</th>
+                                                        <th>History II</th>
+                                                        <th>Economics I</th>
+                                                        <th>Economics II</th>
+                                                    @else
+                                                        <th>Accounting I</th>
+                                                        <th>Accounting II</th>
+                                                        <th>Management I</th>
+                                                        <th>Management II</th>
+                                                        <th>Finance I</th>
+                                                        <th>Finance II</th>
+                                                        <th>Economics I</th>
+                                                        <th>Economics II</th>
+                                                    @endif
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if ($xii_marks_mt != null)
+                                                    <tr>
+                                                        <th>Model test</th>
+                                                        <td class="bg-warning">{{ $xii_marks_mt->grade }}</td>
+                                                        <td class="bg-info">{{ $xii_marks_mt->gpa }}</td>
+                                                        <td>{{ $xii_marks_mt->bangla1 }}</td>
+                                                        <td>{{ $xii_marks_mt->bangla2 }}</td>
+                                                        <td>{{ $xii_marks_mt->english1 }}</td>
+                                                        <td>{{ $xii_marks_mt->english2 }}</td>
+                                                        <td>{{ $xii_marks_mt->ict }}</td>
+                                                        @if ($user->department == 'Science')
+                                                            <td>{{ $xii_marks_mt->physics1 }}</td>
+                                                            <td>{{ $xii_marks_mt->physics2 }}</td>
+                                                            <td>{{ $xii_marks_mt->chemistry1 }}</td>
+                                                            <td>{{ $xii_marks_mt->chemistry2 }}</td>
+                                                            <td>{{ $xii_marks_mt->biology1 }}</td>
+                                                            <td>{{ $xii_marks_mt->biology2 }}</td>
+                                                            <td>{{ $xii_marks_mt->h_math1 }}</td>
+                                                            <td>{{ $xii_marks_mt->h_math2 }}</td>
+                                                        @elseif ($user->department == 'Humanities')
+                                                            <td>{{ $xii_marks_mt->logic1 }}</td>
+                                                            <td>{{ $xii_marks_mt->logic2 }}</td>
+                                                            <td>{{ $xii_marks_mt->civics1 }}</td>
+                                                            <td>{{ $xii_marks_mt->civics2 }}</td>
+                                                            <td>{{ $xii_marks_mt->history1 }}</td>
+                                                            <td>{{ $xii_marks_mt->history2 }}</td>
+                                                            <td>{{ $xii_marks_mt->economics1 }}</td>
+                                                            <td>{{ $xii_marks_mt->economics2 }}</td>
+                                                        @else
+                                                            <td>{{ $xii_marks_mt->accounting1 }}</td>
+                                                            <td>{{ $xii_marks_mt->accounting2 }}</td>
+                                                            <td>{{ $xii_marks_mt->management1 }}</td>
+                                                            <td>{{ $xii_marks_mt->management2 }}</td>
+                                                            <td>{{ $xii_marks_mt->fbi1 }}</td>
+                                                            <td>{{ $xii_marks_mt->fbi2 }}</td>
+                                                            <td>{{ $xii_marks_mt->economics1 }}</td>
+                                                            <td>{{ $xii_marks_mt->economics2 }}</td>
+                                                        @endif
+                                                    </tr>
+                                                @endif
+
+                                                @if ($xii_marks_hy != null)
+                                                    <tr>
+                                                        <th>Half yearly</th>
+                                                        <td class="bg-warning">{{ $xii_marks_hy->grade }}</td>
+                                                        <td class="bg-info">{{ $xii_marks_hy->gpa }}</td>
+                                                        <td>{{ $xii_marks_hy->bangla1 }}</td>
+                                                        <td>{{ $xii_marks_hy->bangla2 }}</td>
+                                                        <td>{{ $xii_marks_hy->english1 }}</td>
+                                                        <td>{{ $xii_marks_hy->english2 }}</td>
+                                                        <td>{{ $xii_marks_hy->ict }}</td>
+                                                        @if ($user->department == 'Science')
+                                                            <td>{{ $xii_marks_hy->physics1 }}</td>
+                                                            <td>{{ $xii_marks_hy->physics2 }}</td>
+                                                            <td>{{ $xii_marks_hy->chemistry1 }}</td>
+                                                            <td>{{ $xii_marks_hy->chemistry2 }}</td>
+                                                            <td>{{ $xii_marks_hy->biology1 }}</td>
+                                                            <td>{{ $xii_marks_hy->biology2 }}</td>
+                                                            <td>{{ $xii_marks_hy->h_math1 }}</td>
+                                                            <td>{{ $xii_marks_hy->h_math2 }}</td>
+                                                        @elseif ($user->department == 'Humanities')
+                                                            <td>{{ $xii_marks_hy->logic1 }}</td>
+                                                            <td>{{ $xii_marks_hy->logic2 }}</td>
+                                                            <td>{{ $xii_marks_hy->civics1 }}</td>
+                                                            <td>{{ $xii_marks_hy->civics2 }}</td>
+                                                            <td>{{ $xii_marks_hy->history1 }}</td>
+                                                            <td>{{ $xii_marks_hy->history2 }}</td>
+                                                            <td>{{ $xii_marks_hy->economics1 }}</td>
+                                                            <td>{{ $xii_marks_hy->economics2 }}</td>
+                                                        @else
+                                                            <td>{{ $xii_marks_hy->accounting1 }}</td>
+                                                            <td>{{ $xii_marks_hy->accounting2 }}</td>
+                                                            <td>{{ $xii_marks_hy->management1 }}</td>
+                                                            <td>{{ $xii_marks_hy->management2 }}</td>
+                                                            <td>{{ $xii_marks_hy->fbi1 }}</td>
+                                                            <td>{{ $xii_marks_hy->fbi2 }}</td>
+                                                            <td>{{ $xii_marks_hy->economics1 }}</td>
+                                                            <td>{{ $xii_marks_hy->economics2 }}</td>
+                                                        @endif
+                                                    </tr>
+                                                @endif
+
+                                                @if ($xii_marks_fnl != null)
+                                                    <tr>
+                                                        <th>Final</th>
+                                                        <td class="bg-warning">{{ $xii_marks_fnl->grade }}</td>
+                                                        <td class="bg-info">{{ $xii_marks_fnl->gpa }}</td>
+                                                        <td>{{ $xii_marks_fnl->bangla1 }}</td>
+                                                        <td>{{ $xii_marks_fnl->bangla2 }}</td>
+                                                        <td>{{ $xii_marks_fnl->english1 }}</td>
+                                                        <td>{{ $xii_marks_fnl->english2 }}</td>
+                                                        <td>{{ $xii_marks_fnl->ict }}</td>
+                                                        @if ($user->department == 'Science')
+                                                            <td>{{ $xii_marks_fnl->physics1 }}</td>
+                                                            <td>{{ $xii_marks_fnl->physics2 }}</td>
+                                                            <td>{{ $xii_marks_fnl->chemistry1 }}</td>
+                                                            <td>{{ $xii_marks_fnl->chemistry2 }}</td>
+                                                            <td>{{ $xii_marks_fnl->biology1 }}</td>
+                                                            <td>{{ $xii_marks_fnl->biology2 }}</td>
+                                                            <td>{{ $xii_marks_fnl->h_math1 }}</td>
+                                                            <td>{{ $xii_marks_fnl->h_math2 }}</td>
+                                                        @elseif ($user->department == 'Humanities')
+                                                            <td>{{ $xii_marks_fnl->logic1 }}</td>
+                                                            <td>{{ $xii_marks_fnl->logic2 }}</td>
+                                                            <td>{{ $xii_marks_fnl->civics1 }}</td>
+                                                            <td>{{ $xii_marks_fnl->civics2 }}</td>
+                                                            <td>{{ $xii_marks_fnl->history1 }}</td>
+                                                            <td>{{ $xii_marks_fnl->history2 }}</td>
+                                                            <td>{{ $xii_marks_fnl->economics1 }}</td>
+                                                            <td>{{ $xii_marks_fnl->economics2 }}</td>
+                                                        @else
+                                                            <td>{{ $xii_marks_fnl->accounting1 }}</td>
+                                                            <td>{{ $xii_marks_fnl->accounting2 }}</td>
+                                                            <td>{{ $xii_marks_fnl->management1 }}</td>
+                                                            <td>{{ $xii_marks_fnl->management2 }}</td>
+                                                            <td>{{ $xii_marks_fnl->fbi1 }}</td>
+                                                            <td>{{ $xii_marks_fnl->fbi2 }}</td>
+                                                            <td>{{ $xii_marks_fnl->economics1 }}</td>
+                                                            <td>{{ $xii_marks_fnl->economics2 }}</td>
+                                                        @endif
+                                                    </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-link" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
 
 
@@ -113,7 +499,8 @@ $cmnts_cnt = DB::table('post_comments')
                         <hr>
                         <div class="d-flex justify-content-around">
                             <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                class="btn btn-link text-dark w-50 shadow-0 py-1"><i class="fas fa-image text-success"></i>
+                                class="btn btn-link text-dark w-50 shadow-0 py-1"><i
+                                    class="fas fa-image text-success"></i>
                                 Photo</a>
                             <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                                 class="btn btn-link text-dark w-50 shadow-0 py-1"><i class="fas fa-video text-danger"></i>
@@ -128,7 +515,8 @@ $cmnts_cnt = DB::table('post_comments')
                     <div class="modal-dialog  modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-plus-circle"></i> Create
+                                <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-plus-circle"></i>
+                                    Create
                                     Post
                                 </h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -198,7 +586,10 @@ $cmnts_cnt = DB::table('post_comments')
                                 alt="" class="rounded-circle" style="width: 50px; height:50px">
 
                             <div class="ms-3">
-                                <h5 class="card-title">{{ $item->name }}</h5>
+                                <h5 class="card-title">{{ $item->name }} @if ($user->department)
+                                        <i class="fas fa-check-circle fa-xs text-primary"></i>
+                                    @endif
+                                </h5>
                                 @if ($item->visibility == 1)
                                     <span class="badge rounded-pill badge-success">&#127758; Public</span>
                                 @else
