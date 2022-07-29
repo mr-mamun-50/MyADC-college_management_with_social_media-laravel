@@ -29,6 +29,7 @@ $submenu = 'HSC_Examinee'; ?>
                             <th>Parents name</th>
                             <th>Phone</th>
                             <th>Session</th>
+                            <th>HSC</th>
                             <th>More</th>
                         </tr>
                     </thead>
@@ -55,6 +56,30 @@ $submenu = 'HSC_Examinee'; ?>
                                 <td>{{ $item->session }}</td>
 
                                 <td class="text-center">
+
+                                    @php
+                                        $hsc_info = DB::table('hsc_info')
+                                            ->where('st_id', $item->id)
+                                            ->first();
+                                    @endphp
+
+                                    @if ($hsc_info)
+                                        @if ($hsc_info->result != null)
+                                            @if ($hsc_info->result >= 1)
+                                                <span class="badge badge-pill badge-success mb-2">Passed</span><br>
+                                            @elseif($hsc_info->result == '0')
+                                                <span class="badge badge-pill badge-danger mb-2">Failed</span><br>
+                                            @endif
+                                        @endif
+                                    @endif
+
+                                    <button class="btn btn-info btn-sm" data-toggle="modal"
+                                        data-target="#{{ 'addInfo' . $item->id }}"
+                                        @if ($hsc_info) disabled @endif><i class="fas fa-plus-circle"></i>
+                                        Info</button><br>
+                                </td>
+
+                                <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('students.show', $item->id) }}"
                                             class="btn btn-info mr-1 px-1 py-0"><i class="bi bi-person"></i></a>
@@ -71,10 +96,62 @@ $submenu = 'HSC_Examinee'; ?>
                                         Transfer <i class="far fa-arrow-alt-circle-right ml-1"></i></a>
                                 </td>
                             </tr>
+
+                            <!-- Add hsc info Modal -->
+                            <div class="modal fade" id="{{ 'addInfo' . $item->id }}" data-backdrop="static"
+                                data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Add HSC Information</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form action="{{ route('hsc.store') }}" method="POST">
+                                            @csrf
+                                            <div class="modal-body">
+
+                                                <input type="hidden" name="st_id" value="{{ $item->id }}">
+
+                                                <div class="form-group">
+                                                    <label for="">HSC Year</label>
+                                                    <select name="year" class="form-control">
+                                                        <option value="{{ date('Y') - 2 }}">{{ date('Y') - 2 }}</option>
+                                                        <option value="{{ date('Y') - 1 }}">{{ date('Y') - 1 }}</option>
+                                                        <option value="{{ date('Y') }}" selected>{{ date('Y') }}
+                                                        </option>
+                                                        <option value="{{ date('Y') + 1 }}">{{ date('Y') + 1 }}</option>
+                                                        <option value="{{ date('Y') + 2 }}">{{ date('Y') + 2 }}</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="">HSC Roll</label>
+                                                    <input type="text" class="form-control" name="hsc_roll">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="">HSC Reg.</label>
+                                                    <input type="text" class="form-control" name="hsc_reg">
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="reset" class="btn btn-light">Reset</button>
+                                                <button type="submit" class="btn btn-primary">Add Info</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach
                     </tbody>
                 </table>
             </div>
+
+
 
             <!-- Modal for add student -->
             <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
@@ -340,6 +417,7 @@ $submenu = 'HSC_Examinee'; ?>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 @endsection

@@ -173,10 +173,10 @@ class AdmissionController extends Controller
             'ssc_marksheet' => $info->ssc_marksheet,
         ];
 
-        // DB::table('students')->insert($data);
+        DB::table('students')->insert($data);
 
-        // DB::table('new_admitted_students')->where('id', $id)->delete();
-        // DB::table('admission_security_code')->where('security_code', $info->security_code)->delete();
+        DB::table('new_admitted_students')->where('id', $id)->delete();
+        DB::table('admission_security_code')->where('security_code', $info->security_code)->delete();
 
         Mail::send('admin.admission.email', $data, function ($message) use ($data) {
             $message->to($data['email']);

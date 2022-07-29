@@ -19,7 +19,7 @@ $rightbarImage = 'study_chat.png';
 
         {{-- Center section started --}}
         <div class="col-lg-6 col-md-8 py-md-4 pt-4 scroll justify-content-center d-flex">
-            <div class="col-lg-11">
+            <div class="col-lg-11 pb-4">
                 {{-- whats on your mind --}}
                 <div class="card text-start">
                     <div class="card-body p-3">

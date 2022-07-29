@@ -55,7 +55,7 @@ $menu = 't_s_info';
                                         <tr>
                                             <th>Name</th>
                                             <th>Position</th>
-                                            <th>Dept.</th>
+                                            <th>Department</th>
                                             <th>Subject</th>
                                             <th>Contact</th>
                                         </tr>
@@ -96,8 +96,8 @@ $menu = 't_s_info';
                                         <tr>
                                             <th>Name</th>
                                             <th>Session</th>
-                                            <th>ID</th>
-                                            <th>Dept.</th>
+                                            <th>Student ID</th>
+                                            <th>Department</th>
                                             <th>Mail</th>
                                         </tr>
                                     </thead>

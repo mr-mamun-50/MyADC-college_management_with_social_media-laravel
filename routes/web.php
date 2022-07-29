@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Students\OldStudentsController;
 use App\Http\Controllers\Admin\Students\HscExamineeController;
 
 use App\Http\Controllers\Admin\Exam\ExamController;
+use App\Http\Controllers\Admin\Exam\HscController;
 
 use App\Http\Controllers\Admin\Teachers\TeachersController;
 use App\Http\Controllers\Admin\Teachers\DeptTeachersController;
@@ -124,6 +125,10 @@ Route::group(['middleware' => 'admin'], function() {
     Route::resource('/admin/students_old', OldStudentsController::class);
     Route::resource('/admin/hsc_examinee', HscExamineeController::class);
     Route::get('/admin/students/transfer-class/{id}', [AllStudentsController::class, 'transfer_class'])->name('students.transfer-class');
+
+    //__HSC routes
+    Route::resource('/admin/hsc', HscController::class);
+    Route::get('/admin/hsc_prev', [HscController::class, 'index_prev'])->name('hsc.previous');
 
     //__Exam routes
     Route::post('/admin/students/exam/mt/update/{class}/{id}', [ExamController::class, 'update_mt'])->name('admin.students.exam.mt.update');

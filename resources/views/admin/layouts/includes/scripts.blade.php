@@ -5,9 +5,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"> --}}
-</script>
+
 <!-- overlayScrollbars -->
 <script src="{{ asset('plugins') }}/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
@@ -49,6 +47,9 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Summernote -->
 <script src="{{ asset('plugins') }}/summernote/summernote-bs4.min.js"></script>
+
+<!-- Google charts -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <!-- Sweetalerts -->
 <script>
@@ -208,4 +209,79 @@
         });
 
     });
+</script>
+
+<script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['bar']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Number', 'Students'],
+            ['Class-XI students', @php
+                if (isset($xi_students)) {
+                    echo $xi_students->count();
+                }
+            @endphp],
+            ['Class-XII students', @php
+                if (isset($xii_students)) {
+                    echo $xii_students->count();
+                }
+            @endphp],
+            ['HSC examinee students', @php
+                if (isset($hsc_students)) {
+                    echo $hsc_students->count();
+                }
+            @endphp]
+        ]);
+
+        var options = {
+            bar: {
+                groupWidth: "40%"
+            }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+</script>
+
+<script type="text/javascript">
+    google.charts.load("current", {
+        packages: ["corechart"]
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Posts', 'Visibility'],
+            ['Public Posts', @php
+                if (isset($public_post)) {
+                    echo $public_post->count();
+                }
+            @endphp],
+            ['Private Posts', @php
+                if (isset($private_post)) {
+                    echo $private_post->count();
+                }
+            @endphp]
+        ]);
+
+        var options = {
+            // title: 'Total Comments: ',
+            // is3D: true,
+            pieHole: 0.4,
+            chartArea: {
+                width: '100%',
+                height: '90%'
+            }
+        };
+
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+    }
 </script>

@@ -64,7 +64,7 @@
         <ul class="navbar-nav flex-row justify-content-center justify-content-lg-end collapse navbar-collapse col-lg-4"
             id="navbarTogglerDemo02">
 
-            <li class="nav-item me-3">
+            <li class="nav-item me-3" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Profile">
                 <a class="nav-link d-sm-flex align-items-sm-center dropdown-toggle hidden-arrow   @if ($menu == Auth::user()->id) active @endif"
                     href="{{ route('user.profile', Auth::user()->id) }}">
 

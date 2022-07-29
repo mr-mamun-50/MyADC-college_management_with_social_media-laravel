@@ -112,6 +112,29 @@
                     </ul>
                 </li>
 
+                <li class="nav-item @if ($menu == 'HSC_exam') menu-open @endif">
+                    <a href="#" class="nav-link @if ($menu == 'HSC_exam') active @endif">
+                        <i class="nav-icon fas fa-graduation-cap"></i>
+                        <p> HSC Exam <i class="fas fa-angle-left right"></i> </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('hsc.index') }}"
+                                class="nav-link @if ($submenu == 'Current_year') active @endif">
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>Current year</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('hsc.previous') }}"
+                                class="nav-link @if ($submenu == 'Previous_records') active @endif">
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>Previous records</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item @if ($menu == 'Teachers') menu-open @endif">
                     <a href="#" class="nav-link @if ($menu == 'Teachers') active @endif">
                         <i class="nav-icon fas fa-chalkboard-teacher"></i>
