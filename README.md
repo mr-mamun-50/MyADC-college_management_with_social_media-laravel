@@ -5,5 +5,3 @@ This is a project is developed mainly for college management and to prevent addi
 See the project recorded video here: https://youtu.be/0gR0DBux2qQ
 
 Project live server link: http://myadc.herokuapp.com/public
-
-<iframe width="100%" height="500px" src="https://www.youtube.com/embed/0gR0DBux2qQ"></iframe>
