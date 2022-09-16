@@ -8,4 +8,4 @@ This was my third year project of my university.
 
 See the project recorded video here: https://youtu.be/0gR0DBux2qQ
 
-Project live server link: http://myadc.herokuapp.com/public
+Project live server link: http://amar-college.herokuapp.com/public/
